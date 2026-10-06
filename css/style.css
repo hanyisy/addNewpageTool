@@ -283,24 +283,25 @@ select.field { padding: 0 0.7em; }
   position: relative;
   max-width: 68.75rem;
   margin: 0 auto;
+  container-type: inline-size;   /* 글자 cqw 기준 = 이 박스 너비 (최대 1100px에서 멈춤) */
   padding: clamp(2lh, 7%, 3.75lh) clamp(0.75em, 3%, 1.25em);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));   /* 항상 한 줄 3칸 */
-  gap: clamp(0.5em, 2.5cqw, 2em);
+  gap: 2.22cqw;
   text-align: center;
   color: #fff;
 }
-.stat { display: flex; flex-direction: column; gap: 0.25lh; }
-.stat__label { font-size: clamp(0.75rem, 1.6cqw, 1.1875rem); font-weight: 600; }
-.stat__value { font-size: clamp(1.375rem, 6cqw, 5rem); white-space: nowrap; font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; }
+.stat { white-space: nowrap; display: flex; flex-direction: column; gap: 0.25lh; }
+.stat__label { font-size: 1.79cqw; font-weight: 600; }
+.stat__value { font-size: 7.55cqw; font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; }
 .stat__sub {
   align-self: center;
   margin-top: 0.25lh;
-  padding: 0.16lh clamp(0.5em, 1cqw, 0.82em);
+  padding: 0.16lh 0.82em;
   border-radius: 999em;
   background: #ffd36b;
   color: var(--navy-deep);
-  font-size: clamp(0.6875rem, 1.4cqw, 1.0625rem);
+  font-size: 1.6cqw;
   font-weight: 800;
 }
 
