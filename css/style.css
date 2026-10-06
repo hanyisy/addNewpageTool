@@ -304,10 +304,11 @@ select.field {
 /* =========================================================
    Eligibility
    ========================================================= */
-.eligibility { background: #f6f8fb; border-top: 1px solid var(--line); padding: 2.3lh 5%; }
-.eligibility__inner { display: flex; flex-direction: column; gap: 1.5lh; }
-.eligibility__text { display: flex; flex-direction: column; gap: 1lh; }
+.eligibility { background: #f6f8fb; border-top: 1px solid var(--line); padding: 2.5lh 8%; }
+.eligibility__inner { display: flex; flex-direction: column; gap: 1.6lh; }
+.eligibility__text { display: flex; flex-direction: column; gap: 0.6lh; }
 .eligibility__title {
+  margin-bottom: 0.4lh;
   padding-bottom: 0.4lh;
   font-size: 7.7cqw;
   font-weight: 900;
@@ -315,16 +316,31 @@ select.field {
   letter-spacing: -0.04em;
   border-bottom: 3px solid var(--text);
 }
-.criteria { display: flex; flex-direction: column; gap: 0.3lh; align-items: flex-start; }
+/* 조건 하나씩 카드로 */
+.criteria {
+  padding: 0.8lh 6%;
+  background: #fff;
+  border-radius: 0.4em;
+  box-shadow: 0 0.2em 0.8em rgba(15, 35, 90, .06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4lh;
+}
 .criteria__title {
-  padding: 0 0.14em;
-  font-size: 4.9cqw;
+  font-size: 4.5cqw;
   font-weight: 800;
+  line-height: 1.45;
   color: #333;
   letter-spacing: -0.03em;
-  background: linear-gradient(transparent 55%, #ffe08a 55%);
 }
-.criteria__desc { padding-left: 0.22em; font-size: 4.1cqw; color: #374151; line-height: 1.65; }
+/* 형광펜 (줄바꿈돼도 줄마다 이어지게) */
+.criteria__title span {
+  padding: 0 0.15em;
+  background: linear-gradient(transparent 55%, #ffe08a 55%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.criteria__desc { font-size: 3.8cqw; color: #4b5563; line-height: 1.7; }
 
 .people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5%; }
 .people .img-slot { aspect-ratio: 4 / 5; }
