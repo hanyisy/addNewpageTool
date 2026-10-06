@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<script src="./image-slot.js"></script>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#111827;background:#fff;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:#1f5fd1;text-decoration:none}
+a:hover{color:#0b1f4d}
+input::placeholder{color:#8a94a6}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e8ecf3">
+  <div style="max-width:1240px;margin:0 auto;padding:12px clamp(16px,3vw,32px);display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <a href="#top" style="display:flex;align-items:center;gap:8px;color:#0b1f4d;font-weight:800;font-size:clamp(17px,2vw,22px);letter-spacing:-0.03em">
+      <span style="width:22px;height:22px;border-radius:50%;background:#f5b630;flex:none"></span>
+      <span>채무조정지원센터</span>
+    </a>
+  </div>
+</header>
+
+<section id="top" data-screen-label="Hero" style="background:linear-gradient(180deg,#2457e0 0%,#1a3fb5 100%);padding:clamp(56px,9vw,120px) clamp(16px,4vw,32px) clamp(56px,8vw,100px)">
+  <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:clamp(28px,4vw,40px)">
+    <h1 style="margin:0;color:#fff;text-align:center;font-weight:900;font-size:clamp(26px,4.4vw,54px);line-height:1.3;letter-spacing:-0.04em;text-wrap:balance">대출을 대출로 갚는 악순환 이제 끊어내세요.<br>채무조정지원센터와 <span style="color:#ffd65c">함께라면 가능합니다.</span></h1>
+    <form onSubmit="{{ submit }}" style="width:100%;max-width:640px;background:#fff;border-radius:16px;padding:clamp(20px,3vw,32px);box-shadow:0 20px 50px rgba(8,24,70,.28);display:flex;flex-direction:column;gap:10px">
+      <input value="{{ name }}" onChange="{{ onName }}" placeholder="성함" style="height:56px;padding:0 16px;border:1.5px solid #c9d1dc;border-radius:8px;font:inherit;font-size:17px;color:#111827;background:#fff">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:6px">
+        <select value="{{ p1 }}" onChange="{{ onP1 }}" style="height:56px;padding:0 12px;border:1.5px solid #c9d1dc;border-radius:8px;font:inherit;font-size:17px;color:#111827;background:#fff">
+          <option>010</option><option>011</option><option>016</option><option>017</option><option>018</option><option>019</option>
+        </select>
+        <input value="{{ p2 }}" onChange="{{ onP2 }}" inputmode="numeric" maxlength="4" placeholder="연락처" style="min-width:0;height:56px;padding:0 14px;border:1.5px solid #c9d1dc;border-radius:8px;font:inherit;font-size:17px;color:#111827;background:#fff">
+        <input value="{{ p3 }}" onChange="{{ onP3 }}" inputmode="numeric" maxlength="4" placeholder="연락처" style="min-width:0;height:56px;padding:0 14px;border:1.5px solid #c9d1dc;border-radius:8px;font:inherit;font-size:17px;color:#111827;background:#fff">
+      </div>
+
+      <div style="margin-top:14px;text-align:center;display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:clamp(18px,2.1vw,21px);font-weight:800;color:#0b1f4d;letter-spacing:-0.03em">채무금액을 선택해주세요</div>
+        <div style="font-size:15px;font-weight:700;color:#d11a1a">3,000만원 미만 채무는 신청 불가합니다</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px">
+        <sc-for list="{{ debtOpts }}" as="o" hint-placeholder-count="3">
+          <button type="button" onClick="{{ o.pick }}" style="grid-column:span {{ o.span }};height:54px;border-radius:8px;border:1.5px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};font:inherit;font-size:17px;font-weight:700;cursor:pointer">{{ o.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:14px;text-align:center;font-size:clamp(18px,2.1vw,21px);font-weight:800;color:#0b1f4d;letter-spacing:-0.03em">재산보다 채무액이 많은지 여부를 선택해주세요</div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px">
+        <sc-for list="{{ assetOpts }}" as="o" hint-placeholder-count="3">
+          <button type="button" onClick="{{ o.pick }}" style="grid-column:span {{ o.span }};height:54px;border-radius:8px;border:1.5px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};font:inherit;font-size:17px;font-weight:700;cursor:pointer">{{ o.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:14px;text-align:center;font-size:clamp(18px,2.1vw,21px);font-weight:800;color:#0b1f4d;letter-spacing:-0.03em">월소득은 어떻게 되시나요?</div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px">
+        <sc-for list="{{ incomeOpts }}" as="o" hint-placeholder-count="4">
+          <button type="button" onClick="{{ o.pick }}" style="grid-column:span {{ o.span }};height:54px;border-radius:8px;border:1.5px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};font:inherit;font-size:17px;font-weight:700;cursor:pointer">{{ o.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:14px;text-align:center;display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:clamp(18px,2.1vw,21px);font-weight:800;color:#0b1f4d;letter-spacing:-0.03em">무료 상담 희망 시간대 1차</div>
+        <div style="font-size:15px;font-weight:700;color:#d11a1a">3회 이상 부재시 무료상담의 기회가 넘어갑니다</div>
+      </div>
+      <select value="{{ t1 }}" onChange="{{ onT1 }}" style="height:56px;padding:0 12px;border:1.5px solid #c9d1dc;border-radius:8px;font:inherit;font-size:17px;color:#111827;background:#fff">
+        <option value="">-무료 상담 희망 시간대 1차 선택-</option>
+        <sc-for list="{{ times }}" as="t" hint-placeholder-count="0"><option>{{ t }}</option></sc-for>
+      </select>
+
+      <div style="margin-top:14px;text-align:center;display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:clamp(18px,2.1vw,21px);font-weight:800;color:#0b1f4d;letter-spacing:-0.03em">무료 상담 희망 시간대 2차</div>
+        <div style="font-size:15px;font-weight:700;color:#d11a1a">1차 시간대 부재시 2차 시간대에 연락드리겠습니다</div>
+      </div>
+      <select value="{{ t2 }}" onChange="{{ onT2 }}" style="height:56px;padding:0 12px;border:1.5px solid #c9d1dc;border-radius:8px;font:inherit;font-size:17px;color:#111827;background:#fff">
+        <option value="">-무료 상담 희망 시간대 2차 선택-</option>
+        <sc-for list="{{ times }}" as="t" hint-placeholder-count="0"><option>{{ t }}</option></sc-for>
+      </select>
+
+      <label style="margin-top:8px;display:flex;align-items:center;gap:8px;color:#1f2937;font-size:15px;font-weight:600;cursor:pointer">
+        <input type="checkbox" checked="{{ agree }}" onChange="{{ onAgree }}" style="width:18px;height:18px;margin:0;accent-color:#13307e">
+        <span>개인정보처리방침 동의</span>
+        <a href="#privacy" onClick="{{ openPolicy }}" style="color:#13307e;text-decoration:underline">약관보기</a>
+      </label>
+      <button type="submit" style="margin-top:4px;height:60px;border:0;border-radius:12px;background:#ffc531;color:#0b1f4d;font:inherit;font-size:clamp(20px,2.4vw,26px);font-weight:900;cursor:pointer;letter-spacing:-0.02em;box-shadow:0 6px 0 #e0a800" style-hover="background:#ffb800">무료상담 신청하기</button>
+      <sc-if value="{{ msg }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;color:{{ msgColor }};font-weight:700;font-size:15px">{{ msg }}</div>
+      </sc-if>
+    </form>
+  </div>
+</section>
+
+<section data-screen-label="Stats" style="position:relative;background:#2a3f7a;overflow:hidden">
+  <div style="position:absolute;inset:0">
+    <image-slot id="stats-bg" shape="rect" placeholder="배경 사진 (상담/노트북 이미지)"></image-slot>
+  </div>
+  <div style="position:absolute;inset:0;background:rgba(11,31,77,.72);pointer-events:none"></div>
+  <div style="position:relative;max-width:1100px;margin:0 auto;padding:clamp(48px,7vw,90px) 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;text-align:center;color:#fff;pointer-events:none">
+    <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="font-size:clamp(15px,1.6vw,19px);font-weight:600">{{ s.label }}</div>
+        <div style="font-size:clamp(44px,6vw,80px);font-weight:900;letter-spacing:-0.04em;line-height:1.1">{{ s.value }}</div>
+        <sc-if value="{{ s.sub }}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:center;margin-top:6px;padding:4px 14px;border-radius:999px;background:#ffd36b;color:#0b1f4d;font-size:clamp(14px,1.4vw,17px);font-weight:800">{{ s.sub }}</div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="padding:clamp(64px,9vw,120px) 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px">
+  <p style="margin:0;font-size:clamp(19px,2.6vw,32px);font-weight:500;letter-spacing:-0.03em"><b style="font-weight:900">"조건이 까다롭고 진행이 어렵진 않을까?"</b> 고민되시나요?</p>
+  <p style="margin:0;font-size:clamp(19px,2.6vw,32px);font-weight:800;color:#1d4ed8;letter-spacing:-0.03em">빚을 갚을 수 없는 대한민국 국민 모두 가능합니다.</p>
+  <p style="margin:0;font-size:clamp(19px,2.6vw,32px);font-weight:800;color:#fff;background:#13307e;padding:4px 12px;letter-spacing:-0.03em">망설이지 말고 지금 바로 무료상담을 받아 보세요</p>
+</section>
+
+<section data-screen-label="Eligibility" style="background:#f6f8fb;border-top:1px solid #e8ecf3;padding:clamp(56px,8vw,100px) clamp(16px,4vw,32px)">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(36px,5vw,72px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:28px;min-width:0">
+      <h2 style="margin:0;font-size:clamp(30px,4vw,54px);font-weight:900;line-height:1.25;letter-spacing:-0.04em;padding-bottom:28px;border-bottom:3px solid #111827">정부지원 채무조정제도<br>개인회생은 누가<br><span style="color:#1d4ed8">신청</span><span style="font-weight:500">할 수 있을까요?</span></h2>
+      <sc-for list="{{ criteria }}" as="c" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+          <h3 style="margin:0;font-size:clamp(19px,2.2vw,28px);font-weight:800;color:#333;letter-spacing:-0.03em;background:linear-gradient(transparent 55%,#ffe08a 55%);padding:0 4px">{{ c.title }}</h3>
+          <sc-if value="{{ c.desc }}" hint-placeholder-val="{{ true }}">
+            <p style="margin:0;font-size:clamp(16px,1.5vw,18px);color:#374151;line-height:1.65;padding-left:4px">{{ c.desc }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));min-width:0;grid-auto-rows:clamp(120px,15vw,200px);gap:8px">
+      <sc-for list="{{ people }}" as="p" hint-placeholder-count="9">
+        <div style="grid-row:span {{ p.span }};min-width:0;overflow:hidden">
+          <image-slot id="{{ p.id }}" shape="rect" placeholder="{{ p.label }}" style="width:100%;height:100%"></image-slot>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Advantages" style="padding:clamp(64px,8vw,110px) clamp(16px,4vw,32px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(36px,5vw,64px)">
+    <h2 style="margin:0;text-align:center;font-size:clamp(30px,4vw,52px);font-weight:900;line-height:1.25;letter-spacing:-0.04em;color:#374151">한눈에 보는<br><span style="color:#1d4ed8">채무조정 장점</span></h2>
+    <div style="display:grid;grid-template-columns:repeat({{ advCols }},minmax(0,1fr));gap:20px;align-items:stretch">
+      <sc-for list="{{ advantages }}" as="a" hint-placeholder-count="4">
+        <div style="display:flex">
+          <div style="flex:1;position:relative;overflow:hidden;background:{{ a.bg }};color:#fff;border-radius:8px;padding:clamp(28px,3vw,40px) clamp(24px,2.6vw,34px);min-height:clamp(280px,26vw,380px);box-shadow:0 14px 30px rgba(15,35,90,.22);display:flex;flex-direction:column;gap:24px">
+            <div style="position:absolute;top:-14px;left:-6px;font-size:clamp(90px,10vw,130px);font-weight:900;font-style:italic;line-height:1;color:rgba(255,255,255,.12);letter-spacing:-0.05em">{{ a.no }}</div>
+            <h3 style="position:relative;margin:clamp(56px,5vw,76px) 0 0;font-size:clamp(24px,2.4vw,32px);font-weight:800;line-height:1.25;letter-spacing:-0.03em">{{ a.t1 }}<br>{{ a.t2 }}</h3>
+            <p style="position:relative;margin:0;font-size:clamp(16px,1.4vw,17px);line-height:1.65;color:#eef2fb">{{ a.desc }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Cases" style="background:linear-gradient(180deg,#eef2fc,#dfe6f8);padding:clamp(64px,8vw,110px) clamp(16px,4vw,32px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,52px)">
+    <h2 style="margin:0;text-align:center;font-size:clamp(30px,4vw,52px);font-weight:900;line-height:1.25;letter-spacing:-0.04em;color:#0b1f4d"><span style="color:#1d4ed8">채무조정지원센터</span><br>채무탕감성공사례</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3">
+        <article style="background:#f9fafb;display:flex;flex-direction:column">
+          <div style="background:#13307e;color:#fff;text-align:center;padding:16px;font-weight:800;font-size:16px;line-height:1.5">{{ c.head }}<br><span style="color:#ffd36b">{{ c.who }}</span></div>
+          <div style="padding:22px 28px 28px;display:flex;flex-direction:column">
+            <sc-for list="{{ c.rows }}" as="r" hint-placeholder-count="3">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 0;border-bottom:1px solid #cfd5df">
+                <span style="font-size:16px;color:#4b5563">{{ r.k }}</span>
+                <span style="font-weight:800;font-size:18px;color:#111827">{{ r.v }}</span>
+              </div>
+            </sc-for>
+            <div style="margin-top:8px;padding-top:24px;text-align:center;display:flex;flex-direction:column;gap:10px">
+              <div style="font-size:clamp(30px,3.2vw,40px);font-weight:900;color:#1d4ed8;letter-spacing:-0.03em">탕감률 {{ c.rate }}</div>
+              <div style="font-size:15.5px;line-height:1.75;font-weight:600;color:#1f2937">{{ c.d1 }}<br>{{ c.d2 }}<br>{{ c.d3 }}</div>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Process" style="padding:clamp(64px,8vw,110px) clamp(16px,4vw,32px)">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(36px,5vw,60px)">
+    <h2 style="margin:0;text-align:center;font-size:clamp(30px,4vw,52px);font-weight:900;line-height:1.25;letter-spacing:-0.04em">채무조정<br><span style="color:#1d4ed8">진행과정</span></h2>
+    <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:32px 16px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="7">
+        <li style="flex:0 0 {{ stepBasis }};display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px">
+          <div style="font-size:clamp(48px,5vw,72px);font-weight:900;color:{{ s.color }};letter-spacing:-0.04em;line-height:1">{{ s.no }}</div>
+          <div style="width:48px;height:4px;background:#dbe5ff;border-radius:2px"></div>
+          <div style="min-height:2.4em;display:flex;align-items:center;font-size:clamp(19px,1.8vw,24px);font-weight:800;color:#1d4ed8;line-height:1.2;letter-spacing:-0.03em">{{ s.t }}</div>
+          <div style="font-size:16px;color:#374151;line-height:1.55">{{ s.d }}</div>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section data-screen-label="Compare" style="background:radial-gradient(ellipse at 70% 0%,#1f44b0,#0f2566 70%);padding:clamp(56px,7vw,90px) clamp(14px,4vw,32px)">
+  <div style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(28px,4vw,48px)">
+    <h2 style="margin:0;text-align:center;color:#fff;font-size:clamp(30px,4vw,52px);font-weight:900;letter-spacing:-0.04em">채무조정제도 비교</h2>
+    <div style="background:#fff;border-radius:14px;padding:clamp(18px,4vw,60px)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.5vw,22px);padding:0 clamp(0px,1vw,12px) 12px;border-bottom:2px solid #13307e">
+        <div style="background:#13307e;color:#fff;text-align:center;font-weight:800;font-size:clamp(16px,2vw,24px);padding:clamp(16px,2vw,28px) 8px">개인회생제도</div>
+        <div style="background:#1d4ed8;color:#fff;text-align:center;font-weight:800;font-size:clamp(16px,2vw,24px);padding:clamp(16px,2vw,28px) 8px">개인워크아웃</div>
+      </div>
+      <sc-for list="{{ compare }}" as="r" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #d7dbe3">
+          <div style="padding:clamp(16px,2.4vw,32px) 10px;text-align:center;font-size:clamp(14px,1.5vw,18px);color:#1f2937;border-right:1px solid #d7dbe3;line-height:1.5">{{ r.a }}</div>
+          <div style="padding:clamp(16px,2.4vw,32px) 10px;text-align:center;font-size:clamp(14px,1.5vw,18px);color:#1f2937;line-height:1.5">{{ r.b }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Benefits" style="background:#f8fafd;padding:clamp(64px,8vw,110px) clamp(16px,4vw,32px)">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(36px,5vw,64px)">
+    <h2 style="margin:0;text-align:center;font-size:clamp(30px,4vw,52px);font-weight:900;line-height:1.25;letter-spacing:-0.04em">채무조정지원센터<br><span style="color:#1d4ed8">접수 혜택</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px 32px;padding:0 clamp(0px,4vw,60px)">
+      <sc-for list="{{ benefits }}" as="col" hint-placeholder-count="3">
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ col }}" as="b" hint-placeholder-count="7">
+            <li style="display:flex;align-items:center;gap:12px;font-size:clamp(16px,1.6vw,20px);font-weight:700;color:#222">
+              <span style="width:8px;height:8px;background:#1d4ed8;transform:rotate(45deg);flex:none"></span>{{ b }}
+            </li>
+          </sc-for>
+        </ul>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Free consult" style="background:#f7f7f8;padding:clamp(64px,8vw,110px) clamp(16px,4vw,32px) 0">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:clamp(24px,3vw,40px);text-align:center">
+    <h2 style="margin:0;font-size:clamp(40px,7vw,96px);font-weight:900;letter-spacing:-0.05em;color:#13307e;line-height:1.1">무료 법률 상담 안내</h2>
+    <div style="background:#13307e;color:#fff;border-radius:14px;padding:clamp(12px,1.6vw,22px) clamp(24px,3.5vw,48px);font-size:clamp(28px,4.4vw,58px);font-weight:900;letter-spacing:-0.04em">{{ period }}</div>
+    <p style="margin:0;font-size:clamp(20px,3vw,40px);font-weight:500;line-height:1.4;letter-spacing:-0.04em;color:#111">모든 상담은 1:1 비밀보장제이며<br>기간 내 신청자 한정 <b style="font-weight:900">상담비용 전액 무료입니다</b></p>
+    <div style="width:100%;margin-top:clamp(8px,2vw,24px);position:relative">
+      <div style="width:100%;aspect-ratio:16/9;max-height:620px;background:radial-gradient(ellipse at 50% 40%,#fff8d8,#f7f7f8 70%)">
+        <image-slot id="lawyers" shape="rect" fit="contain" placeholder="변호사 단체 사진 (배경 제거 PNG 권장)"></image-slot>
+      </div>
+      <div style="position:relative;margin-top:-4px;background:#13307e;border-radius:10px;padding:clamp(28px,3.5vw,48px) clamp(18px,3vw,40px);display:flex;flex-direction:column;align-items:center;gap:clamp(18px,2.4vw,30px)">
+        <div style="width:clamp(220px,30vw,340px);height:clamp(48px,5vw,64px)">
+          <image-slot id="firm-logo" shape="rect" fit="contain" placeholder="법무법인 로고"></image-slot>
+        </div>
+        <p style="margin:0;color:#fff;font-size:clamp(19px,2.8vw,38px);font-weight:600;line-height:1.45;letter-spacing:-0.04em">무료 상담 기간 내 신청시,<br>진행실비 <span style="color:#ffd65c;font-weight:800">50~80만원 상당의 법률혜택 지원예정</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Bottom form" style="background:#f7f7f8;padding-top:clamp(40px,5vw,60px)">
+  <div style="background:linear-gradient(180deg,#2457e0 0%,#1a3fb5 100%);padding:clamp(56px,8vw,100px) clamp(16px,4vw,32px)">
+    <div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:clamp(28px,4vw,40px)">
+      <h2 style="margin:0;color:#fff;text-align:center;font-weight:900;font-size:clamp(26px,4.4vw,54px);line-height:1.3;letter-spacing:-0.04em;text-wrap:balance">대출을 대출로 갚는 악순환 이제 끊어내세요.<br>채무조정지원센터와 <span style="color:#ffd65c">함께라면 가능합니다.</span></h2>
+      <a href="#top" style="width:100%;height:64px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#ffc531;color:#0b1f4d;font-size:clamp(20px,2.4vw,26px);font-weight:900;letter-spacing:-0.02em;max-width:640px;box-shadow:0 6px 0 #e0a800" style-hover="background:#ffb800;color:#0b1f4d">무료상담 신청하기</a>
+    </div>
+  </div>
+</section>
+
+<footer style="padding:40px 20px {{ footerPad }}px;background:#fff">
+  <div style="max-width:1520px;margin:0 auto;border-top:1px solid #333;padding-top:40px;text-align:center;display:flex;flex-direction:column;gap:14px;font-size:14px;color:#374151;line-height:1.75">
+    <a href="#privacy" onClick="{{ openPolicy }}" style="align-self:center;font-weight:800;color:#13307e;text-decoration:underline">개인정보 취급방침</a>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;font-weight:500">
+      <span>상호명 : 법무법인 유온</span>
+      <span>주소 : 서울시 서초구 서초대로 51길 14, JH엘로펌애비뉴빌딩 603호</span>
+      <span>사업자번호 : 529-88-03281</span>
+    </div>
+    <p style="margin:0;color:#666">© 법무법인 유온 All rights reserved.</p>
+  </div>
+</footer>
+
+<sc-if value="{{ showSticky }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:60;box-shadow:0 -4px 16px rgba(0,0,0,.12)">
+    <a href="#top" style="height:60px;display:flex;align-items:center;justify-content:center;background:#ffc531;color:#0b1f4d;font-weight:900;font-size:18px">무료상담 신청하기</a>
+  </div>
+</sc-if>
+<sc-if value="{{ policyOpen }}" hint-placeholder-val="{{ false }}">
+  <div id="privacy" onClick="{{ closePolicy }}" style="position:fixed;inset:0;z-index:100;background:rgba(10,20,40,.55);display:flex;align-items:center;justify-content:center;padding:20px">
+    <div onClick="{{ stop }}" style="width:100%;max-width:560px;max-height:80vh;overflow:auto;background:#fff;border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <h3 style="margin:0;font-size:20px;font-weight:800">개인정보 취급방침</h3>
+        <button type="button" onClick="{{ closePolicy }}" style="border:0;background:#eef1f6;border-radius:8px;width:36px;height:36px;font-size:18px;cursor:pointer">×</button>
+      </div>
+      <div style="font-size:14px;line-height:1.8;color:#374151;display:flex;flex-direction:column;gap:10px">
+        <p style="margin:0"><b>수집 항목</b> : 성함, 연락처, 채무금액, 재산 대비 채무 여부, 월소득, 상담 희망 시간대</p>
+        <p style="margin:0"><b>이용 목적</b> : 개인회생 등 채무조정 무료상담 안내</p>
+        <p style="margin:0"><b>보유 기간</b> : 상담 완료 후 1년, 이후 지체 없이 파기</p>
+        <p style="margin:0">동의를 거부할 수 있으나, 거부 시 상담 신청이 제한됩니다.</p>
+        <p style="margin:0;color:#6b7280">법무법인 유온 · 사업자번호 529-88-03281</p>
+      </div>
+    </div>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;period&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;9월 23일 ~ 10월 6일&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;stickyBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { name: '', p1: '010', p2: '', p3: '', debt: '', asset: '', income: '', t1: '', t2: '', agree: false, policyOpen: false, msg: '', ok: false, w: typeof window !== 'undefined' ? window.innerWidth : 1200 };
+  opts(key, labels) {
+    const n = labels.length;
+    return labels.map((label, i) => {
+      const on = this.state[key] === label;
+      return { label, span: n % 2 === 1 && i === n - 1 ? 2 : 1, bg: on ? '#1d4ed8' : '#fff', fg: on ? '#fff' : '#1f2937', bd: on ? '#1d4ed8' : '#c9d1dc', pick: () => this.setState({ [key]: label }) };
+    });
+  }
+  componentDidMount() { this._r = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this._r); }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); }
+  submit = (e) => {
+    e.preventDefault();
+    const { name, p2, p3, debt, asset, income, t1, t2, agree } = this.state;
+    let msg = '', ok = false;
+    if (!name.trim()) msg = '성함을 입력해 주세요.';
+    else if (!/^\d{3,4}$/.test(p2) || !/^\d{4}$/.test(p3)) msg = '연락처를 정확히 입력해 주세요.';
+    else if (!debt) msg = '채무금액을 선택해 주세요.';
+    else if (!asset) msg = '재산 대비 채무 여부를 선택해 주세요.';
+    else if (!income) msg = '월소득을 선택해 주세요.';
+    else if (!t1) msg = '상담 희망 시간대 1차를 선택해 주세요.';
+    else if (!t2) msg = '상담 희망 시간대 2차를 선택해 주세요.';
+    else if (!agree) msg = '개인정보처리방침에 동의해 주세요.';
+    else { ok = true; msg = `${name}님, 상담 신청이 접수되었습니다. 선택하신 시간대에 연락드리겠습니다.`; this.setState({ name: '', p2: '', p3: '', debt: '', asset: '', income: '', t1: '', t2: '', agree: false }); }
+    this.setState({ msg, ok });
+  };
+  renderVals() {
+    const s = this.state;
+    const phone = this.props.phone ?? '1811-9677';
+    const showSticky = (this.props.stickyBar ?? true) && s.w < 768;
+    return {
+      ...s, phone, showSticky,
+      advCols: s.w >= 1100 ? 4 : s.w >= 600 ? 2 : 1,
+      stepBasis: s.w >= 1100 ? 'calc((100% - 96px) / 7)' : s.w >= 600 ? 'calc((100% - 48px) / 4)' : 'calc((100% - 16px) / 2)', footerPad: showSticky ? 100 : 60,
+      period: this.props.period ?? '9월 23일 ~ 10월 6일',
+      submit: this.submit,
+      onName: e => this.setState({ name: e.target.value }),
+      onP1: e => this.setState({ p1: e.target.value }),
+      onP2: e => this.setState({ p2: e.target.value.replace(/\D/g, '').slice(0, 4) }),
+      onP3: e => this.setState({ p3: e.target.value.replace(/\D/g, '').slice(0, 4) }),
+      onT1: e => this.setState({ t1: e.target.value }),
+      onT2: e => this.setState({ t2: e.target.value }),
+      onAgree: e => this.setState({ agree: e.target.checked }),
+      openPolicy: e => { e.preventDefault(); this.setState({ policyOpen: true }); },
+      closePolicy: () => this.setState({ policyOpen: false }),
+      stop: e => e.stopPropagation(),
+      msgColor: s.ok ? '#13307e' : '#d61f1f',
+      debtOpts: this.opts('debt', ['3천~5천', '5천~1억', '1억 이상']),
+      assetOpts: this.opts('asset', ['채무가 더 많다', '재산이 더 많다', '잘 모르겠다']),
+      incomeOpts: this.opts('income', ['100만원~200만원', '200만원~300만원', '300만원~400만원', '400만원 이상']),
+      times: ['09:00 ~ 10:00', '10:00 ~ 11:00', '11:00 ~ 12:00', '12:00 ~ 13:00', '13:00 ~ 14:00', '14:00 ~ 15:00', '15:00 ~ 16:00', '16:00 ~ 17:00', '17:00 ~ 18:00', '18:00 ~ 19:00', '시간 무관'],
+      stats: [
+        { label: '채무조정 상담 누적 건수', value: '30,000건' },
+        { label: '채무원금 최대 탕감률', value: '95%', sub: '98% 탕감 사례 보유' },
+        { label: '평균 접수 소요 일수', value: '3일 이내' },
+      ],
+      criteria: [
+        { title: '지속적인 소득이 발생해야 합니다.', desc: '소득만 있다면 고용 형태는 상관없습니다. 사업자, 프리랜서, 파트타임, 일용직 근로자 모두 가능합니다.' },
+        { title: '본인의 재산보다 채무가 더 많아야 합니다.', desc: '' },
+        { title: '과거 면책 이력이 있는 경우 5년이 지나야 합니다.', desc: '연체 유무는 관계 없습니다. 연체 전에도, 연체 중이어도 신청 가능합니다.' },
+        { title: '채무는 무담보 10억원, 담보 15억원 이내.', desc: '' },
+      ],
+      people: [
+        { id: 'p1', label: '교사', span: 4 }, { id: 'p2', label: '미용사', span: 3 }, { id: 'p3', label: '배달원', span: 4 },
+        { id: 'p4', label: '카페 직원', span: 5 }, { id: 'p5', label: '상담원', span: 4 }, { id: 'p6', label: '사무직', span: 4 },
+        { id: 'p7', label: '청소 근로자', span: 3 }, { id: 'p8', label: '택배기사', span: 3 }, { id: 'p9', label: '직장인', span: 3 },
+      ].map(p => ({ ...p, span: 1 })),
+      advantages: [
+        { no: '01', t1: '이자', t2: '전액 탕감', desc: '연체 이자를 포함해 모든 이자를 탕감받을 수 있습니다.', bg: '#1d4ed8', offset: 0 },
+        { no: '02', t1: '채무', t2: '원금 탕감', desc: '채무 원금의 최대 95%를 탕감해 주고, 남은 상환 금액과 상환 일정을 조정해 주기 때문에 수월하게 변제가 가능합니다.', bg: '#13307e', offset: 70 },
+        { no: '03', t1: '빚 독촉', t2: '중단', desc: '빚 독촉과 압류 등을 법의 힘으로 중단시키고 재개되지 않도록 막아드립니다.', bg: '#1d4ed8', offset: 0 },
+        { no: '04', t1: '재산', t2: '유지 가능', desc: '소유 중인 재산을 지키면서 빚을 탕감받을 수 있으며, 재산의 증식 또한 물론 가능합니다.', bg: '#13307e', offset: 0 },
+      ],
+      cases: [
+        { head: '장기 연체로 신용불량 상태였던', who: '직장인 40대 남성 A씨', rate: '94%', rows: [{ k: '진행 전 채무', v: '2억5천만원' }, { k: '탕감 된 채무', v: '2억3600만원' }, { k: '잔존채무', v: '1400만원' }], d1: '부양가족 3인 인정 / 월 평균 소득 약 290만원', d2: '채무 2억5천만원 중 2억3600만원 탕감', d3: '잔존채무 1400만원 월 40만원 36개월 분할상환' },
+        { head: '사업 실패로 큰 빚을 지게 된', who: '사업자 30대 여성 B씨', rate: '95%', rows: [{ k: '진행 전 채무', v: '6억원' }, { k: '탕감 된 채무', v: '5억7천만원' }, { k: '잔존채무', v: '3천만원' }], d1: '부양가족 3인 인정 / 월 평균 소득 392만원', d2: '채무 6억원 중 5억7천만원 탕감', d3: '잔존채무 3천만원 월 82만원 36개월 분할상환' },
+        { head: '주식, 코인 투자 실패로 채무 증가', who: '직장인 30대 남성 C씨', rate: '81%', rows: [{ k: '진행 전 채무', v: '3억2천만원' }, { k: '탕감 된 채무', v: '2억6천만원' }, { k: '잔존채무', v: '6천만원' }], d1: '부양가족 1인 인정 / 월 평균 소득 226만원', d2: '채무 3억2천만원 중 2억 6천만원 탕감', d3: '잔존채무 6천만원 월 102만원 36개월 분할상환' },
+      ],
+      steps: [
+        { no: '01', t: '상담신청', d: '무료상담을 신청해 주세요.' },
+        { no: '02', t: '자격확인', d: '가능여부를 확인해 드립니다.' },
+        { no: '03', t: '서류접수', d: '준비한 신청서를 접수합니다.' },
+        { no: '04', t: '빚독촉·압류 금지 및 해제', d: '채권자의 독촉과 압류를 막아 드립니다.' },
+        { no: '05', t: '채무조정', d: '기존 채무가 갚을 수 있는 금액으로 조정됩니다.' },
+        { no: '06', t: '변제금 상환', d: '조정된 변제금을 36개월간 상환합니다.' },
+        { no: '07', t: '면책', d: '채무가 사라지고 신용이 회복됩니다.' },
+      ].map((x, i) => ({ ...x, color: '#1d4ed8' })),
+      compare: [
+        { a: '신용대출, 카드빚, 개인채무, 세금 등 모든 채무 조정', b: '신용회복위원회와 협약한 금융회사의 채무만 조정' },
+        { a: '연체 유무 관계없이 신청 가능', b: '연체 기간 3개월 이상 장기 연체자만 신청 가능' },
+        { a: '채권자 동의 필요 없음', b: '채권자 동의 필수' },
+        { a: '이자 전액과 채무 원금 최대 95% 감면', b: '이자 전액 감면, 채무 원금은 감면 가능성 낮음' },
+        { a: '변호사 지원이 필요', b: '채무자 스스로 진행 가능' },
+      ],
+      benefits: [
+        ['맞춤형 컨설팅', '도산전문변호사 위임장 제출', '필요 서류 샘플 제공', '부채증명서 발급 대행', '보정권고 소명자료 대리 준비', '빠른 사건 접수', '서류 발급 대행'],
+        ['채무조회 서비스 제공', '특별관리팀 배정', '도산전문변호사의 사건 관리', '나만을 위한 소통방 활용', '애프터서비스 제공', '지속적인 상담', '월변제금 납부현황 체크'],
+        ['정기신고일자 안내', '면책신청서 대리 작성', '채무자대리인제도 진행', '채권추심응대 관리팀 배정', '우편 송달물 대리 수령', '채권사 독촉 전화 응대', '금지명령 기각 시 추가 신청'],
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
