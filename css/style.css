@@ -21,11 +21,7 @@
   --yellow: #ffb020;
   --yellow-hover: #ff9f00;
   --yellow-shadow: #d98a00;
-  /* 무료 법률 상담 섹션 전용 (기존 유지) */
-  --blue: #1d4ed8;
-  --navy: #13307e;
-  --navy-deep: #0b1f4d;
-  --yellow-text: #ffd65c;
+  --yellow-text: #ffe39a;
   --text: var(--ink);
 }
 
@@ -675,27 +671,27 @@ select.field {
 /* =========================================================
    Free consult
    ========================================================= */
-.consult { background: #f7f7f8; padding: 2.5lh 4% 0; }
+.consult { background: #fff; padding: 2.5lh 4% 0; }
 .consult__inner { display: flex; flex-direction: column; align-items: center; gap: 0.9lh; text-align: center; }
-.consult__title { font-size: 10.3cqw; font-weight: 900; letter-spacing: -0.05em; color: var(--navy); line-height: 1.1; }
+.consult__title { font-size: 10.3cqw; font-weight: 900; letter-spacing: -0.05em; color: var(--point-dark); line-height: 1.1; }
 .consult__period {
   padding: 0.15lh 0.8em;
-  background: var(--navy);
+  background: var(--point);
   color: #fff;
   border-radius: 0.25em;
   font-size: 7.2cqw;
   font-weight: 900;
   letter-spacing: -0.04em;
 }
-.consult__text { font-size: 5.1cqw; font-weight: 500; line-height: 1.4; letter-spacing: -0.04em; color: #111; }
-.consult__text b { font-weight: 900; }
+.consult__text { font-size: 5.1cqw; font-weight: 500; line-height: 1.4; letter-spacing: -0.04em; color: var(--ink); }
+.consult__text b { font-weight: 900; color: var(--point-dark); }
 .consult__visual { width: 100%; margin-top: 0.3lh; position: relative; }
-.consult__photo { aspect-ratio: 16 / 9; background: radial-gradient(ellipse at 50% 40%, #fff8d8, #f7f7f8 70%); }
+.consult__photo { aspect-ratio: 16 / 9; background: radial-gradient(ellipse at 50% 45%, #d9f1ec, #fff 70%); }
 .consult__box {
   position: relative;
   margin-top: -0.15lh;
   padding: 1.1lh 5%;
-  background: var(--navy);
+  background: linear-gradient(135deg, var(--point), var(--point-dark));
   border-radius: 0.3em;
   display: flex;
   flex-direction: column;
@@ -705,12 +701,12 @@ select.field {
 .consult__logo { width: 60%; aspect-ratio: 301 / 35; }   /* 로고 원본 비율 */
 .consult__logo::before { color: rgba(255, 255, 255, .5); }
 .consult__box p { color: #fff; font-size: 4.9cqw; font-weight: 600; line-height: 1.45; letter-spacing: -0.04em; }
-.consult__box .hl-yellow { font-weight: 800; }
+.consult__box .hl-yellow { color: #ffe39a; font-weight: 800; }
 
 /* =========================================================
    Bottom CTA
    ========================================================= */
-.bottom-cta { background: #f7f7f8; padding-top: 1.6lh; }
+.bottom-cta { background: #fff; padding-top: 1.6lh; }
 .bottom-cta__band {
   padding: 2lh 5%;
   background:
@@ -743,7 +739,7 @@ select.field {
   line-height: 1.75;
   color: #374151;
 }
-.footer__policy { align-self: center; font-size: 3.2cqw; font-weight: 800; color: var(--navy); text-decoration: underline; }
+.footer__policy { align-self: center; font-size: 3.2cqw; font-weight: 800; color: var(--point-dark); text-decoration: underline; }
 .footer__info { display: flex; flex-direction: column; font-weight: 500; }
 .footer__copy { color: #666; }
 
@@ -760,7 +756,7 @@ select.field {
   display: block;
   padding: 0.45lh 0;
   background: var(--yellow);
-  color: var(--navy-deep);
+  color: var(--ink);
   text-align: center;
   font-size: 4.6cqw;
   font-weight: 900;
