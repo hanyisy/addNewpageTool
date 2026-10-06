@@ -661,20 +661,99 @@ select.field {
 }
 .apply-form__head b { color: var(--yellow-text); font-weight: 800; }
 
-/* Stats : 칸 사이 세로 구분선 */
+/* Stats : 칸 사이 세로 구분선, 숫자가 구분선에 닿지 않게 */
+.stat { padding: 0 0.4em; }
 .stat + .stat { border-left: 1px solid rgba(255, 255, 255, .25); }
+.stat__label { font-size: 2.9cqw; }
+.stat__value { font-size: 6cqw; }
 
-/* Advantages : 2열 카드, 큰 번호는 오른쪽 아래로 */
-.adv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5lh 3%; }
-.adv-card { padding: 0.9lh 8%; gap: 0.4lh; }
-.adv-card__no { top: auto; left: auto; right: -0.04em; bottom: -0.14em; font-size: 18cqw; }
-.adv-card__title { margin-top: 0; font-size: 5cqw; }
-.adv-card__desc { font-size: 3.4cqw; }
+/* Advantages : 아이콘 + 텍스트 가로형 리스트 */
+.advantages { background: #f4faf9; }
+.adv-list { display: flex; flex-direction: column; gap: 0.45lh; }
+.adv-item {
+  padding: 0.7lh 5%;
+  background: #fff;
+  border: 1px solid #e2ecea;
+  border-radius: 0.5em;
+  box-shadow: 0 0.4em 1em rgba(6, 50, 46, .05);
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+}
+.adv-item__icon {
+  flex: none;
+  width: 2.4em;
+  height: 2.4em;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #13a493, #0b6d64);
+  color: #fff;
+  display: grid;
+  place-items: center;
+}
+.adv-item__icon svg {
+  width: 52%;
+  height: 52%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.adv-item__text { display: flex; flex-direction: column; gap: 0.1lh; min-width: 0; }
+.adv-item__title { font-size: 4.6cqw; font-weight: 800; color: #0a5c55; letter-spacing: -0.03em; }
+.adv-item__desc { font-size: 3.5cqw; color: #4b5563; line-height: 1.6; }
 
-/* Cases : 둥근 카드 + 감면율 강조 */
-.case { border-radius: 0.5em; overflow: hidden; box-shadow: 0 0.5em 1.2em rgba(6, 50, 46, .08); }
-.case__rate { font-size: 4.8cqw; font-weight: 800; }
-.case__rate b { font-size: 1.6em; font-weight: 900; }
+/* Cases : 전/후 비교 카드 + 상담 유도 */
+.case { border-radius: 0.5em; overflow: hidden; background: #fff; box-shadow: 0 0.5em 1.2em rgba(6, 50, 46, .08); }
+.case__head {
+  padding: 0.6lh 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  text-align: left;
+}
+.case__who { font-size: 3.6cqw; font-weight: 600; line-height: 1.5; }
+.case__who span { color: #ffd36b; font-size: 1.15em; font-weight: 800; }
+.case__head .case__rate {
+  flex: none;
+  width: 4.4em;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 3cqw;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+.case__head .case__rate b { font-size: 1.9em; font-weight: 900; letter-spacing: -0.04em; }
+.case__body { padding: 0.8lh 6% 0.9lh; gap: 0.5lh; }
+.case__compare { display: flex; align-items: center; justify-content: space-between; gap: 0.5em; text-align: center; }
+.case__before, .case__after { flex: 1; display: flex; flex-direction: column; gap: 0.1lh; }
+.case__compare small { font-size: 3cqw; color: #6b7280; }
+.case__before s { font-size: 4.6cqw; font-weight: 700; color: #9aa4b2; text-decoration-thickness: 0.08em; }
+.case__after strong { font-size: 6.4cqw; font-weight: 900; color: var(--blue); letter-spacing: -0.03em; }
+.case__arrow { font-size: 6cqw; font-weight: 900; color: var(--blue); }
+.case__bar { height: 0.3lh; border-radius: 999em; background: #e2ecea; overflow: hidden; }
+.case__bar span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #4fd1bf, var(--blue)); }
+.case__desc { font-size: 3.4cqw; color: #4b5563; line-height: 1.7; text-align: center; }
+.cases__cta {
+  padding: 0.9lh 6%;
+  border-radius: 0.5em;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4lh;
+  text-align: center;
+}
+.cases__cta p { color: #fff; font-size: 4.8cqw; font-weight: 800; letter-spacing: -0.03em; }
+.cases__cta small { color: rgba(255, 255, 255, .75); font-size: 3cqw; }
 
 /* Process : 번호를 원 안에 */
 .step__no {
