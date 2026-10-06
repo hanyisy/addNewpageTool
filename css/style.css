@@ -2,8 +2,9 @@
 
 /* =========================================================
    단위 규칙
-   - 글자 크기 : clamp(최소 rem, 섹션 너비 기준 cqw, 최대 rem)
-                 (header / section / footer 가 각각 inline-size 컨테이너)
+   - 글자 크기 : 순수 cqw (.wrap 이 inline-size 컨테이너 → 1cqw = 화면 너비의 1%)
+                 PC  : 1440px 시안 기준 (px ÷ 14.4)
+                 모바일(768px 미만) : 390px 시안 기준 (px ÷ 3.9) → 맨 아래 미디어쿼리
    - 세로 값   : lh (해당 요소의 line-height 1줄) / %
    - 가로 값   : % / em
    - 선 두께(border)·그림자 일부만 px 유지
@@ -35,7 +36,7 @@ body {
   -webkit-font-smoothing: antialiased;
   word-break: keep-all;
 }
-header, section, footer { container-type: inline-size; }
+.wrap { container-type: inline-size; }   /* cqw 기준 = 화면 너비 */
 a { color: #1f5fd1; text-decoration: none; }
 a:hover { color: var(--navy-deep); }
 img { display: block; max-width: 100%; }
@@ -63,7 +64,7 @@ input::placeholder { color: #8a94a6; }
 .sec-title {
   margin: 0;
   text-align: center;
-  font-size: clamp(1.875rem, 4cqw, 3.25rem);
+  font-size: 3.61cqw;
   font-weight: 900;
   line-height: 1.25;
   letter-spacing: -0.04em;
@@ -109,7 +110,7 @@ input::placeholder { color: #8a94a6; }
   background: var(--yellow);
   color: var(--navy-deep);
   font: inherit;
-  font-size: clamp(1.25rem, 2.4cqw, 1.625rem);
+  font-size: 1.81cqw;
   font-weight: 900;
   line-height: 1.5;
   letter-spacing: -0.02em;
@@ -154,7 +155,7 @@ input::placeholder { color: #8a94a6; }
   gap: 0.36em;
   color: var(--navy-deep);
   font-weight: 800;
-  font-size: clamp(1.0625rem, 2cqw, 1.375rem);
+  font-size: 1.53cqw;
   letter-spacing: -0.03em;
 }
 .logo__dot { width: 1em; height: 1em; border-radius: 50%; background: #f5b630; flex: none; }
@@ -179,7 +180,7 @@ input::placeholder { color: #8a94a6; }
   color: #fff;
   text-align: center;
   font-weight: 900;
-  font-size: clamp(1.625rem, 4.4cqw, 3.375rem);
+  font-size: 3.75cqw;
   line-height: 1.3;
   letter-spacing: -0.04em;
   text-wrap: balance;
@@ -203,7 +204,7 @@ input::placeholder { color: #8a94a6; }
   border: 1.5px solid var(--border);
   border-radius: 0.47em;
   font: inherit;
-  font-size: 1.0625rem;
+  font-size: 1.18cqw;
   line-height: 1.5;
   color: var(--text);
   background: #fff;
@@ -220,12 +221,12 @@ select.field { padding: 0 0.7em; }
   gap: 0.17lh;
 }
 .form-q__title {
-  font-size: clamp(1.125rem, 2.1cqw, 1.3125rem);
+  font-size: 1.46cqw;
   font-weight: 800;
   color: var(--navy-deep);
   letter-spacing: -0.03em;
 }
-.form-q__note { font-size: 0.9375rem; font-weight: 700; color: var(--red); }
+.form-q__note { font-size: 1.04cqw; font-weight: 700; color: var(--red); }
 
 /* 선택 버튼 (라디오) */
 .opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.375em; }
@@ -239,7 +240,7 @@ select.field { padding: 0 0.7em; }
   border: 1.5px solid var(--border);
   background: #fff;
   color: #1f2937;
-  font-size: 1.0625rem;
+  font-size: 1.18cqw;
   font-weight: 700;
   line-height: 1.5;
   cursor: pointer;
@@ -265,7 +266,7 @@ select.field { padding: 0 0.7em; }
   align-items: center;
   gap: 0.5em;
   color: #1f2937;
-  font-size: 0.9375rem;
+  font-size: 1.04cqw;
   font-weight: 600;
 }
 .agree input { width: 1.2em; height: 1.2em; margin: 0; accent-color: var(--navy); cursor: pointer; }
@@ -316,7 +317,7 @@ select.field { padding: 0 0.7em; }
   align-items: center;
   gap: 0.58lh;
 }
-.message p { margin: 0; font-size: clamp(1.1875rem, 2.6cqw, 2rem); font-weight: 500; letter-spacing: -0.03em; }
+.message p { margin: 0; font-size: 2.22cqw; font-weight: 500; letter-spacing: -0.03em; }
 .message b { font-weight: 900; }
 .message .message__blue { font-weight: 800; color: var(--blue); }
 .message .message__box { font-weight: 800; color: #fff; background: var(--navy); padding: 0.08lh 0.375em; }
@@ -341,7 +342,7 @@ select.field { padding: 0 0.7em; }
 .eligibility__title {
   margin: 0;
   padding-bottom: 0.41lh;
-  font-size: clamp(1.875rem, 4cqw, 3.375rem);
+  font-size: 3.75cqw;
   font-weight: 900;
   line-height: 1.25;
   letter-spacing: -0.04em;
@@ -351,13 +352,13 @@ select.field { padding: 0 0.7em; }
 .criteria__title {
   margin: 0;
   padding: 0 0.14em;
-  font-size: clamp(1.1875rem, 2.2cqw, 1.75rem);
+  font-size: 1.94cqw;
   font-weight: 800;
   color: #333;
   letter-spacing: -0.03em;
   background: linear-gradient(transparent 55%, #ffe08a 55%);
 }
-.criteria__desc { margin: 0; padding-left: 0.22em; font-size: clamp(1rem, 1.5cqw, 1.125rem); color: #374151; line-height: 1.65; }
+.criteria__desc { margin: 0; padding-left: 0.22em; font-size: 1.25cqw; color: #374151; line-height: 1.65; }
 
 .people {
   display: grid;
@@ -390,7 +391,7 @@ select.field { padding: 0 0.7em; }
   position: absolute;
   top: -0.11em;
   left: -0.05em;
-  font-size: clamp(5.625rem, 10cqw, 8.125rem);
+  font-size: 9.03cqw;
   font-weight: 900;
   font-style: italic;
   line-height: 1;
@@ -400,12 +401,12 @@ select.field { padding: 0 0.7em; }
 .adv-card__title {
   position: relative;
   margin: clamp(1.4lh, 5cqw, 1.9lh) 0 0;
-  font-size: clamp(1.5rem, 2.4cqw, 2rem);
+  font-size: 2.22cqw;
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.03em;
 }
-.adv-card__desc { position: relative; margin: 0; font-size: clamp(1rem, 1.4cqw, 1.0625rem); line-height: 1.65; color: #eef2fb; }
+.adv-card__desc { position: relative; margin: 0; font-size: 1.18cqw; line-height: 1.65; color: #eef2fb; }
 
 /* =========================================================
    Cases
@@ -423,7 +424,7 @@ select.field { padding: 0 0.7em; }
   color: #fff;
   text-align: center;
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 1.11cqw;
 }
 .case__head span { color: #ffd36b; }
 .case__body { padding: 0.92lh 1.75em 1.17lh; display: flex; flex-direction: column; }
@@ -435,11 +436,11 @@ select.field { padding: 0 0.7em; }
   padding: 0.58lh 0;
   border-bottom: 1px solid #cfd5df;
 }
-.case__row span { font-size: 1rem; color: #4b5563; }
-.case__row strong { font-weight: 800; font-size: 1.125rem; color: var(--text); }
+.case__row span { font-size: 1.11cqw; color: #4b5563; }
+.case__row strong { font-weight: 800; font-size: 1.25cqw; color: var(--text); }
 .case__foot { margin-top: 0.33lh; padding-top: 1lh; text-align: center; display: flex; flex-direction: column; gap: 0.42lh; }
-.case__rate { font-size: clamp(1.875rem, 3.2cqw, 2.5rem); font-weight: 900; color: var(--blue); letter-spacing: -0.03em; }
-.case__desc { font-size: 0.96875rem; line-height: 1.75; font-weight: 600; color: #1f2937; }
+.case__rate { font-size: 2.78cqw; font-weight: 900; color: var(--blue); letter-spacing: -0.03em; }
+.case__desc { font-size: 1.08cqw; line-height: 1.75; font-weight: 600; color: #1f2937; }
 
 /* =========================================================
    Process
@@ -463,19 +464,19 @@ select.field { padding: 0 0.7em; }
   text-align: center;
   gap: 0.5lh;
 }
-.step__no { font-size: clamp(3rem, 5cqw, 4.5rem); font-weight: 900; color: var(--blue); letter-spacing: -0.04em; line-height: 1; }
+.step__no { font-size: 5cqw; font-weight: 900; color: var(--blue); letter-spacing: -0.04em; line-height: 1; }
 .step__bar { width: 3em; height: 0.17lh; background: #dbe5ff; border-radius: 0.125em; }
 .step__title {
   min-height: 2lh;
   display: flex;
   align-items: center;
-  font-size: clamp(1.1875rem, 1.8cqw, 1.5rem);
+  font-size: 1.67cqw;
   font-weight: 800;
   color: var(--blue);
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
-.step__desc { font-size: 1rem; color: #374151; line-height: 1.55; }
+.step__desc { font-size: 1.11cqw; color: #374151; line-height: 1.55; }
 
 /* =========================================================
    Compare
@@ -502,14 +503,14 @@ select.field { padding: 0 0.7em; }
   color: #fff;
   text-align: center;
   font-weight: 800;
-  font-size: clamp(1rem, 2cqw, 1.5rem);
+  font-size: 1.67cqw;
 }
 .compare__head div + div { background: var(--blue); }
 .compare__row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid #d7dbe3; }
 .compare__row div {
   padding: clamp(0.6lh, 2.4cqw, 1.2lh) 0.625em;
   text-align: center;
-  font-size: clamp(0.875rem, 1.5cqw, 1.125rem);
+  font-size: 1.25cqw;
   color: #1f2937;
 }
 .compare__row div:first-child { border-right: 1px solid #d7dbe3; }
@@ -529,7 +530,7 @@ select.field { padding: 0 0.7em; }
   display: flex;
   align-items: center;
   gap: 0.6em;
-  font-size: clamp(1rem, 1.6cqw, 1.25rem);
+  font-size: 1.39cqw;
   font-weight: 700;
   color: #222;
 }
@@ -555,17 +556,17 @@ select.field { padding: 0 0.7em; }
   gap: clamp(1lh, 3cqw, 1.67lh);
   text-align: center;
 }
-.consult__title { margin: 0; font-size: clamp(2.5rem, 7cqw, 6rem); font-weight: 900; letter-spacing: -0.05em; color: var(--navy); line-height: 1.1; }
+.consult__title { margin: 0; font-size: 6.67cqw; font-weight: 900; letter-spacing: -0.05em; color: var(--navy); line-height: 1.1; }
 .consult__period {
   padding: 0.2lh 0.8em;
   background: var(--navy);
   color: #fff;
   border-radius: 0.25em;
-  font-size: clamp(1.75rem, 4.4cqw, 3.625rem);
+  font-size: 4.03cqw;
   font-weight: 900;
   letter-spacing: -0.04em;
 }
-.consult__text { margin: 0; font-size: clamp(1.25rem, 3cqw, 2.5rem); font-weight: 500; line-height: 1.4; letter-spacing: -0.04em; color: #111; }
+.consult__text { margin: 0; font-size: 2.78cqw; font-weight: 500; line-height: 1.4; letter-spacing: -0.04em; color: #111; }
 .consult__text b { font-weight: 900; }
 .consult__visual { width: 100%; margin-top: clamp(0.33lh, 2cqw, 1lh); position: relative; }
 .consult__photo {
@@ -586,7 +587,7 @@ select.field { padding: 0 0.7em; }
 }
 .consult__logo { width: clamp(13.75em, 30cqw, 21.25em); height: clamp(2lh, 5cqw, 2.67lh); }
 .consult__logo::before { color: rgba(255, 255, 255, .5); }
-.consult__box p { margin: 0; color: #fff; font-size: clamp(1.1875rem, 2.8cqw, 2.375rem); font-weight: 600; line-height: 1.45; letter-spacing: -0.04em; }
+.consult__box p { margin: 0; color: #fff; font-size: 2.64cqw; font-weight: 600; line-height: 1.45; letter-spacing: -0.04em; }
 .consult__box .hl-yellow { font-weight: 800; }
 
 /* =========================================================
@@ -611,7 +612,7 @@ select.field { padding: 0 0.7em; }
   display: flex;
   flex-direction: column;
   gap: 0.57lh;
-  font-size: 0.875rem;
+  font-size: 0.97cqw;
   line-height: 1.75;
   color: #374151;
 }
@@ -639,7 +640,7 @@ select.field { padding: 0 0.7em; }
   background: var(--yellow);
   color: var(--navy-deep);
   font-weight: 900;
-  font-size: 1.125rem;
+  font-size: 1.25cqw;
   line-height: 1.5;
 }
 
@@ -668,14 +669,14 @@ select.field { padding: 0 0.7em; }
   gap: 0.58lh;
 }
 .modal__head { display: flex; justify-content: space-between; align-items: center; gap: 0.75em; }
-.modal__head h3 { margin: 0; font-size: 1.25rem; font-weight: 800; }
+.modal__head h3 { margin: 0; font-size: 1.39cqw; font-weight: 800; }
 .modal__close {
   width: 2em;
   height: 2em;
   border: 0;
   border-radius: 0.44em;
   background: #eef1f6;
-  font-size: 1.125rem;
+  font-size: 1.25cqw;
   cursor: pointer;
 }
 .modal__frame { flex: 1; width: 100%; border: 1px solid var(--line); border-radius: 0.5em; }
@@ -693,5 +694,42 @@ select.field { padding: 0 0.7em; }
 }
 @media (max-width: 47.99em) {
   .sticky-cta { display: block; }
+
+  /* 모바일 글자 크기 (390px 기준 cqw) */
+  .sec-title { font-size: 7.69cqw; }
+  .btn-cta { font-size: 5.13cqw; }
+  .logo { font-size: 4.36cqw; }
+  .hero__title { font-size: 6.67cqw; }
+  .field { font-size: 4.36cqw; }
+  .form-q__title { font-size: 4.62cqw; }
+  .form-q__note { font-size: 3.85cqw; }
+  .opt { font-size: 4.36cqw; }
+  .agree { font-size: 3.85cqw; }
+  .message p { font-size: 4.87cqw; }
+  .eligibility__title { font-size: 7.69cqw; }
+  .criteria__title { font-size: 4.87cqw; }
+  .criteria__desc { font-size: 4.1cqw; }
+  .adv-card__no { font-size: 23.08cqw; }
+  .adv-card__title { font-size: 6.15cqw; }
+  .adv-card__desc { font-size: 4.1cqw; }
+  .case__head { font-size: 4.1cqw; }
+  .case__row span { font-size: 4.1cqw; }
+  .case__row strong { font-size: 4.62cqw; }
+  .case__rate { font-size: 7.69cqw; }
+  .case__desc { font-size: 3.97cqw; }
+  .step__no { font-size: 12.31cqw; }
+  .step__title { font-size: 4.87cqw; }
+  .step__desc { font-size: 4.1cqw; }
+  .compare__head div { font-size: 4.1cqw; }
+  .compare__row div { font-size: 3.59cqw; }
+  .benefit-list li { font-size: 4.1cqw; }
+  .consult__title { font-size: 10.26cqw; }
+  .consult__period { font-size: 7.18cqw; }
+  .consult__text { font-size: 5.13cqw; }
+  .consult__box p { font-size: 4.87cqw; }
+  .footer__inner { font-size: 3.59cqw; }
+  .sticky-cta a { font-size: 4.62cqw; }
+  .modal__head h3 { font-size: 5.13cqw; }
+  .modal__close { font-size: 4.62cqw; }
   .footer { padding-bottom: 4.17lh; }
 }
