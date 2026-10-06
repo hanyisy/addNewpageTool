@@ -25,53 +25,53 @@
   <div class="hero__inner">
     <h1 class="hero__title">대출을 대출로 갚는 악순환 이제 끊어내세요.<br>채무조정지원센터와 <span class="hl-yellow">함께라면 가능합니다.</span></h1>
 
-    <form class="apply-form" id="applyForm" novalidate>
+    <form class="apply-form" id="applyForm" name="applyForm" method="post" action="apply.html" novalidate>
       <input class="field" type="text" name="name" placeholder="성함" autocomplete="name">
       <div class="phone">
-        <select class="field" name="p1">
+        <select class="field" name="tel1">
           <option>010</option><option>011</option><option>016</option><option>017</option><option>018</option><option>019</option>
         </select>
-        <input class="field" type="text" name="p2" inputmode="numeric" maxlength="4" placeholder="연락처">
-        <input class="field" type="text" name="p3" inputmode="numeric" maxlength="4" placeholder="연락처">
+        <input class="field" type="text" name="tel2" inputmode="numeric" maxlength="4" placeholder="연락처">
+        <input class="field" type="text" name="tel3" inputmode="numeric" maxlength="4" placeholder="연락처">
       </div>
 
       <div class="form-q">
         <div class="form-q__title">채무금액을 선택해주세요</div>
         <div class="form-q__note">3,000만원 미만 채무는 신청 불가합니다</div>
       </div>
-      <div class="opts" data-group="debt">
+      <div class="opts" data-group="option1">
         <button type="button" class="opt">3천~5천</button>
         <button type="button" class="opt">5천~1억</button>
         <button type="button" class="opt">1억 이상</button>
       </div>
-      <input type="hidden" name="debt">
+      <input type="hidden" name="option1"><!-- 채무금액 -->
 
       <div class="form-q">
         <div class="form-q__title">재산보다 채무액이 많은지 여부를 선택해주세요</div>
       </div>
-      <div class="opts" data-group="asset">
+      <div class="opts" data-group="option2">
         <button type="button" class="opt">채무가 더 많다</button>
         <button type="button" class="opt">재산이 더 많다</button>
         <button type="button" class="opt">잘 모르겠다</button>
       </div>
-      <input type="hidden" name="asset">
+      <input type="hidden" name="option2"><!-- 재산 대비 채무 -->
 
       <div class="form-q">
         <div class="form-q__title">월소득은 어떻게 되시나요?</div>
       </div>
-      <div class="opts" data-group="income">
+      <div class="opts" data-group="option5">
         <button type="button" class="opt">100만원~200만원</button>
         <button type="button" class="opt">200만원~300만원</button>
         <button type="button" class="opt">300만원~400만원</button>
         <button type="button" class="opt">400만원 이상</button>
       </div>
-      <input type="hidden" name="income">
+      <input type="hidden" name="option5"><!-- 월소득 -->
 
       <div class="form-q">
         <div class="form-q__title">무료 상담 희망 시간대 1차</div>
         <div class="form-q__note">3회 이상 부재시 무료상담의 기회가 넘어갑니다</div>
       </div>
-      <select class="field js-times" name="t1">
+      <select class="field js-times" name="option6"><!-- 상담 시간대 1차 -->
         <option value="">-무료 상담 희망 시간대 1차 선택-</option>
       </select>
 
@@ -79,15 +79,15 @@
         <div class="form-q__title">무료 상담 희망 시간대 2차</div>
         <div class="form-q__note">1차 시간대 부재시 2차 시간대에 연락드리겠습니다</div>
       </div>
-      <select class="field js-times" name="t2">
+      <select class="field js-times" name="option7"><!-- 상담 시간대 2차 -->
         <option value="">-무료 상담 희망 시간대 2차 선택-</option>
       </select>
 
-      <label class="agree">
-        <input type="checkbox" name="agree">
-        <span>개인정보처리방침 동의</span>
-        <a href="#privacy" class="js-open-policy">약관보기</a>
-      </label>
+      <div class="agree">
+        <input id="policy" type="checkbox" name="agree1" value="Y" required>
+        <label for="policy">개인정보처리방침 동의</label>
+        <span id="show-Box" class="js-open-policy" role="button" tabindex="0">[약관보기]</span>
+      </div>
       <button type="submit" class="btn-cta">무료상담 신청하기</button>
       <div class="form-msg" id="formMsg" role="status" hidden></div>
     </form>

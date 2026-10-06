@@ -236,13 +236,12 @@ select.field { padding: 0 12px; }
   color: #1f2937;
   font-size: 15px;
   font-weight: 600;
-  cursor: pointer;
 }
-.agree input { width: 18px; height: 18px; margin: 0; accent-color: var(--navy); }
-.agree a { color: var(--navy); text-decoration: underline; }
+.agree input { width: 18px; height: 18px; margin: 0; accent-color: var(--navy); cursor: pointer; }
+.agree label { cursor: pointer; }
+#show-Box { color: var(--navy); text-decoration: underline; cursor: pointer; }
 
 .form-msg { text-align: center; font-weight: 700; font-size: 15px; color: #d61f1f; }
-.form-msg.is-ok { color: var(--navy); }
 
 /* =========================================================
    Stats

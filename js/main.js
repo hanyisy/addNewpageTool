@@ -47,46 +47,31 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // 연락처: 숫자만, 최대 4자리
-  ['p2', 'p3'].forEach(function (name) {
+  ['tel2', 'tel3'].forEach(function (name) {
     form.elements[name].addEventListener('input', function () {
       this.value = this.value.replace(/\D/g, '').slice(0, 4);
     });
   });
 
-  function showMsg(text, ok) {
-    msgEl.textContent = text;
-    msgEl.classList.toggle('is-ok', !!ok);
-    msgEl.hidden = false;
-  }
-
+  // 검사 통과 시에만 apply.html 로 POST 전송
   form.addEventListener('submit', function (e) {
-    e.preventDefault();
     var f = form.elements;
-    var name = f.name.value.trim();
     var msg = '';
 
-    if (!name) msg = '성함을 입력해 주세요.';
-    else if (!/^\d{3,4}$/.test(f.p2.value) || !/^\d{4}$/.test(f.p3.value)) msg = '연락처를 정확히 입력해 주세요.';
-    else if (!f.debt.value) msg = '채무금액을 선택해 주세요.';
-    else if (!f.asset.value) msg = '재산 대비 채무 여부를 선택해 주세요.';
-    else if (!f.income.value) msg = '월소득을 선택해 주세요.';
-    else if (!f.t1.value) msg = '상담 희망 시간대 1차를 선택해 주세요.';
-    else if (!f.t2.value) msg = '상담 희망 시간대 2차를 선택해 주세요.';
-    else if (!f.agree.checked) msg = '개인정보처리방침에 동의해 주세요.';
+    if (!f.name.value.trim()) msg = '성함을 입력해 주세요.';
+    else if (!/^\d{3,4}$/.test(f.tel2.value) || !/^\d{4}$/.test(f.tel3.value)) msg = '연락처를 정확히 입력해 주세요.';
+    else if (!f.option1.value) msg = '채무금액을 선택해 주세요.';
+    else if (!f.option2.value) msg = '재산 대비 채무 여부를 선택해 주세요.';
+    else if (!f.option5.value) msg = '월소득을 선택해 주세요.';
+    else if (!f.option6.value) msg = '상담 희망 시간대 1차를 선택해 주세요.';
+    else if (!f.option7.value) msg = '상담 희망 시간대 2차를 선택해 주세요.';
+    else if (!f.agree1.checked) msg = '개인정보처리방침에 동의해 주세요.';
 
     if (msg) {
-      showMsg(msg, false);
-      return;
+      e.preventDefault();
+      msgEl.textContent = msg;
+      msgEl.hidden = false;
     }
-
-    // TODO: 실제 접수 처리 (서버 전송 등) 연결
-    showMsg(name + '님, 상담 신청이 접수되었습니다. 선택하신 시간대에 연락드리겠습니다.', true);
-    form.reset();
-    form.querySelectorAll('input[type="hidden"]').forEach(function (h) { h.value = ''; });
-    form.querySelectorAll('.opt').forEach(function (b) {
-      b.classList.remove('is-active');
-      b.removeAttribute('aria-pressed');
-    });
   });
 
   /* ---------------------------------------------
@@ -101,8 +86,11 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   function closePolicy() { modal.hidden = true; }
 
-  document.querySelectorAll('.js-open-policy').forEach(function (a) {
-    a.addEventListener('click', openPolicy);
+  document.querySelectorAll('.js-open-policy').forEach(function (el) {
+    el.addEventListener('click', openPolicy);
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') openPolicy(e);
+    });
   });
   modal.querySelector('.js-close-policy').addEventListener('click', closePolicy);
   modal.addEventListener('click', function (e) {
