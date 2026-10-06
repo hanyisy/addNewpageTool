@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>채무조정지원센터 | 개인회생 무료상담</title>
+  <meta name="description" content="대출을 대출로 갚는 악순환 이제 끊어내세요. 채무조정지원센터와 함께라면 가능합니다.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="css/recovery.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="rc-header">
+    <div class="rc-header__inner">
+      <a href="#top" class="rc-header__logo">
+        <span class="rc-header__dot" aria-hidden="true"></span>
+        <span>채무조정지원센터</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 01. Hero + 상담폼 -->
+    <section class="rc-hero" id="top">
+      <div class="rc-hero__inner">
+        <h1 class="rc-hero__title">
+          대출을 대출로 갚는 악순환 이제 끊어내세요.<br>
+          채무조정지원센터와 <span>함께라면 가능합니다.</span>
+        </h1>
+
+        <form class="rc-form" id="consultForm" novalidate>
+          <input class="rc-form__field" type="text" name="name" placeholder="성함" autocomplete="name" aria-label="성함">
+          <div class="rc-form__phone">
+            <select class="rc-form__field" name="p1" aria-label="휴대폰 앞자리">
+              <option>010</option><option>011</option><option>016</option><option>017</option><option>018</option><option>019</option>
+            </select>
+            <input class="rc-form__field" type="text" name="p2" inputmode="numeric" maxlength="4" placeholder="연락처" aria-label="연락처 가운데 자리">
+            <input class="rc-form__field" type="text" name="p3" inputmode="numeric" maxlength="4" placeholder="연락처" aria-label="연락처 끝자리">
+          </div>
+
+          <fieldset class="rc-form__group">
+            <legend class="rc-form__label">
+              <strong>채무금액을 선택해주세요</strong>
+              <small>3,000만원 미만 채무는 신청 불가합니다</small>
+            </legend>
+            <div class="rc-form__choices">
+              <label class="rc-choice"><input type="radio" name="debt" value="3천~5천"><span>3천~5천</span></label>
+              <label class="rc-choice"><input type="radio" name="debt" value="5천~1억"><span>5천~1억</span></label>
+              <label class="rc-choice"><input type="radio" name="debt" value="1억 이상"><span>1억 이상</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="rc-form__group">
+            <legend class="rc-form__label">
+              <strong>재산보다 채무액이 많은지 여부를 선택해주세요</strong>
+            </legend>
+            <div class="rc-form__choices">
+              <label class="rc-choice"><input type="radio" name="asset" value="채무가 더 많다"><span>채무가 더 많다</span></label>
+              <label class="rc-choice"><input type="radio" name="asset" value="재산이 더 많다"><span>재산이 더 많다</span></label>
+              <label class="rc-choice"><input type="radio" name="asset" value="잘 모르겠다"><span>잘 모르겠다</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="rc-form__group">
+            <legend class="rc-form__label">
+              <strong>월소득은 어떻게 되시나요?</strong>
+            </legend>
+            <div class="rc-form__choices">
+              <label class="rc-choice"><input type="radio" name="income" value="100만원~200만원"><span>100만원~200만원</span></label>
+              <label class="rc-choice"><input type="radio" name="income" value="200만원~300만원"><span>200만원~300만원</span></label>
+              <label class="rc-choice"><input type="radio" name="income" value="300만원~400만원"><span>300만원~400만원</span></label>
+              <label class="rc-choice"><input type="radio" name="income" value="400만원 이상"><span>400만원 이상</span></label>
+            </div>
+          </fieldset>
+
+          <div class="rc-form__group">
+            <label class="rc-form__label" for="time1">
+              <strong>무료 상담 희망 시간대 1차</strong>
+              <small>3회 이상 부재시 무료상담의 기회가 넘어갑니다</small>
+            </label>
+            <select class="rc-form__field js-times" id="time1" name="t1">
+              <option value="">-무료 상담 희망 시간대 1차 선택-</option>
+            </select>
+          </div>
+
+          <div class="rc-form__group">
+            <label class="rc-form__label" for="time2">
+              <strong>무료 상담 희망 시간대 2차</strong>
+              <small>1차 시간대 부재시 2차 시간대에 연락드리겠습니다</small>
+            </label>
+            <select class="rc-form__field js-times" id="time2" name="t2">
+              <option value="">-무료 상담 희망 시간대 2차 선택-</option>
+            </select>
+          </div>
+
+          <div class="rc-form__agree">
+            <label>
+              <input type="checkbox" name="agree">
+              <span>개인정보처리방침 동의</span>
+            </label>
+            <button type="button" class="js-policy-open">약관보기</button>
+          </div>
+
+          <button type="submit" class="rc-btn rc-form__submit">무료상담 신청하기</button>
+          <p class="rc-form__msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- 02. 실적 -->
+    <section class="rc-stats">
+      <img class="rc-stats__bg" src="images/stats-bg.jpg" alt="" data-placeholder="">
+      <div class="rc-stats__list">
+        <div class="rc-stats__item">
+          <p class="rc-stats__label">채무조정 상담 누적 건수</p>
+          <p class="rc-stats__value"><span class="js-count" data-to="30000">30,000</span>건</p>
+        </div>
+        <div class="rc-stats__item">
+          <p class="rc-stats__label">채무원금 최대 탕감률</p>
+          <p class="rc-stats__value"><span class="js-count" data-to="95">95</span>%</p>
+          <p class="rc-stats__badge">98% 탕감 사례 보유</p>
+        </div>
+        <div class="rc-stats__item">
+          <p class="rc-stats__label">평균 접수 소요 일수</p>
+          <p class="rc-stats__value"><span class="js-count" data-to="3">3</span>일 이내</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. 고민 메시지 -->
+    <section class="rc-worry">
+      <p><b>"조건이 까다롭고 진행이 어렵진 않을까?"</b> 고민되시나요?</p>
+      <p class="rc-worry__a">빚을 갚을 수 없는 대한민국 국민 모두 가능합니다.</p>
+      <p class="rc-worry__cta">망설이지 말고 지금 바로 무료상담을 받아 보세요</p>
+    </section>
+
+    <!-- 04. 신청 자격 -->
+    <section class="rc-who">
+      <div class="rc-who__inner">
+        <div class="rc-who__text">
+          <h2 class="rc-who__title">정부지원 채무조정제도<br>개인회생은 누가<br><em>신청</em><span>할 수 있을까요?</span></h2>
+          <div class="rc-who__item">
+            <h3><span>지속적인 소득이 발생해야 합니다.</span></h3>
+            <p>소득만 있다면 고용 형태는 상관없습니다. 사업자, 프리랜서, 파트타임, 일용직 근로자 모두 가능합니다.</p>
+          </div>
+          <div class="rc-who__item">
+            <h3><span>본인의 재산보다 채무가 더 많아야 합니다.</span></h3>
+          </div>
+          <div class="rc-who__item">
+            <h3><span>과거 면책 이력이 있는 경우 5년이 지나야 합니다.</span></h3>
+            <p>연체 유무는 관계 없습니다. 연체 전에도, 연체 중이어도 신청 가능합니다.</p>
+          </div>
+          <div class="rc-who__item">
+            <h3><span>채무는 무담보 10억원, 담보 15억원 이내.</span></h3>
+          </div>
+        </div>
+        <div class="rc-who__photos">
+          <img src="images/people-01.jpg" alt="교사" data-placeholder="교사">
+          <img src="images/people-02.jpg" alt="미용사" data-placeholder="미용사">
+          <img src="images/people-03.jpg" alt="배달원" data-placeholder="배달원">
+          <img src="images/people-04.jpg" alt="카페 직원" data-placeholder="카페 직원">
+          <img src="images/people-05.jpg" alt="상담원" data-placeholder="상담원">
+          <img src="images/people-06.jpg" alt="사무직" data-placeholder="사무직">
+          <img src="images/people-07.jpg" alt="청소 근로자" data-placeholder="청소 근로자">
+          <img src="images/people-08.jpg" alt="택배기사" data-placeholder="택배기사">
+          <img src="images/people-09.jpg" alt="직장인" data-placeholder="직장인">
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. 장점 -->
+    <section class="rc-adv">
+      <div class="rc-container">
+        <h2 class="rc-title">한눈에 보는<br><span>채무조정 장점</span></h2>
+        <ul class="rc-adv__list">
+          <li class="rc-adv__card" style="--bg:#2a5298">
+            <span class="rc-adv__no" aria-hidden="true">01</span>
+            <h3>이자<br>전액 탕감</h3>
+            <p>연체 이자를 포함해 모든 이자를 탕감받을 수 있습니다.</p>
+          </li>
+          <li class="rc-adv__card" style="--bg:#1f3c73">
+            <span class="rc-adv__no" aria-hidden="true">02</span>
+            <h3>채무<br>원금 탕감</h3>
+            <p>채무 원금의 최대 95%를 탕감해 주고, 남은 상환 금액과 상환 일정을 조정해 주기 때문에 수월하게 변제가 가능합니다.</p>
+          </li>
+          <li class="rc-adv__card" style="--bg:#2b3f6b">
+            <span class="rc-adv__no" aria-hidden="true">03</span>
+            <h3>빚 독촉<br>중단</h3>
+            <p>빚 독촉과 압류 등을 법의 힘으로 중단시키고 재개되지 않도록 막아드립니다.</p>
+          </li>
+          <li class="rc-adv__card" style="--bg:#1b2f8a">
+            <span class="rc-adv__no" aria-hidden="true">04</span>
+            <h3>재산<br>유지 가능</h3>
+            <p>소유 중인 재산을 지키면서 빚을 탕감받을 수 있으며, 재산의 증식 또한 물론 가능합니다.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 06. 성공사례 -->
+    <section class="rc-cases">
+      <div class="rc-container">
+        <h2 class="rc-title rc-title--case"><span>채무조정지원센터</span><br>채무탕감성공사례</h2>
+        <div class="rc-cases__list">
+          <article class="rc-case">
+            <header class="rc-case__head">장기 연체로 신용불량 상태였던<br><span>직장인 40대 남성 A씨</span></header>
+            <div class="rc-case__body">
+              <dl class="rc-case__rows">
+                <div><dt>진행 전 채무</dt><dd>2억5천만원</dd></div>
+                <div><dt>탕감 된 채무</dt><dd>2억3600만원</dd></div>
+                <div><dt>잔존채무</dt><dd>1400만원</dd></div>
+              </dl>
+              <p class="rc-case__rate">탕감률 <span class="js-count" data-to="94">94</span>%</p>
+              <p class="rc-case__desc">부양가족 3인 인정 / 월 평균 소득 약 290만원<br>채무 2억5천만원 중 2억3600만원 탕감<br>잔존채무 1400만원 월 40만원 36개월 분할상환</p>
+            </div>
+          </article>
+          <article class="rc-case">
+            <header class="rc-case__head">사업 실패로 큰 빚을 지게 된<br><span>사업자 30대 여성 B씨</span></header>
+            <div class="rc-case__body">
+              <dl class="rc-case__rows">
+                <div><dt>진행 전 채무</dt><dd>6억원</dd></div>
+                <div><dt>탕감 된 채무</dt><dd>5억7천만원</dd></div>
+                <div><dt>잔존채무</dt><dd>3천만원</dd></div>
+              </dl>
+              <p class="rc-case__rate">탕감률 <span class="js-count" data-to="95">95</span>%</p>
+              <p class="rc-case__desc">부양가족 3인 인정 / 월 평균 소득 392만원<br>채무 6억원 중 5억7천만원 탕감<br>잔존채무 3천만원 월 82만원 36개월 분할상환</p>
+            </div>
+          </article>
+          <article class="rc-case">
+            <header class="rc-case__head">주식, 코인 투자 실패로 채무 증가<br><span>직장인 30대 남성 C씨</span></header>
+            <div class="rc-case__body">
+              <dl class="rc-case__rows">
+                <div><dt>진행 전 채무</dt><dd>3억2천만원</dd></div>
+                <div><dt>탕감 된 채무</dt><dd>2억6천만원</dd></div>
+                <div><dt>잔존채무</dt><dd>6천만원</dd></div>
+              </dl>
+              <p class="rc-case__rate">탕감률 <span class="js-count" data-to="81">81</span>%</p>
+              <p class="rc-case__desc">부양가족 1인 인정 / 월 평균 소득 226만원<br>채무 3억2천만원 중 2억 6천만원 탕감<br>잔존채무 6천만원 월 102만원 36개월 분할상환</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07. 진행과정 -->
+    <section class="rc-steps">
+      <div class="rc-container">
+        <h2 class="rc-title rc-title--steps">채무조정<br><span>진행과정</span></h2>
+        <ol class="rc-steps__list">
+          <li style="--c:#3a78e0"><b>01</b><i></i><strong>상담신청</strong><p>무료상담을 신청해 주세요.</p></li>
+          <li style="--c:#3568d0"><b>02</b><i></i><strong>자격확인</strong><p>가능여부를 확인해 드립니다.</p></li>
+          <li style="--c:#305cc0"><b>03</b><i></i><strong>서류접수</strong><p>준비한 신청서를 접수합니다.</p></li>
+          <li style="--c:#2b50b0"><b>04</b><i></i><strong>빚독촉·압류 금지 및 해제</strong><p>채권자의 독촉과 압류를 막아 드립니다.</p></li>
+          <li style="--c:#2645a0"><b>05</b><i></i><strong>채무조정</strong><p>기존 채무가 갚을 수 있는 금액으로 조정됩니다.</p></li>
+          <li style="--c:#213a90"><b>06</b><i></i><strong>변제금 상환</strong><p>조정된 변제금을 36개월간 상환합니다.</p></li>
+          <li style="--c:#1c2f80"><b>07</b><i></i><strong>면책</strong><p>채무가 사라지고 신용이 회복됩니다.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 08. 제도 비교 -->
+    <section class="rc-compare">
+      <div class="rc-compare__inner">
+        <h2 class="rc-compare__title">채무조정제도 비교</h2>
+        <div class="rc-compare__box">
+          <table class="rc-compare__table">
+            <thead>
+              <tr><th scope="col"><span>개인회생제도</span></th><th scope="col"><span>개인워크아웃</span></th></tr>
+            </thead>
+            <tbody>
+              <tr><td>신용대출, 카드빚, 개인채무, 세금 등 모든 채무 조정</td><td>신용회복위원회와 협약한 금융회사의 채무만 조정</td></tr>
+              <tr><td>연체 유무 관계없이 신청 가능</td><td>연체 기간 3개월 이상 장기 연체자만 신청 가능</td></tr>
+              <tr><td>채권자 동의 필요 없음</td><td>채권자 동의 필수</td></tr>
+              <tr><td>이자 전액과 채무 원금 최대 95% 감면</td><td>이자 전액 감면, 채무 원금은 감면 가능성 낮음</td></tr>
+              <tr><td>변호사 지원이 필요</td><td>채무자 스스로 진행 가능</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09. 접수 혜택 -->
+    <section class="rc-benefit">
+      <div class="rc-container">
+        <h2 class="rc-title rc-title--benefit">채무조정지원센터<br><span>접수 혜택</span></h2>
+        <div class="rc-benefit__cols">
+          <ul>
+            <li>맞춤형 컨설팅</li>
+            <li>도산전문변호사 위임장 제출</li>
+            <li>필요 서류 샘플 제공</li>
+            <li>부채증명서 발급 대행</li>
+            <li>보정권고 소명자료 대리 준비</li>
+            <li>빠른 사건 접수</li>
+            <li>서류 발급 대행</li>
+          </ul>
+          <ul>
+            <li>채무조회 서비스 제공</li>
+            <li>특별관리팀 배정</li>
+            <li>도산전문변호사의 사건 관리</li>
+            <li>나만을 위한 소통방 활용</li>
+            <li>애프터서비스 제공</li>
+            <li>지속적인 상담</li>
+            <li>월변제금 납부현황 체크</li>
+          </ul>
+          <ul>
+            <li>정기신고일자 안내</li>
+            <li>면책신청서 대리 작성</li>
+            <li>채무자대리인제도 진행</li>
+            <li>채권추심응대 관리팀 배정</li>
+            <li>우편 송달물 대리 수령</li>
+            <li>채권사 독촉 전화 응대</li>
+            <li>금지명령 기각 시 추가 신청</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. 무료 법률 상담 안내 -->
+    <section class="rc-free">
+      <div class="rc-free__inner">
+        <h2 class="rc-free__title">무료 법률 상담 안내</h2>
+        <p class="rc-free__period">9월 23일 ~ 10월 6일</p>
+        <p class="rc-free__desc">모든 상담은 1:1 비밀보장제이며<br>기간 내 신청자 한정 <b>상담비용 전액 무료입니다</b></p>
+        <div class="rc-free__visual">
+          <div class="rc-free__photo">
+            <img src="images/lawyers.png" alt="법무법인 유온 변호사" data-placeholder="lawyers.png (변호사 단체 사진, 배경 제거 PNG 권장)">
+          </div>
+          <div class="rc-free__box">
+            <div class="rc-free__logo">
+              <img src="images/lawfirm-logo.png" alt="법무법인 유온" data-placeholder="lawfirm-logo.png">
+            </div>
+            <p>무료 상담 기간 내 신청시,<br>진행실비 <em>50~80만원 상당의 법률혜택 지원예정</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. 하단 CTA -->
+    <section class="rc-bottom">
+      <div class="rc-bottom__band">
+        <div class="rc-hero__inner">
+          <h2 class="rc-hero__title">대출을 대출로 갚는 악순환 이제 끊어내세요.<br>채무조정지원센터와 <span>함께라면 가능합니다.</span></h2>
+          <a href="#top" class="rc-btn rc-bottom__btn">무료상담 신청하기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="rc-footer">
+    <div class="rc-footer__inner">
+      <button type="button" class="rc-footer__policy js-policy-open">개인정보 취급방침</button>
+      <p class="rc-footer__info">
+        <span>상호명 : 법무법인 유온</span>
+        <span>주소 : 서울시 서초구 서초대로 51길 14, JH엘로펌애비뉴빌딩 603호</span>
+        <span>사업자번호 : 529-88-03281</span>
+      </p>
+      <p class="rc-footer__copy">© 법무법인 유온 All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- 모바일 하단 고정 버튼 -->
+  <a href="#top" class="rc-sticky">무료상담 신청하기</a>
+
+  <!-- 개인정보 모달 -->
+  <div class="rc-modal" id="policyModal" aria-hidden="true">
+    <div class="rc-modal__box" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
+      <div class="rc-modal__head">
+        <h3 id="policyTitle">개인정보 취급방침</h3>
+        <button type="button" class="rc-modal__close js-policy-close" aria-label="닫기">×</button>
+      </div>
+      <div class="rc-modal__body">
+        <p><b>수집 항목</b> : 성함, 연락처, 채무금액, 재산 대비 채무 여부, 월소득, 상담 희망 시간대</p>
+        <p><b>이용 목적</b> : 개인회생 등 채무조정 무료상담 안내</p>
+        <p><b>보유 기간</b> : 상담 완료 후 1년, 이후 지체 없이 파기</p>
+        <p>동의를 거부할 수 있으나, 거부 시 상담 신청이 제한됩니다.</p>
+        <p class="rc-modal__muted">법무법인 유온 · 사업자번호 529-88-03281</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/recovery.js"></script>
+</body>
+</html>
