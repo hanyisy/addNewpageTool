@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>채무조정지원센터 | 개인회생 무료상담</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 <link rel="stylesheet" href="css/style.css">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
 <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -24,9 +26,9 @@
 <!-- Hero + 신청 폼 -->
 <section id="top" class="hero">
   <div class="hero__inner">
-    <h1 class="hero__title">대출을 대출로 갚는 악순환 이제 끊어내세요.<br>채무조정지원센터와 <span class="hl-yellow">함께라면 가능합니다.</span></h1>
+    <h1 class="hero__title" data-aos="fade-down">대출을 대출로 갚는 악순환 이제 끊어내세요.<br>채무조정지원센터와 <span class="hl-yellow">함께라면 가능합니다.</span></h1>
 
-    <form class="apply-form" id="applyForm" name="applyForm" method="post" action="apply.html">
+    <form class="apply-form" data-aos="fade-up" data-aos-delay="150" id="applyForm" name="applyForm" method="post" action="apply.html">
       <input class="field" type="text" name="name" placeholder="성함" autocomplete="name" required>
       <div class="phone">
         <select class="field" name="tel1" required>
@@ -120,51 +122,51 @@
   </div>
   <div class="stats__dim"></div>
   <div class="stats__inner">
-    <div class="stat">
+    <div class="stat" data-aos="fade-up" data-aos-delay="0">
       <div class="stat__label">채무조정 상담 누적 건수</div>
-      <div class="stat__value">30,000건</div>
+      <div class="stat__value" data-count="30000" data-suffix="건">30,000건</div>
     </div>
-    <div class="stat">
+    <div class="stat" data-aos="fade-up" data-aos-delay="150">
       <div class="stat__label">채무원금 최대 탕감률</div>
-      <div class="stat__value">95%</div>
+      <div class="stat__value" data-count="95" data-suffix="%">95%</div>
       <div class="stat__sub">98% 탕감 사례 보유</div>
     </div>
-    <div class="stat">
+    <div class="stat" data-aos="fade-up" data-aos-delay="300">
       <div class="stat__label">평균 접수 소요 일수</div>
-      <div class="stat__value">3일 이내</div>
+      <div class="stat__value" data-count="3" data-suffix="일 이내">3일 이내</div>
     </div>
   </div>
 </section>
 
 <!-- 메시지 -->
 <section class="message">
-  <p><b>"조건이 까다롭고 진행이 어렵진 않을까?"</b> 고민되시나요?</p>
-  <p class="message__blue">빚을 갚을 수 없는 대한민국 국민 모두 가능합니다.</p>
-  <p class="message__box">망설이지 말고 지금 바로 무료상담을 받아 보세요</p>
+  <p data-aos="fade-up"><b>"조건이 까다롭고 진행이 어렵진 않을까?"</b> 고민되시나요?</p>
+  <p class="message__blue" data-aos="fade-up" data-aos-delay="150">빚을 갚을 수 없는 대한민국 국민 모두 가능합니다.</p>
+  <p class="message__box" data-aos="zoom-in" data-aos-delay="300">망설이지 말고 지금 바로 무료상담을 받아 보세요</p>
 </section>
 
 <!-- 신청 자격 -->
 <section class="eligibility">
   <div class="eligibility__inner">
     <div class="eligibility__text">
-      <h2 class="eligibility__title">정부지원 채무조정제도<br>개인회생은 누가<br><span class="c-blue">신청</span><span class="fw-500">할 수 있을까요?</span></h2>
-      <div class="criteria">
+      <h2 class="eligibility__title" data-aos="fade-right">정부지원 채무조정제도<br>개인회생은 누가<br><span class="c-blue">신청</span><span class="fw-500">할 수 있을까요?</span></h2>
+      <div class="criteria" data-aos="fade-up" data-aos-delay="0">
         <h3 class="criteria__title"><span>지속적인 소득이 발생해야 합니다.</span></h3>
         <p class="criteria__desc">소득만 있다면 고용 형태는 상관없습니다. 사업자, 프리랜서, 파트타임, 일용직 근로자 모두 가능합니다.</p>
       </div>
-      <div class="criteria">
+      <div class="criteria" data-aos="fade-up" data-aos-delay="100">
         <h3 class="criteria__title"><span>본인의 재산보다 채무가 더 많아야 합니다.</span></h3>
       </div>
-      <div class="criteria">
+      <div class="criteria" data-aos="fade-up" data-aos-delay="200">
         <h3 class="criteria__title"><span>과거 면책 이력이 있는 경우 5년이 지나야 합니다.</span></h3>
         <p class="criteria__desc">연체 유무는 관계 없습니다. 연체 전에도, 연체 중이어도 신청 가능합니다.</p>
       </div>
-      <div class="criteria">
+      <div class="criteria" data-aos="fade-up" data-aos-delay="300">
         <h3 class="criteria__title"><span>채무는 무담보 10억원, 담보 15억원 이내.</span></h3>
       </div>
     </div>
     <!-- 다양한 직종 두 줄 슬라이드 (윗줄 ←, 아랫줄 →) -->
-    <div class="jobs">
+    <div class="jobs" data-aos="fade-up">
       <div class="jobs__row jobs__row--left">
         <ul class="jobs__track">
           <li class="job-card"><img src="images/jobs/job-01-teacher.jpg" alt="교사"><span>교사</span></li>
@@ -206,24 +208,24 @@
 <!-- 장점 -->
 <section class="advantages">
   <div class="container container--1200">
-    <h2 class="sec-title c-gray">한눈에 보는<br><span class="c-blue">채무조정 장점</span></h2>
+    <h2 data-aos="fade-up" class="sec-title c-gray">한눈에 보는<br><span class="c-blue">채무조정 장점</span></h2>
     <div class="adv-grid">
-      <div class="adv-card">
+      <div class="adv-card" data-aos="fade-right">
         <div class="adv-card__no">01</div>
         <h3 class="adv-card__title">이자<br>전액 탕감</h3>
         <p class="adv-card__desc">연체 이자를 포함해 모든 이자를 탕감받을 수 있습니다.</p>
       </div>
-      <div class="adv-card adv-card--dark">
+      <div class="adv-card adv-card--dark" data-aos="fade-left">
         <div class="adv-card__no">02</div>
         <h3 class="adv-card__title">채무<br>원금 탕감</h3>
         <p class="adv-card__desc">채무 원금의 최대 95%를 탕감해 주고, 남은 상환 금액과 상환 일정을 조정해 주기 때문에 수월하게 변제가 가능합니다.</p>
       </div>
-      <div class="adv-card">
+      <div class="adv-card" data-aos="fade-right">
         <div class="adv-card__no">03</div>
         <h3 class="adv-card__title">빚 독촉<br>중단</h3>
         <p class="adv-card__desc">빚 독촉과 압류 등을 법의 힘으로 중단시키고 재개되지 않도록 막아드립니다.</p>
       </div>
-      <div class="adv-card adv-card--dark">
+      <div class="adv-card adv-card--dark" data-aos="fade-left">
         <div class="adv-card__no">04</div>
         <h3 class="adv-card__title">재산<br>유지 가능</h3>
         <p class="adv-card__desc">소유 중인 재산을 지키면서 빚을 탕감받을 수 있으며, 재산의 증식 또한 물론 가능합니다.</p>
@@ -235,9 +237,9 @@
 <!-- 성공사례 -->
 <section class="cases">
   <div class="container container--1200">
-    <h2 class="sec-title c-navy"><span class="c-blue">채무조정지원센터</span><br>채무탕감성공사례</h2>
+    <h2 data-aos="fade-up" class="sec-title c-navy"><span class="c-blue">채무조정지원센터</span><br>채무탕감성공사례</h2>
     <div class="case-grid">
-      <article class="case">
+      <article class="case" data-aos="fade-up" data-aos-delay="0">
         <div class="case__head">장기 연체로 신용불량 상태였던<br><span>직장인 40대 남성 A씨</span></div>
         <div class="case__body">
           <div class="case__row"><span>진행 전 채무</span><strong>2억5천만원</strong></div>
@@ -249,7 +251,7 @@
           </div>
         </div>
       </article>
-      <article class="case">
+      <article class="case" data-aos="fade-up" data-aos-delay="120">
         <div class="case__head">사업 실패로 큰 빚을 지게 된<br><span>사업자 30대 여성 B씨</span></div>
         <div class="case__body">
           <div class="case__row"><span>진행 전 채무</span><strong>6억원</strong></div>
@@ -261,7 +263,7 @@
           </div>
         </div>
       </article>
-      <article class="case">
+      <article class="case" data-aos="fade-up" data-aos-delay="240">
         <div class="case__head">주식, 코인 투자 실패로 채무 증가<br><span>직장인 30대 남성 C씨</span></div>
         <div class="case__body">
           <div class="case__row"><span>진행 전 채무</span><strong>3억2천만원</strong></div>
@@ -280,15 +282,15 @@
 <!-- 진행과정 -->
 <section class="process">
   <div class="container">
-    <h2 class="sec-title">채무조정<br><span class="c-blue">진행과정</span></h2>
+    <h2 data-aos="fade-up" class="sec-title">채무조정<br><span class="c-blue">진행과정</span></h2>
     <ol class="steps">
-      <li class="step"><div class="step__no">01</div><div class="step__bar"></div><div class="step__title">상담신청</div><div class="step__desc">무료상담을 신청해 주세요.</div></li>
-      <li class="step"><div class="step__no">02</div><div class="step__bar"></div><div class="step__title">자격확인</div><div class="step__desc">가능여부를 확인해 드립니다.</div></li>
-      <li class="step"><div class="step__no">03</div><div class="step__bar"></div><div class="step__title">서류접수</div><div class="step__desc">준비한 신청서를 접수합니다.</div></li>
-      <li class="step"><div class="step__no">04</div><div class="step__bar"></div><div class="step__title">빚독촉·압류 금지 및 해제</div><div class="step__desc">채권자의 독촉과 압류를 막아 드립니다.</div></li>
-      <li class="step"><div class="step__no">05</div><div class="step__bar"></div><div class="step__title">채무조정</div><div class="step__desc">기존 채무가 갚을 수 있는 금액으로 조정됩니다.</div></li>
-      <li class="step"><div class="step__no">06</div><div class="step__bar"></div><div class="step__title">변제금 상환</div><div class="step__desc">조정된 변제금을 36개월간 상환합니다.</div></li>
-      <li class="step"><div class="step__no">07</div><div class="step__bar"></div><div class="step__title">면책</div><div class="step__desc">채무가 사라지고 신용이 회복됩니다.</div></li>
+      <li class="step" data-aos="zoom-in" data-aos-delay="0"><div class="step__no">01</div><div class="step__bar"></div><div class="step__title">상담신청</div><div class="step__desc">무료상담을 신청해 주세요.</div></li>
+      <li class="step" data-aos="zoom-in" data-aos-delay="100"><div class="step__no">02</div><div class="step__bar"></div><div class="step__title">자격확인</div><div class="step__desc">가능여부를 확인해 드립니다.</div></li>
+      <li class="step" data-aos="zoom-in" data-aos-delay="200"><div class="step__no">03</div><div class="step__bar"></div><div class="step__title">서류접수</div><div class="step__desc">준비한 신청서를 접수합니다.</div></li>
+      <li class="step" data-aos="zoom-in" data-aos-delay="300"><div class="step__no">04</div><div class="step__bar"></div><div class="step__title">빚독촉·압류 금지 및 해제</div><div class="step__desc">채권자의 독촉과 압류를 막아 드립니다.</div></li>
+      <li class="step" data-aos="zoom-in" data-aos-delay="0"><div class="step__no">05</div><div class="step__bar"></div><div class="step__title">채무조정</div><div class="step__desc">기존 채무가 갚을 수 있는 금액으로 조정됩니다.</div></li>
+      <li class="step" data-aos="zoom-in" data-aos-delay="100"><div class="step__no">06</div><div class="step__bar"></div><div class="step__title">변제금 상환</div><div class="step__desc">조정된 변제금을 36개월간 상환합니다.</div></li>
+      <li class="step" data-aos="zoom-in" data-aos-delay="200"><div class="step__no">07</div><div class="step__bar"></div><div class="step__title">면책</div><div class="step__desc">채무가 사라지고 신용이 회복됩니다.</div></li>
     </ol>
   </div>
 </section>
@@ -296,8 +298,8 @@
 <!-- 제도 비교 -->
 <section class="compare">
   <div class="container container--1280">
-    <h2 class="sec-title c-white">채무조정제도 비교</h2>
-    <div class="compare__box">
+    <h2 data-aos="fade-up" class="sec-title c-white">채무조정제도 비교</h2>
+    <div class="compare__box" data-aos="fade-up" data-aos-delay="100">
       <div class="compare__head">
         <div>개인회생제도</div>
         <div>개인워크아웃</div>
@@ -314,8 +316,8 @@
 <!-- 접수 혜택 -->
 <section class="benefits">
   <div class="container">
-    <h2 class="sec-title">채무조정지원센터<br><span class="c-blue">접수 혜택</span></h2>
-    <div class="benefits__grid">
+    <h2 data-aos="fade-up" class="sec-title">채무조정지원센터<br><span class="c-blue">접수 혜택</span></h2>
+    <div class="benefits__grid" data-aos="fade-up" data-aos-delay="100">
       <ul class="benefit-list">
         <li>맞춤형 컨설팅</li>
         <li>도산전문변호사 위임장 제출</li>
@@ -350,14 +352,14 @@
 <!-- 무료 법률 상담 안내 -->
 <section class="consult">
   <div class="consult__inner">
-    <h2 class="consult__title">무료 법률 상담 안내</h2>
-    <div class="consult__period">9월 23일 ~ 10월 6일</div>
-    <p class="consult__text">모든 상담은 1:1 비밀보장제이며<br>기간 내 신청자 한정 <b>상담비용 전액 무료입니다</b></p>
+    <h2 class="consult__title" data-aos="zoom-in">무료 법률 상담 안내</h2>
+    <div class="consult__period" data-aos="flip-up" data-aos-delay="150">9월 23일 ~ 10월 6일</div>
+    <p class="consult__text" data-aos="fade-up" data-aos-delay="250">모든 상담은 1:1 비밀보장제이며<br>기간 내 신청자 한정 <b>상담비용 전액 무료입니다</b></p>
     <div class="consult__visual">
-      <div class="consult__photo img-slot img-slot--contain" data-label="변호사 단체 사진 (배경 제거 PNG 권장)">
+      <div data-aos="fade-up" class="consult__photo img-slot img-slot--contain" data-label="변호사 단체 사진 (배경 제거 PNG 권장)">
         <img src="images/lawyers.png" alt="법무법인 유온 변호사">
       </div>
-      <div class="consult__box">
+      <div class="consult__box" data-aos="fade-up" data-aos-delay="150">
         <div class="consult__logo img-slot img-slot--contain" data-label="법무법인 로고">
           <img src="images/firm-logo.png" alt="법무법인 유온">
         </div>
@@ -371,7 +373,7 @@
 <section class="bottom-cta">
   <div class="bottom-cta__band">
     <div class="hero__inner">
-      <h2 class="hero__title">대출을 대출로 갚는 악순환 이제 끊어내세요.<br>채무조정지원센터와 <span class="hl-yellow">함께라면 가능합니다.</span></h2>
+      <h2 class="hero__title" data-aos="fade-up">대출을 대출로 갚는 악순환 이제 끊어내세요.<br>채무조정지원센터와 <span class="hl-yellow">함께라면 가능합니다.</span></h2>
       <a href="#top" class="btn-cta btn-cta--link">무료상담 신청하기</a>
     </div>
   </div>
