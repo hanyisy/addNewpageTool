@@ -25,62 +25,81 @@
   <div class="hero__inner">
     <h1 class="hero__title">대출을 대출로 갚는 악순환 이제 끊어내세요.<br>채무조정지원센터와 <span class="hl-yellow">함께라면 가능합니다.</span></h1>
 
-    <form class="apply-form" id="applyForm" name="applyForm" method="post" action="apply.html" novalidate>
-      <input class="field" type="text" name="name" placeholder="성함" autocomplete="name">
+    <form class="apply-form" id="applyForm" name="applyForm" method="post" action="apply.html">
+      <input class="field" type="text" name="name" placeholder="성함" autocomplete="name" required>
       <div class="phone">
-        <select class="field" name="tel1">
+        <select class="field" name="tel1" required>
           <option>010</option><option>011</option><option>016</option><option>017</option><option>018</option><option>019</option>
         </select>
-        <input class="field" type="text" name="tel2" inputmode="numeric" maxlength="4" placeholder="연락처">
-        <input class="field" type="text" name="tel3" inputmode="numeric" maxlength="4" placeholder="연락처">
+        <input class="field" type="text" name="tel2" inputmode="numeric" maxlength="4" pattern="[0-9]{3,4}" title="숫자 3~4자리" placeholder="연락처" required>
+        <input class="field" type="text" name="tel3" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" title="숫자 4자리" placeholder="연락처" required>
       </div>
 
       <div class="form-q">
         <div class="form-q__title">채무금액을 선택해주세요</div>
         <div class="form-q__note">3,000만원 미만 채무는 신청 불가합니다</div>
       </div>
-      <div class="opts" data-group="option1">
-        <button type="button" class="opt">3천~5천</button>
-        <button type="button" class="opt">5천~1억</button>
-        <button type="button" class="opt">1억 이상</button>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="option1" value="3천~5천" required><span>3천~5천</span></label>
+        <label class="opt"><input type="radio" name="option1" value="5천~1억" required><span>5천~1억</span></label>
+        <label class="opt"><input type="radio" name="option1" value="1억 이상" required><span>1억 이상</span></label>
       </div>
-      <input type="hidden" name="option1"><!-- 채무금액 -->
 
       <div class="form-q">
         <div class="form-q__title">재산보다 채무액이 많은지 여부를 선택해주세요</div>
       </div>
-      <div class="opts" data-group="option2">
-        <button type="button" class="opt">채무가 더 많다</button>
-        <button type="button" class="opt">재산이 더 많다</button>
-        <button type="button" class="opt">잘 모르겠다</button>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="option2" value="채무가 더 많다" required><span>채무가 더 많다</span></label>
+        <label class="opt"><input type="radio" name="option2" value="재산이 더 많다" required><span>재산이 더 많다</span></label>
+        <label class="opt"><input type="radio" name="option2" value="잘 모르겠다" required><span>잘 모르겠다</span></label>
       </div>
-      <input type="hidden" name="option2"><!-- 재산 대비 채무 -->
 
       <div class="form-q">
         <div class="form-q__title">월소득은 어떻게 되시나요?</div>
       </div>
-      <div class="opts" data-group="option5">
-        <button type="button" class="opt">100만원~200만원</button>
-        <button type="button" class="opt">200만원~300만원</button>
-        <button type="button" class="opt">300만원~400만원</button>
-        <button type="button" class="opt">400만원 이상</button>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="option5" value="100만원~200만원" required><span>100만원~200만원</span></label>
+        <label class="opt"><input type="radio" name="option5" value="200만원~300만원" required><span>200만원~300만원</span></label>
+        <label class="opt"><input type="radio" name="option5" value="300만원~400만원" required><span>300만원~400만원</span></label>
+        <label class="opt"><input type="radio" name="option5" value="400만원 이상" required><span>400만원 이상</span></label>
       </div>
-      <input type="hidden" name="option5"><!-- 월소득 -->
 
       <div class="form-q">
         <div class="form-q__title">무료 상담 희망 시간대 1차</div>
         <div class="form-q__note">3회 이상 부재시 무료상담의 기회가 넘어갑니다</div>
       </div>
-      <select class="field js-times" name="option6"><!-- 상담 시간대 1차 -->
+      <select class="field" name="option6" required><!-- 상담 시간대 1차 -->
         <option value="">-무료 상담 희망 시간대 1차 선택-</option>
+        <option>09:00 ~ 10:00</option>
+        <option>10:00 ~ 11:00</option>
+        <option>11:00 ~ 12:00</option>
+        <option>12:00 ~ 13:00</option>
+        <option>13:00 ~ 14:00</option>
+        <option>14:00 ~ 15:00</option>
+        <option>15:00 ~ 16:00</option>
+        <option>16:00 ~ 17:00</option>
+        <option>17:00 ~ 18:00</option>
+        <option>18:00 ~ 19:00</option>
+        <option>시간 무관</option>
       </select>
 
       <div class="form-q">
         <div class="form-q__title">무료 상담 희망 시간대 2차</div>
         <div class="form-q__note">1차 시간대 부재시 2차 시간대에 연락드리겠습니다</div>
       </div>
-      <select class="field js-times" name="option7"><!-- 상담 시간대 2차 -->
+      <select class="field" name="option7" required><!-- 상담 시간대 2차 -->
         <option value="">-무료 상담 희망 시간대 2차 선택-</option>
+        <option>09:00 ~ 10:00</option>
+        <option>10:00 ~ 11:00</option>
+        <option>11:00 ~ 12:00</option>
+        <option>12:00 ~ 13:00</option>
+        <option>13:00 ~ 14:00</option>
+        <option>14:00 ~ 15:00</option>
+        <option>15:00 ~ 16:00</option>
+        <option>16:00 ~ 17:00</option>
+        <option>17:00 ~ 18:00</option>
+        <option>18:00 ~ 19:00</option>
+        <option>시간 무관</option>
       </select>
 
       <div class="agree">
@@ -89,7 +108,6 @@
         <span id="show-Box" class="js-open-policy" role="button" tabindex="0">[약관보기]</span>
       </div>
       <button type="submit" class="btn-cta">무료상담 신청하기</button>
-      <div class="form-msg" id="formMsg" role="status" hidden></div>
     </form>
   </div>
 </section>
@@ -335,7 +353,7 @@
 <!-- Footer -->
 <footer class="footer">
   <div class="footer__inner">
-    <a href="#privacy" class="footer__policy js-open-policy">개인정보 취급방침</a>
+    <a href="https://land.withusmk.co.kr/assets/etc/file/policy.html" target="_blank" class="footer__policy js-open-policy">개인정보 취급방침</a>
     <div class="footer__info">
       <span>상호명 : 법무법인 유온</span>
       <span>주소 : 서울시 서초구 서초대로 51길 14, JH엘로펌애비뉴빌딩 603호</span>
@@ -357,13 +375,7 @@
       <h3 id="privacyTitle">개인정보 취급방침</h3>
       <button type="button" class="modal__close js-close-policy" aria-label="닫기">×</button>
     </div>
-    <div class="modal__body">
-      <p><b>수집 항목</b> : 성함, 연락처, 채무금액, 재산 대비 채무 여부, 월소득, 상담 희망 시간대</p>
-      <p><b>이용 목적</b> : 개인회생 등 채무조정 무료상담 안내</p>
-      <p><b>보유 기간</b> : 상담 완료 후 1년, 이후 지체 없이 파기</p>
-      <p>동의를 거부할 수 있으나, 거부 시 상담 신청이 제한됩니다.</p>
-      <p class="modal__muted">법무법인 유온 · 사업자번호 529-88-03281</p>
-    </div>
+    <iframe class="modal__frame" src="about:blank" data-src="https://land.withusmk.co.kr/assets/etc/file/policy.html" title="개인정보 취급방침"></iframe>
   </div>
 </div>
 
