@@ -99,24 +99,21 @@
   /* ---------------------------------------------------------
      상담 신청 폼
   --------------------------------------------------------- */
-  function formatPhone(value) {
-    var n = value.replace(/\D/g, '').slice(0, 11);
-    if (n.length < 4) return n;
-    if (n.length < 8) return n.replace(/(\d{3})(\d+)/, '$1-$2');
-    if (n.length === 10) return n.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
-    return n.replace(/(\d{3})(\d{4})(\d+)/, '$1-$2-$3');
+  // 휴대폰 번호는 숫자만 입력
+  function onlyNumber(value) {
+    return value.replace(/\D/g, '').slice(0, 11);
   }
 
   document.querySelectorAll('.consult-form').forEach(function (form) {
     function field(name) { return form.querySelector('[name="' + name + '"]'); }
     var nameInput = field('name');
     var phone = field('phone');
-    var region = field('region');
+    var house = field('house');
     var debt = field('debt');
     var agree = field('agree');
 
     phone.addEventListener('input', function () {
-      phone.value = formatPhone(phone.value);
+      phone.value = onlyNumber(phone.value);
     });
 
     form.querySelectorAll('input, select').forEach(function (field) {
@@ -128,9 +125,9 @@
       e.preventDefault();
 
       var checks = [
-        { el: nameInput, ok: nameInput.value.trim().length >= 2, msg: '성함을 입력해 주세요.' },
-        { el: phone, ok: /^01\d-\d{3,4}-\d{4}$/.test(phone.value), msg: '연락처를 정확히 입력해 주세요.' },
-        { el: region, ok: !!region.value, msg: '지역을 선택해 주세요.' },
+        { el: nameInput, ok: nameInput.value.trim().length >= 2, msg: '이름을 입력해 주세요.' },
+        { el: phone, ok: /^01\d{8,9}$/.test(phone.value), msg: '휴대폰 번호를 정확히 입력해 주세요.' },
+        { el: house, ok: !!house.value, msg: '자택소유 여부를 선택해 주세요.' },
         { el: debt, ok: !!debt.value, msg: '채무금액을 선택해 주세요.' },
         { el: agree, ok: agree.checked, msg: '개인정보 수집 및 이용에 동의해 주세요.' }
       ];
@@ -147,7 +144,7 @@
       var data = {
         name: nameInput.value.trim(),
         phone: phone.value,
-        region: region.value,
+        house: house.value,
         debt: debt.value
       };
 

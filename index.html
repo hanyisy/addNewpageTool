@@ -18,7 +18,7 @@
         <img src="images/logo.png" alt="채무조정지원센터" data-placeholder="logo.png">
       </a>
       <a href="tel:1811-9677" class="header__call">
-        <span>채무조정 상담문의</span>
+        <span>채무조정 상담전화</span>
         <strong>1811-9677</strong>
       </a>
     </div>
@@ -35,18 +35,17 @@
 
         <form class="consult-form reveal" novalidate>
           <div class="consult-form__grid">
-            <input type="text" name="name" placeholder="신청자 성함을 입력해 주세요" autocomplete="name" required>
-            <input type="tel" name="phone" placeholder="연락처 (숫자만 입력해 주세요)" inputmode="numeric" maxlength="13" required>
-            <select name="region" required>
-              <option value="">지역선택</option>
-              <option>서울</option><option>경기</option><option>인천</option><option>강원</option>
-              <option>충북</option><option>충남</option><option>대전</option><option>세종</option>
-              <option>전북</option><option>전남</option><option>광주</option><option>경북</option>
-              <option>경남</option><option>대구</option><option>울산</option><option>부산</option>
-              <option>제주</option>
+            <input type="text" name="name" placeholder="신청자 이름을 입력해 주세요." autocomplete="name" required>
+            <input type="tel" name="phone" placeholder="휴대폰 번호를 - 없이 숫자만 입력해 주세요." inputmode="numeric" maxlength="11" required>
+            <select name="house" required>
+              <option value="">::자택소유::</option>
+              <option>자가</option>
+              <option>전세</option>
+              <option>월세</option>
+              <option>기타 (가족 소유 등)</option>
             </select>
             <select name="debt" required>
-              <option value="">채무금액</option>
+              <option value="">::채무금액::</option>
               <option>3,000만원 미만</option>
               <option>3,000만원 ~ 5,000만원</option>
               <option>5,000만원 ~ 1억원</option>
@@ -57,7 +56,7 @@
           <label class="consult-form__agree">
             <input type="checkbox" name="agree" required>
             <span>개인정보 수집 및 이용 동의</span>
-            <button type="button" class="js-privacy-open">[자세히보기]</button>
+            <button type="button" class="js-privacy-open">&lt;자세히보기&gt;</button>
           </label>
           <button type="submit" class="consult-form__submit">무료상담 신청하기</button>
         </form>
@@ -68,19 +67,19 @@
     <section class="stats">
       <div class="inner stats__list">
         <div class="stats__item reveal">
-          <svg class="stats__icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="20" cy="16" r="8" fill="currentColor"/><path d="M4 40c0-9 7-15 16-15s16 6 16 15z" fill="currentColor"/><circle cx="34" cy="18" r="6" fill="currentColor" opacity=".6"/><path d="M30 27c8 0 14 5 14 13h-6c0-5-3-10-8-13z" fill="currentColor" opacity=".6"/></svg>
+          <svg class="stats__icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="19" cy="15" r="9" fill="currentColor"/><path d="M2 42c0-10 7-17 17-17s17 7 17 17z" fill="currentColor"/><path d="M28 7a9 9 0 0 1 0 17M33 27c7 2 12 8 12 15h-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
           <p class="stats__label">채무조정 상담 누적 건수</p>
-          <p class="stats__num"><span class="js-count" data-to="30000">0</span>건</p>
+          <p class="stats__num"><span class="js-count" data-to="30000">30,000</span>건</p>
         </div>
         <div class="stats__item reveal">
-          <svg class="stats__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M18 6h12l-3 6h-6z" fill="currentColor"/><path d="M24 12c-11 0-16 12-16 20 0 7 6 10 16 10s16-3 16-10c0-8-5-20-16-20z" fill="currentColor"/><text x="24" y="35" text-anchor="middle" font-size="14" font-weight="800" fill="#1d3a73">$</text></svg>
+          <svg class="stats__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M16 4h16l-4 7h-8z" fill="currentColor"/><path d="M24 12C11 12 6 25 6 33c0 7 6 11 18 11s18-4 18-11c0-8-5-21-18-21z" fill="currentColor"/><path d="M28 23.5c-.8-1.5-2.3-2.3-4-2.3-2.4 0-4 1.2-4 3s1.6 2.5 4 3 4 1.4 4 3.3-1.8 3.2-4.2 3.2c-1.9 0-3.4-.9-4.1-2.4M24 19v3M24 34v3" fill="none" stroke="#2d4a85" stroke-width="2.4" stroke-linecap="round"/></svg>
           <p class="stats__label">채무원금 최대 탕감률</p>
-          <p class="stats__num"><span class="js-count" data-to="95">0</span>%</p>
+          <p class="stats__num"><span class="js-count" data-to="95">95</span>%</p>
         </div>
         <div class="stats__item reveal">
-          <svg class="stats__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M44 4 4 21l14 5 3 14 7-9 10 7z" fill="currentColor"/><path d="m18 26 20-16-15 19" fill="#1d3a73" opacity=".35"/></svg>
+          <svg class="stats__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M46 2 2 21l13 5 2 16 8-10 12 8z" fill="currentColor"/><path d="M46 2 15 26l2 16 3-12z" fill="#2d4a85" opacity=".45"/></svg>
           <p class="stats__label">평균 접수 소요 일수</p>
-          <p class="stats__num"><span class="js-count" data-to="3">0</span>일 이내</p>
+          <p class="stats__num"><span class="js-count" data-to="3">3</span>일 이내</p>
         </div>
       </div>
     </section>
@@ -88,7 +87,7 @@
     <!-- 03. 고민 메시지 -->
     <section class="worry">
       <div class="inner reveal">
-        <p class="worry__q"><strong>“조건이 까다롭고 진행이 어렵진 않을까?”</strong> 고민되시나요?</p>
+        <p class="worry__q"><strong>"조건이 까다롭고 진행이 어렵진 않을까?"</strong> 고민되시나요?</p>
         <p class="worry__a">빚을 갚을 수 없는 대한민국 국민 모두 가능합니다.</p>
         <p class="worry__cta"><span>망설이지 말고 지금 바로 무료상담을 받아 보세요</span></p>
       </div>
@@ -100,20 +99,20 @@
         <div class="who__text reveal">
           <h2 class="who__title">
             정부지원 채무조정제도<br>
-            개인회생은 <b>누가</b><br>
-            <em>신청</em>할 수 있을까요?
+            개인회생<span>은</span> 누가<br>
+            <em>신청</em><span>할 수 있을까요?</span>
           </h2>
           <ul class="who__list">
             <li>
               <strong><mark>지속적인 소득이 발생해야 합니다.</mark></strong>
-              <p>소득금액의 크기는 상관없으며, 직장인·자영업자·프리랜서·아르바이트생 모두 가능합니다.</p>
+              <p>소득만 있다면 고용 형태는 상관없습니다. 사업자, 프리랜서, 파트타임, 일용직 근로자 모두 가능합니다.</p>
             </li>
             <li>
               <strong><mark>본인의 재산보다 채무가 더 많아야 합니다.</mark></strong>
             </li>
             <li>
               <strong><mark>과거 면책 이력이 있는 경우 5년이 지나야 합니다.</mark></strong>
-              <p>면책 이력이 있더라도 일정 기간이 경과했다면 재신청이 가능합니다.</p>
+              <p>연체 유무는 관계 없습니다. 연체 전에도, 연체 중이어도 신청 가능합니다.</p>
             </li>
             <li>
               <strong><mark>채무는 무담보 10억원, 담보 15억원 이내.</mark></strong>
@@ -150,27 +149,27 @@
         <ul class="merit__list">
           <li class="merit__card merit__card--1 reveal">
             <span class="merit__num">01</span>
-            <svg class="merit__icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 15a9 8 0 0 1 18 0v2a6 6 0 0 1-3 5v3h-3v-2h-6v2h-3v-3a8 8 0 0 1-3-7z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7l2-3h4l2 3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <svg class="merit__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 24c0-8 7-13 16-13 3 0 6 .6 8 1.7L37 9l-1 6.5c2 1.8 3.4 4 3.9 6.5H43v7h-3.6c-.9 2.3-2.5 4.2-4.4 5.5V40h-6v-3.2c-1.6.3-3.3.4-5 .2V40h-6v-4.2C11.6 33.5 8 29.3 8 24z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="32" cy="21" r="1.6" fill="currentColor"/><path d="M20 15.5h7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M8 24c-2.5 0-4-1.5-4-3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
             <h3>이자<br>전액 탕감</h3>
-            <p>연체 이자와 앞으로 발생할 이자를 전액 탕감받을 수 있습니다.</p>
+            <p>연체 이자를 포함해 모든 이자를 탕감받을 수 있습니다.</p>
           </li>
           <li class="merit__card merit__card--2 reveal">
             <span class="merit__num">02</span>
-            <svg class="merit__icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 8h24M4 16h24M4 24h24" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="8" r="3" fill="#1d3a73" stroke="currentColor" stroke-width="2"/><circle cx="11" cy="16" r="3" fill="#1d3a73" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="24" r="3" fill="#1d3a73" stroke="currentColor" stroke-width="2"/></svg>
+            <svg class="merit__icon" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 10h40M4 24h40M4 38h40"/><circle cx="16" cy="10" r="4.5" fill="#1e3a6e"/><circle cx="28" cy="24" r="4.5" fill="#1e3a6e"/><circle cx="20" cy="38" r="4.5" fill="#1e3a6e"/></g></svg>
             <h3>채무<br>원금 탕감</h3>
-            <p>소득과 재산을 고려하여 원금의 최대 90%까지 탕감받고, 남은 채무는 3~5년간 나누어 갚을 수 있습니다.</p>
+            <p>채무 원금의 최대 95%를 탕감해 주고, 남은 상환 금액과 상환 일정을 조정해 주기 때문에 수월하게 변제가 가능합니다.</p>
           </li>
           <li class="merit__card merit__card--3 reveal">
             <span class="merit__num">03</span>
-            <svg class="merit__icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 5 7v8c0 7 5 12 11 14 6-2 11-7 11-14V7z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m11 16 4 4 7-8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <svg class="merit__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 7 10v12c0 11 7.5 18.5 17 22 9.5-3.5 17-11 17-22V10z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="m16 24 6 6 11-12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <h3>빚 독촉<br>중단</h3>
-            <p>금지명령·중지명령으로 채권자의 추심과 압류를 막을 수 있습니다.</p>
+            <p>빚 독촉과 압류 등을 법의 힘으로 중단시키고 재개되지 않도록 막아드립니다.</p>
           </li>
           <li class="merit__card merit__card--4 reveal">
             <span class="merit__num">04</span>
-            <svg class="merit__icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 15 16 4l12 11M7 13v15h18V13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 28v-8h6v8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <svg class="merit__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M5 22 24 6l19 16v20a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M18 44V30h12v14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
             <h3>재산<br>유지 가능</h3>
-            <p>파산과 달리 재산을 처분하지 않고 유지하면서 채무를 정리할 수 있습니다.</p>
+            <p>소유 중인 재산을 지키면서 빚을 탕감받을 수 있으며, 재산의 증식 또한 물론 가능합니다.</p>
           </li>
         </ul>
       </div>
@@ -186,42 +185,54 @@
         <ul class="case__list">
           <li class="case__card reveal">
             <div class="case__head">
-              <p>30대 직장인 · 생활비 대출 돌려막기</p>
-              <strong>사업 실패로 늘어난 채무</strong>
+              <p>장기 연체로 신용불량 상태였던</p>
+              <strong>직장인 40대 남성 A씨</strong>
             </div>
             <dl class="case__rows">
-              <div><dt>총 채무액</dt><dd>150,000,000원</dd></div>
-              <div><dt>탕감 금액</dt><dd>141,000,000원</dd></div>
-              <div><dt>총 변제액</dt><dd>9,000,000원</dd></div>
+              <div><dt>진행 전 채무</dt><dd>2억5천만원</dd></div>
+              <div><dt>탕감 된 채무</dt><dd>2억3600만원</dd></div>
+              <div><dt>잔존채무</dt><dd>1400만원</dd></div>
             </dl>
-            <p class="case__rate">탕감률 <span class="js-count" data-to="94">0</span>%</p>
-            <p class="case__desc">월 소득 230만원 / 부양가족 1인<br>월 변제금 25만원 × 36개월</p>
+            <p class="case__rate">탕감률 <span class="js-count" data-to="94">94</span>%</p>
+            <p class="case__desc">
+              부양가족 3인 인정 / 월 평균 소득 약 290만원<br>
+              채무 2억5천만원 중 2억3600만원 탕감<br>
+              잔존채무 1400만원 월 40만원 36개월 분할상환
+            </p>
           </li>
           <li class="case__card reveal">
             <div class="case__head">
-              <p>40대 자영업자 · 코로나 매출 감소</p>
-              <strong>사업자 대출 연체 및 추심</strong>
+              <p>사업 실패로 큰 빚을 지게 된</p>
+              <strong>사업자 30대 여성 B씨</strong>
             </div>
             <dl class="case__rows">
-              <div><dt>총 채무액</dt><dd>80,000,000원</dd></div>
-              <div><dt>탕감 금액</dt><dd>76,000,000원</dd></div>
-              <div><dt>총 변제액</dt><dd>4,000,000원</dd></div>
+              <div><dt>진행 전 채무</dt><dd>6억원</dd></div>
+              <div><dt>탕감 된 채무</dt><dd>5억7천만원</dd></div>
+              <div><dt>잔존채무</dt><dd>3천만원</dd></div>
             </dl>
-            <p class="case__rate">탕감률 <span class="js-count" data-to="95">0</span>%</p>
-            <p class="case__desc">월 소득 180만원 / 부양가족 2인<br>월 변제금 11만원 × 36개월</p>
+            <p class="case__rate">탕감률 <span class="js-count" data-to="95">95</span>%</p>
+            <p class="case__desc">
+              부양가족 3인 인정 / 월 평균 소득 392만원<br>
+              채무 6억원 중 5억7천만원 탕감<br>
+              잔존채무 3천만원 월 82만원 36개월 분할상환
+            </p>
           </li>
           <li class="case__card reveal">
             <div class="case__head">
-              <p>20대 프리랜서 · 주식·코인 투자 실패</p>
-              <strong>신용대출 및 카드론 채무</strong>
+              <p>주식, 코인 투자 실패로 채무 증가</p>
+              <strong>직장인 30대 남성 C씨</strong>
             </div>
             <dl class="case__rows">
-              <div><dt>총 채무액</dt><dd>200,000,000원</dd></div>
-              <div><dt>탕감 금액</dt><dd>162,000,000원</dd></div>
-              <div><dt>총 변제액</dt><dd>38,000,000원</dd></div>
+              <div><dt>진행 전 채무</dt><dd>3억2천만원</dd></div>
+              <div><dt>탕감 된 채무</dt><dd>2억6천만원</dd></div>
+              <div><dt>잔존채무</dt><dd>6천만원</dd></div>
             </dl>
-            <p class="case__rate">탕감률 <span class="js-count" data-to="81">0</span>%</p>
-            <p class="case__desc">월 소득 320만원 / 부양가족 없음<br>월 변제금 105만원 × 36개월</p>
+            <p class="case__rate">탕감률 <span class="js-count" data-to="81">81</span>%</p>
+            <p class="case__desc">
+              부양가족 1인 인정 / 월 평균 소득 226만원<br>
+              채무 3억2천만원 중 2억 6천만원 탕감<br>
+              잔존채무 6천만원 월 102만원 36개월 분할상환
+            </p>
           </li>
         </ul>
       </div>
@@ -237,45 +248,45 @@
         <ol class="process__list">
           <li class="reveal">
             <span class="process__num">01</span>
-            <svg class="process__icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="4" width="24" height="36" rx="4" fill="#d9e6ff"/><circle cx="34" cy="34" r="8" fill="#2a5fe0"/><path d="M30 34h8M34 30v8" stroke="#fff" stroke-width="2.5"/></svg>
+            <svg class="process__icon" viewBox="0 0 64 64" aria-hidden="true"><rect x="16" y="4" width="30" height="52" rx="5" fill="#e2e8fb"/><rect x="22" y="9" width="18" height="2" rx="1" fill="#c7d2f3"/><circle cx="46" cy="44" r="10" fill="#2f55e4"/><path d="M41 41h10M41 45h10M41 49h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
             <strong>상담신청</strong>
-            <p>온라인 접수 후<br>전문가 배정</p>
+            <p>무료상담을<br>신청해 주세요.</p>
           </li>
           <li class="reveal">
             <span class="process__num">02</span>
-            <svg class="process__icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="12" r="7" fill="#d9e6ff"/><path d="m20 12 3 3 5-6" stroke="#2a5fe0" stroke-width="2.5" fill="none"/><circle cx="12" cy="30" r="4" fill="#2a5fe0"/><circle cx="24" cy="30" r="4" fill="#2a5fe0"/><circle cx="36" cy="30" r="4" fill="#2a5fe0"/><path d="M5 44c0-5 3-8 7-8s7 3 7 8zM17 44c0-5 3-8 7-8s7 3 7 8zM29 44c0-5 3-8 7-8s7 3 7 8z" fill="#2a5fe0"/></svg>
+            <svg class="process__icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="14" r="10" fill="#c9d3ef"/><path d="m27 14 4 4 7-7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15" cy="38" r="6" fill="#2f55e4"/><circle cx="49" cy="38" r="6" fill="#2f55e4"/><circle cx="32" cy="36" r="7" fill="#2f55e4"/><path d="M4 58c0-7 5-12 11-12s11 5 11 12zM38 58c0-7 5-12 11-12s11 5 11 12z" fill="#2f55e4"/><path d="M19 58c0-8 6-13 13-13s13 5 13 13z" fill="#2f55e4"/></svg>
             <strong>자격확인</strong>
-            <p>소득·재산·채무<br>요건 검토</p>
+            <p>가능여부를 확인해<br>드립니다.</p>
           </li>
           <li class="reveal">
             <span class="process__num">03</span>
-            <svg class="process__icon" viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="38" rx="16" ry="6" fill="#d9e6ff"/><path d="M14 6h20v22l-10 6-10-6z" fill="#2a5fe0"/></svg>
+            <svg class="process__icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M6 46c8-6 16-6 26 0 10-6 18-6 26 0l-6 12H12z" fill="#dfe5f7"/><path d="M18 4h22l8 8v30l-14 6-16-6z" fill="#2f55e4"/><path d="M24 18h16M24 24h16M24 30h12" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".8"/></svg>
             <strong>서류접수</strong>
-            <p>필요 서류 준비 및<br>법원 접수</p>
+            <p>준비한 신청서를<br>접수합니다.</p>
           </li>
           <li class="reveal">
             <span class="process__num">04</span>
-            <svg class="process__icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="6" width="32" height="36" rx="3" fill="#d9e6ff"/><rect x="16" y="12" width="16" height="14" rx="2" fill="#2a5fe0"/><path d="M14 32h20M14 37h12" stroke="#2a5fe0" stroke-width="2.5"/></svg>
-            <strong>압류·추심<br>금지 및 해제</strong>
-            <p>금지·중지명령으로<br>추심 중단</p>
+            <svg class="process__icon" viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="6" width="52" height="52" rx="5" fill="#e2e8fb"/><path d="M22 28V20l10-5 10 5v8z" fill="#2f55e4"/><path d="M25 22v6M32 22v6M39 22v6" stroke="#e2e8fb" stroke-width="2"/><circle cx="20" cy="42" r="5" fill="#2f55e4"/><path d="M30 40h16M30 45h12" stroke="#2f55e4" stroke-width="3" stroke-linecap="round"/></svg>
+            <strong>빚독촉·압류<br>금지 및 해제</strong>
+            <p>채권자의 독촉과<br>압류를 막아 드립니다.</p>
           </li>
           <li class="reveal">
             <span class="process__num">05</span>
-            <svg class="process__icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16" fill="none" stroke="#2a5fe0" stroke-width="5"/><circle cx="24" cy="24" r="8" fill="#d9e6ff"/><path d="M8 40h32" stroke="#2a5fe0" stroke-width="5"/></svg>
+            <svg class="process__icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 30a22 22 0 0 1 38-15" fill="none" stroke="#2f55e4" stroke-width="7" stroke-linecap="round"/><path d="M54 30a22 22 0 0 1-8 17" fill="none" stroke="#2f55e4" stroke-width="7" stroke-linecap="round"/><path d="m44 6 8 9-11 3z" fill="#2f55e4"/><circle cx="32" cy="30" r="11" fill="#dfe5f7"/><text x="32" y="35" text-anchor="middle" font-size="13" font-weight="800" fill="#a3b4e8">₩</text><rect x="10" y="50" width="44" height="7" rx="3.5" fill="#2f55e4"/><path d="m54 46 8 7.5-8 7.5z" fill="#2f55e4"/></svg>
             <strong>채무조정</strong>
-            <p>변제계획안 인가로<br>채무 감면</p>
+            <p>기존 채무가 갚을 수 있는<br>금액으로 조정됩니다.</p>
           </li>
           <li class="reveal">
             <span class="process__num">06</span>
-            <svg class="process__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 4h22v4l-8 14 8 14v6H10v-6l8-14-8-14z" fill="#2a5fe0"/><circle cx="34" cy="34" r="9" fill="#d9e6ff"/></svg>
+            <svg class="process__icon" viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="2" width="30" height="5" rx="2" fill="#2f55e4"/><rect x="8" y="57" width="30" height="5" rx="2" fill="#2f55e4"/><path d="M11 7h24v8L25 32l10 17v8H11v-8l10-17-10-17z" fill="#2f55e4"/><rect x="34" y="48" width="26" height="5" rx="2" fill="#c9d3ef"/><rect x="34" y="54" width="26" height="5" rx="2" fill="#c9d3ef"/><circle cx="47" cy="36" r="11" fill="#dfe5f7"/><text x="47" y="41" text-anchor="middle" font-size="13" font-weight="800" fill="#a3b4e8">₩</text></svg>
             <strong>변제금<br>상환</strong>
-            <p>3~5년간<br>성실 상환</p>
+            <p>조정된 변제금을<br>36개월간 상환합니다.</p>
           </li>
           <li class="reveal">
             <span class="process__num">07</span>
-            <svg class="process__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 2v6M14 5l3 5M34 5l-3 5" stroke="#2a5fe0" stroke-width="2.5"/><circle cx="14" cy="20" r="6" fill="#2a5fe0"/><circle cx="34" cy="20" r="6" fill="#2a5fe0"/><path d="M2 44c0-8 5-14 12-14s12 6 12 14zM22 44c0-8 5-14 12-14s12 6 12 14z" fill="#2a5fe0"/></svg>
+            <svg class="process__icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 2v8M20 6l4 6M44 6l-4 6" stroke="#c9d3ef" stroke-width="3" stroke-linecap="round"/><circle cx="18" cy="30" r="7" fill="#2f55e4"/><circle cx="46" cy="30" r="7" fill="#2f55e4"/><path d="M4 62c0-11 6-20 14-20 3 0 6 1 8 3l4-21 4 2-2 22c-2 6-4 10-4 14z" fill="#2f55e4"/><path d="M60 62c0-11-6-20-14-20-3 0-6 1-8 3l-4-21-4 2 2 22c2 6 4 10 4 14z" fill="#2f55e4"/></svg>
             <strong>면책</strong>
-            <p>남은 채무 전액<br>면책 결정</p>
+            <p>채무가 사라지고<br>신용이 회복됩니다</p>
           </li>
         </ol>
       </div>
@@ -289,16 +300,16 @@
           <table class="compare__table">
             <thead>
               <tr>
-                <th scope="col">개인회생제도</th>
-                <th scope="col">개인워크아웃</th>
+                <th scope="col"><span>개인회생제도</span></th>
+                <th scope="col"><span>개인워크아웃</span></th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>금융기관, 대부업체, 개인채무 등 모든 채무 조정</td><td>신용회복위원회 협약 금융기관 채무만 조정</td></tr>
-              <tr><td>연체 유무 관계없이 신청 가능</td><td>연체 기간 3개월 이상 시 신청 가능</td></tr>
-              <tr><td>원금의 최대 90% 감면</td><td>원금 감면 범위 제한적</td></tr>
-              <tr><td>금지·중지명령으로 압류·추심 즉시 중단</td><td>협약 외 채권자의 추심은 계속될 수 있음</td></tr>
-              <tr><td>법원의 결정으로 진행</td><td>채권자 동의를 거쳐 진행</td></tr>
+              <tr><td>신용대출, 카드빚, 개인채무, 세금 등 모든 채무 조정</td><td>신용회복위원회와 협약한 금융회사의 채무만 조정</td></tr>
+              <tr><td>연체 유무 관계없이 신청 가능</td><td>연체 기간 3개월 이상 장기 연체자만 신청 가능</td></tr>
+              <tr><td>채권자 동의 필요 없음</td><td>채권자 동의 필수</td></tr>
+              <tr><td>이자 전액과 채무 원금 최대 95% 감면</td><td>이자 전액 감면, 채무 원금은 감면 가능성 낮음</td></tr>
+              <tr><td>변호사 지원이 필요</td><td>채무자 스스로 진행 가능</td></tr>
             </tbody>
           </table>
         </div>
@@ -314,31 +325,31 @@
         </h2>
         <div class="benefit__cols reveal">
           <ul>
-            <li>맞춤형 1:1 컨설팅</li>
-            <li>도산전문 변호사 직접 진행</li>
-            <li>접수 시 추심 중단 지원</li>
+            <li>맞춤형 컨설팅</li>
+            <li>도산전문변호사 위임장 제출</li>
+            <li>필요 서류 샘플 제공</li>
             <li>부채증명서 발급 대행</li>
-            <li>금지·중지명령 신청</li>
+            <li>보정권고 소명자료 대리 준비</li>
             <li>빠른 사건 접수</li>
-            <li>사후 관리 지원</li>
+            <li>서류 발급 대행</li>
           </ul>
           <ul>
-            <li>채무조정 서비스 제공</li>
-            <li>수임료 분납 가능</li>
-            <li>도산전문 변호사 사건 관리</li>
-            <li>나에게 맞는 수임료 설정</li>
-            <li>1:1 전담 매니저 배정</li>
-            <li>무료 사전 상담</li>
-            <li>법원 보정명령 대응</li>
+            <li>채무조회 서비스 제공</li>
+            <li>특별관리팀 배정</li>
+            <li>도산전문변호사의 사건 관리</li>
+            <li>나만을 위한 소통방 활용</li>
+            <li>애프터서비스 제공</li>
+            <li>지속적인 상담</li>
+            <li>월변제금 납부현황 체크</li>
           </ul>
           <ul>
-            <li>변제계획안 작성 안내</li>
-            <li>면책결정 시까지 관리</li>
-            <li>채권자 이의 대응</li>
-            <li>생계비 산정 컨설팅</li>
-            <li>전국 사건 진행 가능</li>
-            <li>철저한 비밀보장 상담</li>
-            <li>재신청 상담 지원</li>
+            <li>정기신고일자 안내</li>
+            <li>면책신청서 대리 작성</li>
+            <li>채무자대리인제도 진행</li>
+            <li>채권추심응대 관리팀 배정</li>
+            <li>우편 송달물 대리 수령</li>
+            <li>채권사 독촉 전화 응대</li>
+            <li>금지명령 기각 시 추가 신청</li>
           </ul>
         </div>
       </div>
@@ -349,9 +360,9 @@
       <div class="inner">
         <h2 class="free__title reveal">
           무료 법률 상담 안내
-          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4a20 20 0 0 0-17 30L4 44l10-3A20 20 0 1 0 24 4z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M17 14c1-1 3-1 4 1l2 4c0 1 0 2-1 3l-1 1c1 3 3 5 6 6l1-1c1-1 2-1 3-1l4 2c2 1 2 3 1 4-2 3-5 4-9 2-5-2-9-6-11-11-1-4 0-7 1-10z" fill="currentColor"/></svg>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4a20 20 0 0 0-17.4 29.9L4 44l10.6-2.5A20 20 0 1 0 24 4z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M17.5 14.5c.9-.9 2.4-.8 3.1.3l2.1 3.3c.6.9.4 2.1-.4 2.8l-1.2 1c1.2 2.8 3.3 4.9 6 6l1-1.2c.7-.8 1.9-1 2.8-.4l3.3 2.1c1.1.7 1.2 2.2.3 3.1l-1.5 1.5c-1.6 1.6-4 2-6 1.1-5.3-2.3-9.5-6.5-11.8-11.8-.9-2-.5-4.4 1.1-6z" fill="currentColor"/></svg>
         </h2>
-        <p class="free__date reveal"><span class="js-period">9월 23일 ~ 10월 6일</span></p>
+        <p class="free__date reveal"><span>9월 23일 ~ 10월 6일</span></p>
         <p class="free__desc reveal">
           모든 상담은 1:1 비밀보장제이며<br>
           기간 내 신청자 한정 <strong>상담비용 전액 무료입니다</strong>
@@ -360,7 +371,7 @@
         <div class="lawyer reveal">
           <img class="lawyer__img" src="images/lawyers.png" alt="법무법인 유온 변호사" data-placeholder="lawyers.png">
           <div class="lawyer__box">
-            <img class="lawyer__logo" src="images/lawfirm-logo.png" alt="LAWFIRM YOUON" data-placeholder="lawfirm-logo.png">
+            <img class="lawyer__logo" src="images/lawfirm-logo.png" alt="당신을 위한 다정한 동행 LAWFIRM YOUON" data-placeholder="lawfirm-logo.png">
             <p>
               무료 상담 기간 내 신청시,<br>
               진행실비 <em>50~80만원 상당의 법률혜택</em> 지원예정
@@ -379,18 +390,17 @@
         </h2>
         <form class="consult-form reveal" novalidate>
           <div class="consult-form__grid">
-            <input type="text" name="name" placeholder="신청자 성함을 입력해 주세요" autocomplete="name" required>
-            <input type="tel" name="phone" placeholder="연락처 (숫자만 입력해 주세요)" inputmode="numeric" maxlength="13" required>
-            <select name="region" required>
-              <option value="">지역선택</option>
-              <option>서울</option><option>경기</option><option>인천</option><option>강원</option>
-              <option>충북</option><option>충남</option><option>대전</option><option>세종</option>
-              <option>전북</option><option>전남</option><option>광주</option><option>경북</option>
-              <option>경남</option><option>대구</option><option>울산</option><option>부산</option>
-              <option>제주</option>
+            <input type="text" name="name" placeholder="신청자 이름을 입력해 주세요." autocomplete="name" required>
+            <input type="tel" name="phone" placeholder="휴대폰 번호를 - 없이 숫자만 입력해 주세요." inputmode="numeric" maxlength="11" required>
+            <select name="house" required>
+              <option value="">::자택소유::</option>
+              <option>자가</option>
+              <option>전세</option>
+              <option>월세</option>
+              <option>기타 (가족 소유 등)</option>
             </select>
             <select name="debt" required>
-              <option value="">채무금액</option>
+              <option value="">::채무금액::</option>
               <option>3,000만원 미만</option>
               <option>3,000만원 ~ 5,000만원</option>
               <option>5,000만원 ~ 1억원</option>
@@ -401,7 +411,7 @@
           <label class="consult-form__agree">
             <input type="checkbox" name="agree" required>
             <span>개인정보 수집 및 이용 동의</span>
-            <button type="button" class="js-privacy-open">[자세히보기]</button>
+            <button type="button" class="js-privacy-open">&lt;자세히보기&gt;</button>
           </label>
           <button type="submit" class="consult-form__submit">무료상담 신청하기</button>
         </form>
@@ -412,11 +422,11 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="inner">
+      <div class="footer__line"></div>
       <p class="footer__info">
-        채무조정지원센터 <i></i> 대표 : 홍길동 <i></i> 사업자등록번호 : 000-00-00000 <i></i>
-        주소 : 서울특별시 OO구 OO로 00 <i></i> TEL : 1811-9677
+        법무법인대담 | 서울시 서초구 반포대로24길 20, 3층(서초동, 민성빌딩) | 사업자등록번호 : 482-85-02828 | 광고책임변호사 : 김선용 | TEL : 1811-9677
       </p>
-      <p class="footer__copy">© 2025 채무조정지원센터. All rights reserved.</p>
+      <p class="footer__copy">ⓒ 2025. 법무법인대담 All rights reserved.</p>
     </div>
   </footer>
 
@@ -426,7 +436,7 @@
     <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
       <h3 id="privacyTitle">개인정보 수집 및 이용 동의</h3>
       <div class="modal__body">
-        <p><b>1. 수집 항목</b><br>성함, 연락처, 지역, 채무금액</p>
+        <p><b>1. 수집 항목</b><br>이름, 휴대폰 번호, 자택소유 여부, 채무금액</p>
         <p><b>2. 수집 및 이용 목적</b><br>채무조정 상담 신청 접수 및 상담 안내</p>
         <p><b>3. 보유 및 이용 기간</b><br>상담 완료 후 1년 또는 정보주체의 삭제 요청 시 즉시 파기</p>
         <p><b>4. 동의 거부 권리</b><br>개인정보 수집 및 이용에 동의하지 않을 수 있으며, 동의 거부 시 상담 신청이 제한됩니다.</p>
