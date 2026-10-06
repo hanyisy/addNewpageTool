@@ -478,24 +478,29 @@ select.field {
 /* =========================================================
    Benefits
    ========================================================= */
-.benefits { background: #f8fafd; padding: 2.5lh 6%; }
-.benefits__grid { display: flex; flex-direction: column; gap: 0.5lh; }
-.benefit-list { display: flex; flex-direction: column; gap: 0.5lh; }
+.benefits { background: #f8fafd; padding: 2.5lh 4%; }
+/* 2열 (ul 3개를 풀어서 항목을 2칸씩 순서대로 배치) */
+.benefits__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5lh 3%; }
+.benefit-list { display: contents; }
 .benefit-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.6em;
-  font-size: 4.1cqw;
+  position: relative;
+  padding-left: 1em;
+  font-size: 3cqw;
+  white-space: nowrap;
   font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.03em;
   color: #222;
 }
 .benefit-list li::before {
   content: "";
+  position: absolute;
+  left: 0.1em;
+  top: 0.5lh;
   width: 0.4em;
   height: 0.4em;
   background: var(--blue);
-  transform: rotate(45deg);
-  flex: none;
+  transform: translateY(-50%) rotate(45deg);
 }
 
 /* =========================================================
