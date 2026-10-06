@@ -1,0 +1,342 @@
+@charset "UTF-8";
+
+/* =========================================================
+   Tokens
+========================================================= */
+:root {
+  --blue: #1f5fd6;
+  --blue-light: #2b8ad9;
+  --blue-deep: #1846c4;
+  --navy: #0b1f4d;
+  --navy-2: #1d3a73;
+  --navy-3: #22488f;
+  --accent: #2a5fe0;
+  --yellow: #f5b335;
+  --yellow-soft: #fde7a6;
+  --text: #111;
+  --text-2: #444;
+  --text-3: #777;
+  --line: #e3e6ec;
+  --inner: 1120px;
+  --font: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
+/* =========================================================
+   Reset
+========================================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.5; word-break: keep-all; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; }
+table { border-collapse: collapse; width: 100%; }
+
+.inner { width: 100%; max-width: var(--inner); margin: 0 auto; padding: 0 20px; }
+
+/* 이미지 미등록 시 자리표시 */
+.img-placeholder {
+  display: flex; align-items: center; justify-content: center;
+  background: repeating-linear-gradient(45deg, #e9edf5 0 10px, #f3f5fa 10px 20px);
+  color: #8a94a8; font-size: 12px; font-weight: 600; text-align: center;
+  border: 1px dashed #b9c2d4;
+}
+
+/* =========================================================
+   Section title
+========================================================= */
+.sec-title { text-align: center; line-height: 1.25; margin-bottom: 56px; }
+.sec-title span { display: block; font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.03em; }
+.sec-title__sub { color: #555; }
+.sec-title__main { color: var(--navy-2); }
+.sec-title--dark .sec-title__main { color: #111; }
+.sec-title__accent { color: var(--accent); }
+
+/* =========================================================
+   Header
+========================================================= */
+.header { position: sticky; top: 0; z-index: 50; background: #fff; box-shadow: 0 1px 0 rgba(0,0,0,.04); }
+.header__inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.header__logo img, .header__logo .img-placeholder { height: 32px; width: auto; min-width: 150px; }
+.header__call {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 24px; border-radius: 999px;
+  background: var(--blue-deep); color: #fff; font-size: 15px;
+  transition: background .2s;
+}
+.header__call span { font-weight: 500; opacity: .9; }
+.header__call strong { font-size: 18px; font-weight: 800; }
+.header__call:hover { background: var(--navy-2); }
+
+/* =========================================================
+   Hero / 상담폼
+========================================================= */
+.hero { background: linear-gradient(180deg, var(--blue-light) 0%, var(--blue) 55%, var(--blue-deep) 100%); padding: 120px 0 110px; color: #fff; }
+.hero__title { text-align: center; font-size: clamp(24px, 3.6vw, 44px); font-weight: 800; line-height: 1.35; letter-spacing: -0.03em; margin-bottom: 44px; }
+
+.consult-form { max-width: 800px; margin: 0 auto; }
+.consult-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; }
+.consult-form input[type="text"],
+.consult-form input[type="tel"],
+.consult-form select {
+  width: 100%; height: 50px; padding: 0 16px; border: 2px solid transparent; border-radius: 2px;
+  background: #fff; color: #222; font-size: 15px; outline: none; transition: border-color .2s;
+}
+.consult-form select {
+  appearance: none; -webkit-appearance: none; padding-right: 40px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23888' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 16px center;
+}
+.consult-form select:invalid { color: #999; }
+.consult-form input::placeholder { color: #999; }
+.consult-form input:focus, .consult-form select:focus { border-color: var(--yellow); }
+.consult-form .is-error { border-color: #ff6b6b !important; }
+
+.consult-form__agree { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 22px 0 26px; font-size: 14px; cursor: pointer; }
+.consult-form__agree input { width: 16px; height: 16px; accent-color: var(--navy); }
+.consult-form__agree button { color: #bcd6ff; font-size: 13px; text-decoration: underline; text-underline-offset: 2px; }
+
+.consult-form__submit {
+  display: block; width: 100%; height: 58px; border-radius: 2px;
+  background: var(--navy); color: #fff; font-size: 18px; font-weight: 700;
+  transition: background .2s, transform .2s;
+}
+.consult-form__submit:hover { background: #061436; transform: translateY(-2px); }
+
+/* =========================================================
+   Stats
+========================================================= */
+.stats {
+  position: relative; padding: 96px 0;
+  background: linear-gradient(rgba(36, 60, 110, .72), rgba(36, 60, 110, .72)), url("../images/stats-bg.jpg") center / cover no-repeat, #3c5486;
+  color: #fff;
+}
+.stats__list { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
+.stats__icon { width: 46px; height: 46px; margin: 0 auto 14px; color: #fff; }
+.stats__label { font-size: 15px; opacity: .9; margin-bottom: 4px; }
+.stats__num { font-size: clamp(36px, 5vw, 64px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; }
+
+/* =========================================================
+   Worry
+========================================================= */
+.worry { padding: 100px 0; text-align: center; }
+.worry p { font-size: clamp(16px, 2vw, 22px); font-weight: 700; letter-spacing: -0.02em; }
+.worry__q { color: #222; font-weight: 500 !important; }
+.worry__q strong { font-weight: 800; }
+.worry__a { color: var(--navy-3); margin: 14px 0; }
+.worry__cta span { display: inline-block; padding: 6px 14px; background: var(--navy-2); color: #fff; }
+
+/* =========================================================
+   Who (신청 자격)
+========================================================= */
+.who { padding: 100px 0; background: linear-gradient(180deg, #fafbfd, #f1f3f7); border-top: 1px solid #eef0f4; }
+.who__inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+.who__title { font-size: clamp(28px, 3.8vw, 46px); font-weight: 800; line-height: 1.3; letter-spacing: -0.03em; padding-bottom: 28px; margin-bottom: 32px; border-bottom: 3px solid #555; }
+.who__title b { font-weight: 800; }
+.who__title em { font-style: normal; color: var(--yellow); }
+.who__list li + li { margin-top: 22px; }
+.who__list strong { font-size: clamp(16px, 1.8vw, 20px); font-weight: 800; letter-spacing: -0.02em; }
+.who__list mark { background: linear-gradient(transparent 55%, var(--yellow-soft) 55%); color: inherit; padding: 0 2px; }
+.who__list p { margin-top: 6px; font-size: 13px; color: var(--text-3); }
+
+.who__photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.who__col { display: flex; flex-direction: column; gap: 8px; }
+.who__col > * { width: 100%; object-fit: cover; }
+.who__col:nth-child(1) > *:nth-child(1) { aspect-ratio: 3 / 4; }
+.who__col:nth-child(1) > *:nth-child(2) { aspect-ratio: 3 / 4.4; }
+.who__col:nth-child(1) > *:nth-child(3) { aspect-ratio: 3 / 2.6; }
+.who__col:nth-child(2) > *:nth-child(1) { aspect-ratio: 3 / 3; }
+.who__col:nth-child(2) > *:nth-child(2) { aspect-ratio: 3 / 3.4; }
+.who__col:nth-child(2) > *:nth-child(3) { aspect-ratio: 3 / 4.6; }
+.who__col:nth-child(3) > *:nth-child(1) { aspect-ratio: 3 / 4; }
+.who__col:nth-child(3) > *:nth-child(2) { aspect-ratio: 3 / 4.4; }
+.who__col:nth-child(3) > *:nth-child(3) { aspect-ratio: 3 / 2.6; }
+
+/* =========================================================
+   Merit (장점)
+========================================================= */
+.merit { padding: 110px 0 130px; border-top: 1px solid #eef0f4; }
+.merit__list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: start; max-width: 1000px; margin: 0 auto; }
+.merit__card {
+  position: relative; overflow: hidden; min-height: 330px; padding: 120px 26px 30px;
+  color: #fff; border-radius: 4px; box-shadow: 0 14px 30px rgba(20, 40, 90, .22);
+  transition: transform .3s;
+}
+.merit__card:hover { transform: translateY(-8px) !important; }
+.merit__card--1 { background: #2556a8; }
+.merit__card--2 { background: #1d3a73; margin-top: 80px; }
+.merit__card--3 { background: #5c75a6; margin-top: 40px; }
+.merit__card--4 { background: #1d39a0; }
+.merit__num { position: absolute; top: -8px; left: -6px; font-size: 96px; font-weight: 900; font-style: italic; line-height: 1; color: rgba(255,255,255,.18); letter-spacing: -0.04em; }
+.merit__icon { position: absolute; top: 56px; right: 24px; width: 36px; height: 36px; color: #fff; }
+.merit__card h3 { font-size: 22px; font-weight: 800; line-height: 1.3; margin-bottom: 18px; }
+.merit__card p { font-size: 13px; line-height: 1.6; opacity: .85; }
+
+/* =========================================================
+   Case (성공사례)
+========================================================= */
+.case { padding: 110px 0; background: radial-gradient(ellipse at 30% 20%, #fff 0%, #e4e8f2 50%, #cfd6e6 100%); }
+.sec-title--case .sec-title__sub { color: #fff; text-shadow: 0 2px 12px rgba(30, 58, 115, .2); }
+.case__list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.case__card { background: #fff; box-shadow: 0 10px 30px rgba(20, 40, 90, .12); padding-bottom: 28px; text-align: center; }
+.case__head { background: var(--navy-2); color: #fff; padding: 16px 12px; }
+.case__head p { font-size: 13px; opacity: .85; }
+.case__head strong { display: block; font-size: 15px; color: var(--yellow); font-weight: 700; }
+.case__rows { padding: 18px 26px 6px; text-align: left; }
+.case__rows div { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 2px solid #3a3f4a; font-size: 14px; }
+.case__rows div:first-child { padding-top: 0; }
+.case__rows dt { color: var(--text-3); }
+.case__rows dd { font-weight: 700; }
+.case__rate { margin: 20px 26px 10px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 30px; font-weight: 800; color: var(--navy-2); letter-spacing: -0.02em; }
+.case__desc { font-size: 13px; color: var(--text-2); line-height: 1.7; }
+
+/* =========================================================
+   Process (진행과정)
+========================================================= */
+.process { padding: 110px 0 120px; border-top: 1px solid #eef0f4; }
+.process__list { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; text-align: center; }
+.process__num { display: block; font-size: clamp(32px, 4vw, 54px); font-weight: 900; color: var(--navy-3); line-height: 1; margin-bottom: 18px; letter-spacing: -0.03em; }
+.process__list li:nth-child(n+4) .process__num { color: var(--navy-2); }
+.process__icon { width: 52px; height: 52px; margin: 0 auto 14px; }
+.process__list strong { display: block; min-height: 2.6em; font-size: 16px; font-weight: 800; line-height: 1.3; color: var(--navy-2); }
+.process__list p { margin-top: 8px; font-size: 12px; color: var(--text-3); line-height: 1.5; }
+
+/* =========================================================
+   Compare (제도 비교)
+========================================================= */
+.compare {
+  padding: 90px 0;
+  background: radial-gradient(ellipse at 50% 0%, #2c5684 0%, #1e3c62 55%, #142c4b 100%);
+}
+.compare__title { text-align: center; font-size: clamp(28px, 3.6vw, 42px); font-weight: 800; color: #fff; margin-bottom: 40px; letter-spacing: -0.03em; }
+.compare__box { max-width: 960px; margin: 0 auto; background: #fff; border-radius: 10px; padding: 40px 40px 36px; box-shadow: 0 20px 40px rgba(0,0,0,.25); }
+.compare__table th { padding: 0 10px; border-bottom: 3px solid #2556a8; }
+.compare__table th + th { border-left: 16px solid #fff; }
+.compare__table thead th { height: 64px; background: var(--navy-2); color: #fff; font-size: 16px; font-weight: 700; }
+.compare__table thead th:nth-child(2) { background: #2556a8; }
+.compare__table td { padding: 22px 12px; text-align: center; font-size: 14px; color: var(--text-2); border-bottom: 1px dashed #dde1e8; width: 50%; }
+.compare__table td + td { border-left: 1px solid #e5e8ee; }
+
+/* =========================================================
+   Benefit (접수 혜택)
+========================================================= */
+.benefit { position: relative; padding: 110px 0; background: #fbfcfe; overflow: hidden; }
+.benefit::before {
+  content: "BENEFIT"; position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
+  font-size: 220px; font-weight: 900; letter-spacing: -0.04em; color: transparent;
+  -webkit-text-stroke: 2px rgba(42, 95, 224, .06); white-space: nowrap; pointer-events: none;
+}
+.benefit .inner { position: relative; }
+.benefit__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 40px; max-width: 1000px; margin: 0 auto; }
+.benefit__cols li { position: relative; padding-left: 18px; font-size: 15px; color: var(--text-2); }
+.benefit__cols li + li { margin-top: 14px; }
+.benefit__cols li::before { content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+/* =========================================================
+   Free (무료 법률 상담)
+========================================================= */
+.free { padding: 110px 0 0; background: #f8f8f6; text-align: center; overflow: hidden; }
+.free__title { display: inline-flex; align-items: center; gap: 12px; font-size: clamp(36px, 6vw, 72px); font-weight: 900; color: #1f5a95; letter-spacing: -0.04em; line-height: 1.1; }
+.free__title svg { width: .9em; height: .9em; color: #1f5a95; }
+.free__date { margin: 34px 0; }
+.free__date span { display: inline-block; padding: 14px 36px; border-radius: 8px; background: #1f5a95; color: #fff; font-size: clamp(24px, 3.6vw, 44px); font-weight: 800; letter-spacing: -0.03em; }
+.free__desc { font-size: clamp(18px, 2.8vw, 34px); line-height: 1.45; color: #333; letter-spacing: -0.03em; }
+.free__desc strong { color: #111; font-weight: 800; }
+
+.lawyer { position: relative; max-width: 1000px; margin: 60px auto 0; }
+.lawyer::before { content: ""; position: absolute; left: 50%; top: 10%; width: 90%; height: 80%; transform: translateX(-50%); background: radial-gradient(circle, #fff4cf 0%, rgba(255, 244, 207, 0) 70%); }
+.lawyer__img { position: relative; width: 100%; max-width: 900px; margin: 0 auto; }
+.lawyer__img.img-placeholder { aspect-ratio: 900 / 560; }
+.lawyer__box { position: relative; margin-top: -20px; padding: 36px 20px 40px; border-radius: 8px 8px 0 0; background: #1d4f84; color: #fff; }
+.lawyer__logo { height: 56px; width: auto; margin: 0 auto 22px; }
+.lawyer__logo.img-placeholder { width: 280px; background: rgba(255,255,255,.1); color: rgba(255,255,255,.7); border-color: rgba(255,255,255,.3); }
+.lawyer__box p { font-size: clamp(18px, 2.8vw, 32px); font-weight: 700; line-height: 1.45; letter-spacing: -0.03em; }
+.lawyer__box em { font-style: normal; color: #8fd0ff; }
+
+/* =========================================================
+   Bottom form / Footer
+========================================================= */
+.hero--bottom { padding: 100px 0; }
+.footer { padding: 40px 0 60px; border-top: 1px solid #ddd; text-align: center; }
+.footer__info { font-size: 12px; color: #555; }
+.footer__info i { display: inline-block; width: 1px; height: 10px; margin: 0 8px; background: #ccc; vertical-align: middle; }
+.footer__copy { margin-top: 10px; font-size: 12px; color: #aaa; }
+
+/* =========================================================
+   Modal
+========================================================= */
+.modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; visibility: hidden; opacity: 0; transition: opacity .25s, visibility .25s; }
+.modal.is-open { visibility: visible; opacity: 1; }
+.modal__dim { position: absolute; inset: 0; background: rgba(0,0,0,.55); }
+.modal__box { position: relative; width: 100%; max-width: 480px; padding: 32px 28px 24px; background: #fff; border-radius: 10px; transform: translateY(20px); transition: transform .25s; }
+.modal.is-open .modal__box { transform: none; }
+.modal__box h3 { font-size: 20px; font-weight: 800; margin-bottom: 18px; }
+.modal__body { max-height: 50vh; overflow-y: auto; font-size: 14px; color: var(--text-2); }
+.modal__body p + p { margin-top: 14px; }
+.modal__close { width: 100%; height: 50px; margin-top: 24px; background: var(--navy); color: #fff; font-weight: 700; border-radius: 4px; }
+
+/* =========================================================
+   Scroll reveal
+========================================================= */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* =========================================================
+   Responsive
+========================================================= */
+@media (max-width: 1024px) {
+  .merit__list { grid-template-columns: repeat(2, 1fr); max-width: 640px; }
+  .merit__card--2, .merit__card--3 { margin-top: 0; }
+  .process__list { grid-template-columns: repeat(4, 1fr); row-gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  .header__inner { height: 60px; }
+  .header__logo img, .header__logo .img-placeholder { height: 26px; min-width: 110px; }
+  .header__call { padding: 8px 14px; font-size: 12px; gap: 6px; }
+  .header__call span { display: none; }
+  .header__call strong { font-size: 15px; }
+
+  .sec-title { margin-bottom: 36px; }
+  .hero { padding: 70px 0; }
+  .hero__title { margin-bottom: 30px; }
+  .consult-form__grid { grid-template-columns: 1fr; gap: 10px; }
+  .consult-form__agree { flex-wrap: wrap; font-size: 13px; }
+
+  .stats { padding: 60px 0; }
+  .stats__list { grid-template-columns: 1fr; gap: 36px; }
+
+  .worry, .who, .merit, .case, .process, .benefit { padding: 70px 0; }
+  .who__inner { grid-template-columns: 1fr; }
+
+  .merit__list { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .merit__card { min-height: 280px; padding: 96px 16px 22px; }
+  .merit__num { font-size: 72px; }
+  .merit__icon { top: 44px; right: 16px; width: 28px; height: 28px; }
+  .merit__card h3 { font-size: 18px; }
+
+  .case__list { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+
+  .process__list { grid-template-columns: repeat(2, 1fr); }
+
+  .compare { padding: 70px 0; }
+  .compare__box { padding: 20px 14px; }
+  .compare__table th + th { border-left-width: 8px; }
+  .compare__table thead th { height: 52px; font-size: 14px; }
+  .compare__table td { padding: 16px 6px; font-size: 13px; }
+
+  .benefit::before { font-size: 100px; }
+  .benefit__cols { grid-template-columns: 1fr; gap: 14px; max-width: 320px; }
+
+  .free { padding-top: 70px; }
+  .free__date { margin: 24px 0; }
+  .free__date span { padding: 10px 22px; }
+  .lawyer { margin-top: 40px; }
+  .lawyer__box { margin: -10px -20px 0; border-radius: 0; padding: 28px 20px 32px; }
+  .lawyer__logo { height: 42px; }
+}
