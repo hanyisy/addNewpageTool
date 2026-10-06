@@ -356,8 +356,9 @@ select.field {
 }
 .criteria__desc { padding-left: 1em; font-size: 3.4cqw; color: #4b5563; line-height: 1.7; }
 
-.people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5%; }
-.people .img-slot { aspect-ratio: 4 / 5; }
+/* 다양한 직업 단체 사진 (위쪽 하늘을 조금 잘라 사람에 집중) */
+.people { aspect-ratio: 16 / 10; border-radius: 0.4em; }
+.people img { object-position: 50% 80%; }
 
 /* =========================================================
    Advantages
