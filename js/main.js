@@ -16,6 +16,35 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ---------------------------------------------
+     무료 상담 기간 자동 갱신 (2주 단위)
+     기준일(data-start)부터 data-days 일씩 끊어서 오늘이 속한 기간을 표시
+     예) 기준 9/23, 14일 → 9/23~10/6, 10/7~10/20, 10/21~11/3 ...
+  --------------------------------------------- */
+  var DAY = 24 * 60 * 60 * 1000;
+  function toLocalDate(str) {            // 'YYYY-MM-DD' → 그 날 0시 (현지 시간)
+    var p = str.split('-');
+    return new Date(+p[0], +p[1] - 1, +p[2]);
+  }
+  function fmt(d) { return (d.getMonth() + 1) + '월 ' + d.getDate() + '일'; }
+
+  document.querySelectorAll('.js-period').forEach(function (el) {
+    var start = toLocalDate(el.dataset.start);
+    var days = parseInt(el.dataset.days, 10) || 14;
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var passed = Math.round((today - start) / DAY);          // 서머타임 오차 보정용 round
+    var cycle = Math.floor(passed / days);
+    var from = new Date(start.getFullYear(), start.getMonth(), start.getDate() + cycle * days);
+    var to = new Date(from.getFullYear(), from.getMonth(), from.getDate() + days - 1);
+    el.textContent = fmt(from) + ' ~ ' + fmt(to);
+  });
+
+  // 올해 연도 자동 표시
+  document.querySelectorAll('.js-year').forEach(function (el) {
+    el.textContent = new Date().getFullYear();
+  });
+
+  /* ---------------------------------------------
      스크롤 등장 효과 (AOS)
      AOS를 못 불러오면 data-aos 를 지워서 내용이 숨겨진 채로 남지 않게 함
   --------------------------------------------- */
