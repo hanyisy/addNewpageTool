@@ -289,7 +289,7 @@ select.field {
    Message
    ========================================================= */
 .message {
-  padding: 2.5lh 5%;
+  padding: 2.5lh 2%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -299,7 +299,7 @@ select.field {
 .message p { font-size: 4.9cqw; font-weight: 500; letter-spacing: -0.03em; }
 .message b { font-weight: 900; }
 .message .message__blue { font-weight: 800; color: var(--blue); }
-.message .message__box { font-weight: 800; color: #fff; background: var(--navy); padding: 0.05lh 0.4em; }
+.message .message__box { font-size: 4.3cqw; font-weight: 800; color: #fff; background: var(--navy); padding: 0.05lh 0.4em; white-space: nowrap; }
 
 /* =========================================================
    Eligibility
