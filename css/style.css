@@ -318,20 +318,34 @@ select.field {
 }
 /* 조건 하나씩 카드로 */
 .criteria {
-  padding: 0.8lh 6%;
+  padding: 0.7lh 6%;
   background: #fff;
   border-radius: 0.4em;
   box-shadow: 0 0.2em 0.8em rgba(15, 35, 90, .06);
   display: flex;
   flex-direction: column;
-  gap: 0.4lh;
+  gap: 0.3lh;
 }
 .criteria__title {
-  font-size: 4.5cqw;
+  position: relative;
+  padding-left: 0.85em;
+  font-size: 4cqw;
   font-weight: 800;
   line-height: 1.45;
   color: #333;
   letter-spacing: -0.03em;
+}
+/* 조건 표시 ● (첫 줄 가운데) */
+.criteria__title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5lh;
+  width: 0.45em;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: var(--blue);
+  transform: translateY(-50%);
 }
 /* 형광펜 (줄바꿈돼도 줄마다 이어지게) */
 .criteria__title span {
@@ -340,7 +354,7 @@ select.field {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
-.criteria__desc { font-size: 3.8cqw; color: #4b5563; line-height: 1.7; }
+.criteria__desc { padding-left: 1em; font-size: 3.4cqw; color: #4b5563; line-height: 1.7; }
 
 .people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5%; }
 .people .img-slot { aspect-ratio: 4 / 5; }
