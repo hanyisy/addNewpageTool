@@ -16,30 +16,19 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ---------------------------------------------
-     개인정보 취급방침 모달 (약관 페이지를 iframe으로 표시)
+     개인정보 취급방침 팝업
   --------------------------------------------- */
-  var modal = document.getElementById('privacy');
-  var frame = modal.querySelector('.modal__frame');
-
-  function openPolicy(e) {
-    e.preventDefault();
-    if (frame.getAttribute('src') !== frame.dataset.src) frame.src = frame.dataset.src;
-    modal.hidden = false;
-    modal.querySelector('.modal__close').focus();
-  }
-  function closePolicy() { modal.hidden = true; }
-
-  document.querySelectorAll('.js-open-policy').forEach(function (el) {
-    el.addEventListener('click', openPolicy);
-    el.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') openPolicy(e);
+  document.querySelectorAll('.show-Box1').forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+      var popup = window.open(
+        'https://land.withusmk.co.kr/assets/etc/file/policy.html',
+        '개인정보이용동의',
+        'width=600,height=500,scrollbars=yes'
+      );
+      if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+        alert('팝업 차단이 감지되었습니다! 팝업 허용을 설정해주세요.');
+      }
     });
-  });
-  modal.querySelector('.js-close-policy').addEventListener('click', closePolicy);
-  modal.addEventListener('click', function (e) {
-    if (e.target === modal) closePolicy();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !modal.hidden) closePolicy();
   });
 });

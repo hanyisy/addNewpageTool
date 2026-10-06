@@ -9,7 +9,7 @@
 <script src="js/main.js" defer></script>
 </head>
 <body>
-<div class="wrap"><!-- 글자 크기 cqw 기준 컨테이너 (화면 너비) -->
+<div class="wrap"><!-- 최대 800px 한 줄, 글자 크기 cqw 기준 컨테이너 -->
 
 <!-- Header -->
 <header class="header">
@@ -106,7 +106,7 @@
       <div class="agree">
         <input id="policy" type="checkbox" name="agree1" value="Y" required>
         <label for="policy">개인정보처리방침 동의</label>
-        <span id="show-Box" class="js-open-policy" role="button" tabindex="0">[약관보기]</span>
+        <span id="show-Box" class="show-Box1" role="button" tabindex="0">[약관보기]</span>
       </div>
       <button type="submit" class="btn-cta">무료상담 신청하기</button>
     </form>
@@ -354,7 +354,7 @@
 <!-- Footer -->
 <footer class="footer">
   <div class="footer__inner">
-    <a href="https://land.withusmk.co.kr/assets/etc/file/policy.html" target="_blank" class="footer__policy js-open-policy">개인정보 취급방침</a>
+    <a href="https://land.withusmk.co.kr/assets/etc/file/policy.html" target="_blank" class="footer__policy show-Box1">개인정보 취급방침</a>
     <div class="footer__info">
       <span>상호명 : 법무법인 유온</span>
       <span>주소 : 서울시 서초구 서초대로 51길 14, JH엘로펌애비뉴빌딩 603호</span>
@@ -364,23 +364,12 @@
   </div>
 </footer>
 
-</div><!-- //.wrap -->
-
-<!-- 모바일 하단 고정 버튼 (768px 미만) -->
+<!-- 하단 고정 버튼 (position: sticky, .wrap 안 마지막) -->
 <div class="sticky-cta">
   <a href="#top">무료상담 신청하기</a>
 </div>
 
-<!-- 개인정보 취급방침 모달 -->
-<div class="modal" id="privacy" hidden>
-  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
-    <div class="modal__head">
-      <h3 id="privacyTitle">개인정보 취급방침</h3>
-      <button type="button" class="modal__close js-close-policy" aria-label="닫기">×</button>
-    </div>
-    <iframe class="modal__frame" src="about:blank" data-src="https://land.withusmk.co.kr/assets/etc/file/policy.html" title="개인정보 취급방침"></iframe>
-  </div>
-</div>
+</div><!-- //.wrap -->
 
 </body>
 </html>
