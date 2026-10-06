@@ -402,23 +402,22 @@ select.field {
    Process
    ========================================================= */
 .process { padding: 2.5lh 5%; }
-.steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2lh 4%; }
-.step { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.4lh; }
-/* 7번째(마지막) 단계는 가로 전체로 */
-.step:last-child:nth-child(odd) { grid-column: span 2; }
-.step__no { font-size: 12.3cqw; font-weight: 900; color: var(--blue); letter-spacing: -0.04em; line-height: 1; }
-.step__bar { width: 3em; height: 0.15lh; background: #dbe5ff; border-radius: 0.125em; }
+/* 4개 + 3개 두 줄 (둘째 줄 가운데 정렬) */
+.steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2lh 2%; }
+.step { flex: 0 0 23.5%; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.3lh; }
+.step__no { font-size: 9cqw; font-weight: 900; color: var(--blue); letter-spacing: -0.04em; line-height: 1; }
+.step__bar { width: 40%; height: 0.15lh; background: #dbe5ff; border-radius: 0.125em; }
 .step__title {
   min-height: 2lh;
   display: flex;
   align-items: center;
-  font-size: 4.9cqw;
+  font-size: 3.8cqw;
   font-weight: 800;
   color: var(--blue);
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
-.step__desc { font-size: 4.1cqw; color: #374151; line-height: 1.55; }
+.step__desc { font-size: 3.2cqw; color: #374151; line-height: 1.55; }
 
 /* =========================================================
    Compare
