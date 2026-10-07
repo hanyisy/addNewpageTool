@@ -148,20 +148,20 @@ section { position: relative; overflow: hidden; }
 /* =========================================================
    단계형 신청 폼 (JS가 없으면 모든 단계가 한 번에 보임)
    ========================================================= */
-.apply { padding: 0 5% 2lh; background: linear-gradient(180deg, var(--ink-2) 0, var(--ink-2) 3lh, var(--bg) 3lh); }
+.apply { padding: 0.6lh 5% 2lh; background: linear-gradient(180deg, var(--ink-2) 0, var(--ink-2) 3lh, var(--bg) 3lh); }
 .apply-form {
-  margin-top: -0.6lh;
+  margin-top: 0;
   border-radius: 0.7em;
   overflow: hidden;
   background: #fff;
   box-shadow: 0 1em 2.5em rgba(15, 29, 58, .25);
 }
-.apply-form__head { padding: 0.45lh 6% 0.4lh; border-bottom: 1px solid var(--line); }
+.apply-form__head { padding: 0.9lh 6% 0.6lh; border-bottom: 1px solid var(--line); }
 .apply-form__title { display: flex; justify-content: space-between; align-items: baseline; font-size: 4.4cqw; font-weight: 900; color: var(--ink); letter-spacing: -0.03em; }
 .apply-form__count { font-size: 3.2cqw; font-weight: 800; color: var(--mint-dark); }
 .progress { margin-top: 0.3lh; height: 0.25lh; border-radius: 999em; background: var(--line); overflow: hidden; }
 .progress span { display: block; width: 20%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #4fe0b8, var(--mint)); transition: width .35s ease; }
-.apply-form__body { padding: 0.7lh 6% 0.9lh; }
+.apply-form__body { padding: 0.9lh 6% 1lh; }
 
 .step + .step { margin-top: 0.8lh; }
 .step__q { font-size: 4.8cqw; font-weight: 900; color: var(--ink); letter-spacing: -0.03em; }
