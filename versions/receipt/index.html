@@ -134,13 +134,13 @@ section { position: relative; overflow: hidden; }
 /* =========================================================
    신청 폼 (모든 항목 펼침)
    ========================================================= */
-.apply { padding: 1.6lh 5% 0; background: var(--bg); }
-.apply-form { border-radius: 1em; background: #fff; overflow: hidden; box-shadow: 0 0.6em 1.6em rgba(25, 31, 40, .08); }
-.apply-form__top { display: flex; align-items: center; gap: 0.6em; padding: 0.6lh 6%; background: var(--blue); color: #fff; }
-.apply-form__top .avatar { width: 2.4em; height: 2.4em; font-size: 3.6cqw; background: rgba(255, 255, 255, .2); }
+.apply { padding: 1.6lh 5% 0.2lh; background: linear-gradient(180deg, #2f6ff0 0%, #1f55c9 100%); }
+.apply-form { border-radius: 1em; background: #fff; overflow: hidden; box-shadow: 0 1em 2.4em rgba(10, 30, 80, .3); }
+.apply-form__top { display: flex; align-items: center; gap: 0.6em; padding: 0.7lh 6% 0.5lh; border-bottom: 1px solid var(--line); color: var(--ink); }
+.apply-form__top .avatar { width: 2.4em; height: 2.4em; font-size: 3.6cqw; }
 .apply-form__title { font-size: 5.4cqw; font-weight: 900; line-height: 1.35; letter-spacing: -0.04em; }
-.apply-form__head { font-size: 3.4cqw; font-weight: 600; color: rgba(255, 255, 255, .85); }
-.apply-form__head b { color: var(--cta); }
+.apply-form__head { font-size: 3.4cqw; font-weight: 600; color: var(--sub); }
+.apply-form__head b { color: var(--blue); }
 .apply-form__body { padding: 0.2lh 6% 1lh; }
 .form-q { margin-top: 0.8lh; }
 .form-q__title { font-size: 4.1cqw; font-weight: 800; color: var(--ink); }
@@ -167,9 +167,9 @@ select.field { padding-right: 2em; background: #fff url("data:image/svg+xml,%3Cs
 .safe { margin-top: 0.4lh; text-align: center; font-size: 3cqw; color: var(--sub); }
 .safe::before { content: "🔒 "; }
 
-.trust { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1lh; padding: 0.6lh 0 1.4lh; text-align: center; font-size: 3cqw; color: var(--sub); }
-.trust li + li { border-left: 1px solid var(--line); }
-.trust b { display: block; font-size: 1.5em; font-weight: 900; color: var(--ink); }
+.trust { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1lh; padding: 0.6lh 0 1.4lh; text-align: center; font-size: 3cqw; color: rgba(255, 255, 255, .75); }
+.trust li + li { border-left: 1px solid rgba(255, 255, 255, .25); }
+.trust b { display: block; font-size: 1.5em; font-weight: 900; color: #fff; }
 
 /* FAQ 말풍선 (대화 형태) */
 .bot { display: flex; align-items: flex-start; gap: 0.5em; }
