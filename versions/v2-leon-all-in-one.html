@@ -578,6 +578,8 @@ select.field {
   line-height: 1.7;
   text-align: center;
 }
+/* 월 변제액 강조 */
+.case__pay { color: var(--point-dark); font-size: 1.25em; font-weight: 900; background: linear-gradient(transparent 60%, rgba(255, 176, 32, .4) 60%); }
 
 /* =========================================================
    Process (4개 + 3개 단계 카드)
@@ -1134,15 +1136,15 @@ document.addEventListener('DOMContentLoaded', function () {
             <h3 class="case__who">직장인 · 40대 남성 A씨</h3>
             <p class="case__story">장기 연체로 신용불량이 된 상황</p>
           </div>
-          <div class="case__rate"><b>94%</b>감면</div>
+          <div class="case__rate"><b>96%</b>감면</div>
         </div>
-        <div class="case__bar" aria-hidden="true"><span style="width: 94%"></span></div>
+        <div class="case__bar" aria-hidden="true"><span style="width: 96%"></span></div>
         <dl class="case__nums">
           <div><dt>조정 전 채무</dt><dd>2억5천만원</dd></div>
-          <div><dt>감면된 금액</dt><dd class="c-point">2억3600만원</dd></div>
-          <div><dt>남은 채무</dt><dd>1400만원</dd></div>
+          <div><dt>감면된 금액</dt><dd class="c-point">2억4100만원</dd></div>
+          <div><dt>남은 채무</dt><dd>900만원</dd></div>
         </dl>
-        <p class="case__desc">부양가족 3인 · 월 소득 약 290만원<br>남은 1,400만원은 월 40만원씩 36개월 분할 상환</p>
+        <p class="case__desc">부양가족 3인 · 월 소득 약 290만원<br>남은 900만원은 <strong class="case__pay">월 25만원</strong>씩 36개월 분할 상환</p>
       </article>
       <article class="case" data-aos="fade-up" data-aos-delay="120">
         <div class="case__top">
@@ -1151,15 +1153,15 @@ document.addEventListener('DOMContentLoaded', function () {
             <h3 class="case__who">사업자 · 30대 여성 B씨</h3>
             <p class="case__story">사업 실패로 빚이 크게 늘어난 상황</p>
           </div>
-          <div class="case__rate"><b>95%</b>감면</div>
+          <div class="case__rate"><b>98%</b>감면</div>
         </div>
-        <div class="case__bar" aria-hidden="true"><span style="width: 95%"></span></div>
+        <div class="case__bar" aria-hidden="true"><span style="width: 98%"></span></div>
         <dl class="case__nums">
           <div><dt>조정 전 채무</dt><dd>6억원</dd></div>
-          <div><dt>감면된 금액</dt><dd class="c-point">5억7천만원</dd></div>
-          <div><dt>남은 채무</dt><dd>3천만원</dd></div>
+          <div><dt>감면된 금액</dt><dd class="c-point">5억8800만원</dd></div>
+          <div><dt>남은 채무</dt><dd>1200만원</dd></div>
         </dl>
-        <p class="case__desc">부양가족 3인 · 월 소득 392만원<br>남은 3,000만원은 월 82만원씩 36개월 분할 상환</p>
+        <p class="case__desc">부양가족 3인 · 월 소득 392만원<br>남은 1,200만원은 <strong class="case__pay">월 20만원</strong>씩 60개월 분할 상환</p>
       </article>
       <article class="case" data-aos="fade-up" data-aos-delay="240">
         <div class="case__top">
@@ -1168,15 +1170,15 @@ document.addEventListener('DOMContentLoaded', function () {
             <h3 class="case__who">직장인 · 30대 남성 C씨</h3>
             <p class="case__story">주식·코인 투자 손실로 빚이 불어난 상황</p>
           </div>
-          <div class="case__rate"><b>81%</b>감면</div>
+          <div class="case__rate"><b>97%</b>감면</div>
         </div>
-        <div class="case__bar" aria-hidden="true"><span style="width: 81%"></span></div>
+        <div class="case__bar" aria-hidden="true"><span style="width: 97%"></span></div>
         <dl class="case__nums">
           <div><dt>조정 전 채무</dt><dd>3억2천만원</dd></div>
-          <div><dt>감면된 금액</dt><dd class="c-point">2억6천만원</dd></div>
-          <div><dt>남은 채무</dt><dd>6천만원</dd></div>
+          <div><dt>감면된 금액</dt><dd class="c-point">3억1208만원</dd></div>
+          <div><dt>남은 채무</dt><dd>792만원</dd></div>
         </dl>
-        <p class="case__desc">부양가족 1인 · 월 소득 226만원<br>남은 6,000만원은 월 102만원씩 36개월 분할 상환</p>
+        <p class="case__desc">부양가족 1인 · 월 소득 226만원<br>남은 792만원은 <strong class="case__pay">월 22만원</strong>씩 36개월 분할 상환</p>
       </article>
     </div>
   </div>
