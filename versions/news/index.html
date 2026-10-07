@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>채무조정 리포트 | 1억 5천만원 빚, 월 25만원으로</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+@charset "utf-8";
+/* =========================================================
+   리포트형 랜딩 : 센터가 직접 내는 뉴스레터·전단지 느낌
+   - 레이아웃 : .wrap 최대 800px 한 줄 / 글자 : cqw / 세로 : lh·% / 가로 : %·em
+   ========================================================= */
+:root {
+  --ink: #111;
+  --text: #2b2b2b;
+  --sub: #6b6b6b;
+  --line: #e3e3e3;
+  --red: #c8102e;          /* 섹션 표시·강조 */
+  --green: #17533f;        /* 신청 버튼 */
+  --green-2: #0f3d2e;
+  --mark: #fff1a8;
+  --paper: #fff;
+  --bg: #f4f4f2;
+  --serif: "Noto Serif KR", "Nanum Myeongjo", serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 30px;
+  line-height: 1.6;
+  color: var(--text);
+  background: #e9e9e6;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+  overflow-x: hidden;
+}
+.wrap { position: relative; width: 100%; max-width: 800px; margin: auto; background: var(--paper); container-type: inline-size; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+ul, ol { list-style: none; }
+select { -webkit-appearance: none; appearance: none; border-radius: 0; font: inherit; }
+input::placeholder { color: #a3a3a3; }
+
+@media (min-width: 661px) and (max-width: 730px) { body { font-size: 28px; } }
+@media (min-width: 591px) and (max-width: 660px) { body { font-size: 24px; } }
+@media (min-width: 536px) and (max-width: 590px) { body { font-size: 21px; } }
+@media (min-width: 466px) and (max-width: 535px) { body { font-size: 20px; } }
+@media (min-width: 405px) and (max-width: 465px) { body { font-size: 18px; } }
+@media (min-width: 350px) and (max-width: 404px) { body { font-size: 16px; } }
+@media (max-width: 349px) { body { font-size: 13px; } }
+
+/* =========================================================
+   상단 (제호)
+   ========================================================= */
+.masthead { display: flex; align-items: flex-end; justify-content: space-between; padding: 0.6lh 5% 0.35lh; border-bottom: 3px double var(--ink); }
+.masthead__name { font-family: var(--serif); font-size: 6.4cqw; font-weight: 900; letter-spacing: -0.04em; color: var(--ink); line-height: 1.2; }
+.masthead__name small { display: block; font-family: Pretendard, sans-serif; font-size: 0.42em; font-weight: 600; letter-spacing: 0; color: var(--sub); }
+.masthead__cta { padding: 0.05lh 0.8em; border: 1.5px solid var(--ink); font-size: 3.2cqw; font-weight: 800; color: var(--ink); }
+.issue { padding: 0.25lh 5%; border-bottom: 1px solid var(--line); font-size: 3.1cqw; font-weight: 800; letter-spacing: 0.08em; color: var(--red); }
+
+/* =========================================================
+   기사 머리
+   ========================================================= */
+.article { padding: 1lh 5% 0; }
+.article__cat { display: inline-block; font-size: 3.4cqw; font-weight: 800; color: var(--red); }
+.article__cat::after { content: " | 무료 상담 안내"; color: var(--sub); font-weight: 600; }
+.article__title { margin-top: 0.3lh; font-family: var(--serif); font-size: 8.2cqw; font-weight: 900; line-height: 1.35; letter-spacing: -0.04em; color: var(--ink); }
+.article__title em { font-style: normal; color: var(--green); }
+.article__deck { margin-top: 0.5lh; padding-left: 0.8em; border-left: 3px solid var(--ink); font-size: 4.2cqw; font-weight: 600; line-height: 1.6; color: #444; }
+.article__meta { display: flex; justify-content: space-between; margin-top: 0.7lh; padding: 0.35lh 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 3cqw; color: var(--sub); }
+
+.figure { margin-top: 0.9lh; }
+.figure img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.figure figcaption { margin-top: 0.25lh; font-size: 2.9cqw; color: var(--sub); }
+
+/* 본문 */
+.body { padding: 0.4lh 0 0; font-size: 4.4cqw; line-height: 1.85; color: var(--text); }
+.body p { margin-top: 0.75lh; }
+.body b { color: var(--ink); }
+.body .hl { background: linear-gradient(transparent 55%, var(--mark) 55%); font-weight: 700; color: var(--ink); }
+.body h2 { margin-top: 1.6lh; font-family: var(--serif); font-size: 5.8cqw; font-weight: 900; line-height: 1.4; letter-spacing: -0.03em; color: var(--ink); }
+.body h2::before { content: ""; display: block; width: 1.4em; height: 3px; margin-bottom: 0.35lh; background: var(--red); }
+
+/* 큰 숫자 박스 */
+.fact { margin-top: 1lh; padding: 0.8lh 6%; background: var(--bg); text-align: center; }
+.fact__label { font-size: 3.4cqw; font-weight: 700; color: var(--sub); }
+.fact__row { display: flex; align-items: center; justify-content: center; gap: 0.5em; margin-top: 0.2lh; }
+.fact__before { font-size: 5cqw; font-weight: 700; color: #9a9a9a; text-decoration: line-through; text-decoration-color: var(--red); }
+.fact__arrow { font-size: 5cqw; color: #9a9a9a; }
+.fact__after { font-family: var(--serif); font-size: 12cqw; font-weight: 900; line-height: 1.15; letter-spacing: -0.05em; color: var(--green); }
+.fact__after small { font-size: 0.4em; color: var(--ink); }
+.fact__note { margin-top: 0.15lh; font-size: 3.2cqw; color: var(--sub); }
+
+/* 본문 속 신청 유도 */
+.inline-cta { display: flex; align-items: center; justify-content: space-between; gap: 1em; margin-top: 1lh; padding: 0.55lh 5%; border: 2px solid var(--green); border-radius: 0.4em; }
+.inline-cta p { margin: 0; font-size: 3.8cqw; font-weight: 700; line-height: 1.45; color: var(--ink); }
+.inline-cta p small { display: block; font-size: 0.82em; font-weight: 500; color: var(--sub); }
+.inline-cta a { flex: none; padding: 0.2lh 1em; border-radius: 0.3em; background: var(--green); color: #fff; font-size: 3.6cqw; font-weight: 800; }
+
+/* 사례 표 */
+.table { width: 100%; margin-top: 0.8lh; border-collapse: collapse; font-size: 3.5cqw; line-height: 1.45; }
+.table caption { caption-side: bottom; padding-top: 0.3lh; text-align: left; font-size: 2.8cqw; color: var(--sub); }
+.table th, .table td { padding: 0.35lh 2%; border-bottom: 1px solid var(--line); text-align: center; }
+.table thead th { border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); font-weight: 800; color: var(--ink); background: var(--bg); }
+.table tbody th { text-align: left; font-weight: 700; color: var(--ink); }
+.table tbody th small { display: block; font-weight: 500; color: var(--sub); }
+.table td s { color: #9a9a9a; }
+.table td strong { font-size: 1.25em; font-weight: 900; color: var(--green); }
+
+/* 체크 목록 */
+.checks { margin-top: 0.6lh; }
+.checks li { position: relative; padding: 0.3lh 0 0.3lh 1.6em; border-bottom: 1px dashed var(--line); }
+.checks li::before { content: "✔"; position: absolute; left: 0.2em; top: 0.3lh; color: var(--green); font-weight: 900; }
+.checks small { display: block; font-size: 0.82em; color: var(--sub); line-height: 1.5; }
+
+/* 진행 순서 */
+.steps { margin-top: 0.6lh; counter-reset: step; }
+.steps li { position: relative; padding: 0.25lh 0 0.25lh 2.2em; counter-increment: step; }
+.steps li::before { content: counter(step); position: absolute; left: 0; top: 0.3lh; display: grid; place-items: center; width: 1.5em; height: 1.5em; border-radius: 50%; background: var(--ink); color: #fff; font-size: 0.85em; font-weight: 800; line-height: 1; }
+
+/* =========================================================
+   신청 폼 (기사 안 박스)
+   ========================================================= */
+.apply { margin: 1.4lh 0 0; border: 2px solid var(--ink); }
+.apply__head { padding: 0.55lh 6%; background: var(--ink); color: #fff; }
+.apply__head h2 { margin: 0; font-family: var(--serif); font-size: 5.6cqw; font-weight: 900; line-height: 1.35; color: #fff; }
+.apply__head h2::before { display: none; }
+.apply-form__head { margin-top: 0.1lh; font-size: 3.6cqw; color: rgba(255, 255, 255, .8); }
+.apply-form__head b { color: var(--mark); }
+.apply-form { padding: 0.2lh 6% 1lh; font-size: 4cqw; line-height: 1.6; }
+.form-q { margin-top: 0.75lh; }
+.form-q__title { font-size: 4cqw; font-weight: 800; color: var(--ink); }
+.form-q + * { margin-top: 0.3lh; }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.4em; }
+.opts--1 { grid-template-columns: 1fr; }
+.opt { position: relative; cursor: pointer; }
+.opt input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.opt span { display: block; padding: 0.3lh 0.4em; border: 1.5px solid #cfcfcf; background: #fff; text-align: center; font-size: 3.8cqw; font-weight: 600; color: var(--text); transition: border-color .15s, background .15s; }
+.opt:hover span { border-color: #999; }
+.opt input:checked + span { border: 2px solid var(--green); background: #eaf3ee; color: var(--green); font-weight: 800; }
+.opt input:focus-visible + span { outline: 3px solid var(--mark); outline-offset: 2px; }
+.field { width: 100%; padding: 0.35lh 0.8em; border: 1.5px solid #cfcfcf; border-radius: 0; background: #fff; color: var(--ink); font: inherit; font-size: 3.9cqw; outline: none; }
+.field:focus { border: 2px solid var(--green); }
+select.field { padding-right: 2em; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0h10L5 6z' fill='%23111'/%3E%3C/svg%3E") no-repeat right 0.8em center / 0.5em; }
+.phone { display: grid; grid-template-columns: 1fr 1.2fr 1.2fr; gap: 0.4em; }
+.phone .field { padding-left: 0.5em; padding-right: 0.5em; text-align: center; }
+.phone select.field { padding-right: 1.4em; background-position: right 0.5em center; }
+.agree { display: flex; align-items: center; gap: 0.45em; margin: 0.8lh 0 0.5lh; font-size: 3.7cqw; }
+.agree input { width: 1.15em; height: 1.15em; accent-color: var(--green); }
+.agree #show-Box { margin-left: auto; color: var(--sub); text-decoration: underline; cursor: pointer; }
+.btn-cta { display: block; width: 100%; padding: 0.45lh 0; border: 0; background: var(--green); color: #fff; font: inherit; font-size: 4.8cqw; font-weight: 800; line-height: 1.5; text-align: center; cursor: pointer; transition: background .15s; }
+.btn-cta:hover { background: var(--green-2); }
+.safe { margin-top: 0.4lh; text-align: center; font-size: 3.1cqw; color: var(--sub); }
+
+/* Q&A */
+.qa dt { margin-top: 0.7lh; font-weight: 800; color: var(--ink); }
+.qa dt::before { content: "Q. "; color: var(--red); }
+.qa dd { margin-top: 0.15lh; color: var(--text); }
+.qa dd::before { content: "A. "; font-weight: 800; color: var(--green); }
+
+/* 기사 끝 */
+.article__end { margin-top: 1.4lh; padding: 0.6lh 0 0; border-top: 1px solid var(--line); font-size: 3cqw; color: var(--sub); line-height: 1.7; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.4em; margin-top: 0.4lh; }
+.tags span { padding: 0 0.6em; background: var(--bg); font-size: 3cqw; color: var(--sub); }
+
+/* Footer */
+.footer { margin-top: 1.6lh; padding: 1.2lh 5% 2lh; background: var(--bg); text-align: center; font-size: 2.9cqw; line-height: 1.75; color: #555; }
+.footer__ad { margin-bottom: 0.5lh; font-weight: 700; color: var(--ink); }
+.footer__policy { display: inline-block; margin-bottom: 0.4lh; font-weight: 700; text-decoration: underline; }
+.footer__info span { display: block; white-space: pre-line; }
+.footer__copy { margin-top: 0.3lh; color: #999; }
+
+/* 하단 고정 바 (폼이 안 보일 때만) */
+.sticky-cta { position: sticky; bottom: 0; z-index: 60; display: flex; align-items: center; gap: 0.8em; padding: 0.3lh 5%; background: #fff; border-top: 2px solid var(--ink); transition: transform .25s, opacity .25s; }
+.sticky-cta p { flex: 1; font-size: 3.5cqw; font-weight: 700; line-height: 1.4; color: var(--ink); }
+.sticky-cta p small { display: block; font-size: 0.8em; font-weight: 500; color: var(--sub); }
+.sticky-cta a { flex: none; padding: 0.25lh 1.1em; background: var(--green); color: #fff; font-size: 4cqw; font-weight: 800; }
+.sticky-cta.is-hidden { transform: translateY(100%); opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- 제호 -->
+<header class="masthead">
+  <p class="masthead__name"><small>채무조정지원센터</small>채무조정 리포트</p>
+  <a href="#apply" class="masthead__cta">무료 상담</a>
+</header>
+<p class="issue">VOL. <span class="js-year">2026</span> · 개인회생 특집</p>
+
+<!-- 기사 -->
+<article class="article">
+  <span class="article__cat">개인회생</span>
+  <h1 class="article__title">1억 5천만원 빚,<br><em>월 25만원</em>으로 줄었다</h1>
+  <p class="article__deck">이자는 전액, 원금은 최대 95%까지…<br>채무 2천만원 이상이라면 개인회생을 검토해볼 만하다</p>
+  <p class="article__meta"><span>글 · 채무조정지원센터</span><span>읽는 시간 약 2분</span></p>
+
+  <figure class="figure">
+    <img src="https://land.withusmk.co.kr/assets/law/%EC%B1%84%EB%AC%B4%EC%A7%80%EC%9B%90/ver4/stats-bg.jpg" alt="">
+    <figcaption>사진은 이해를 돕기 위한 이미지입니다.</figcaption>
+  </figure>
+
+  <div class="body">
+    <p>40대 직장인 A씨는 장기 연체로 신용불량 상태였다. 갚아야 할 돈은 <b>1억 5천만원</b>. 월급 약 290만원으로 부양가족 3명을 책임지며 이자를 감당하기란 불가능에 가까웠다.</p>
+    <p>A씨가 선택한 방법은 <b>개인회생</b>이었다. 법원의 인가를 받은 결과, A씨가 갚을 돈은 900만원으로 줄었다. <span class="hl">36개월 동안 한 달에 25만원씩</span>만 갚으면 나머지 빚은 면책된다.</p>
+
+    <div class="fact">
+      <p class="fact__label">A씨의 한 달 갚는 돈</p>
+      <div class="fact__row"><span class="fact__before">1억5천만원</span><span class="fact__arrow" aria-hidden="true">→</span><span class="fact__after">25<small>만원</small></span></div>
+      <p class="fact__note">900만원 · 36개월 · 94% 감면</p>
+    </div>
+
+    <h2>개인회생, 무엇이 달라지나</h2>
+    <p>개인회생은 갚을 능력보다 빚이 많은 사람이 법원을 통해 <b>갚을 수 있는 만큼으로 빚을 다시 정하는 제도</b>다. 인가를 받으면 <span class="hl">이자는 전액, 원금은 최대 95%까지</span> 줄어들 수 있고, 독촉과 압류도 멈춘다. 가진 재산을 지키면서 변제할 수 있다는 점도 장점이다.</p>
+
+    <div class="inline-cta">
+      <p>내 빚은 얼마나 줄어들까?<small>1분 신청 · 상담 비용 0원</small></p>
+      <a href="#apply">무료 상담</a>
+    </div>
+
+    <h2>누가 신청할 수 있나</h2>
+    <p>아래 3가지에 해당하면 신청을 검토할 수 있다.</p>
+    <ul class="checks">
+      <li><b>꾸준한 소득이 있다</b><small>직장인·사업자·프리랜서·아르바이트·일용직 모두 가능</small></li>
+      <li><b>가진 재산보다 빚이 더 많다</b><small>연체 전이어도, 연체 중이어도 상관없다</small></li>
+      <li><b>최근 5년 안에 면책받은 적이 없다</b><small>처음 신청하는 경우라면 해당된다</small></li>
+    </ul>
+
+    <!-- 신청 폼 -->
+    <section class="apply" id="apply">
+      <div class="apply__head">
+        <h2>개인회생 무료 상담 신청</h2>
+        <div class="apply-form__head">채무 2천만원 이상이라면 <b>1분이면 신청 완료</b></div>
+      </div>
+      <form class="apply-form" id="applyForm" name="applyForm" method="post" action="apply.html">
+        <div class="form-q">
+          <div class="form-q__title">채무금액</div>
+        </div>
+        <div class="opts opts--1">
+          <label class="opt"><input type="radio" name="option1" value="2천~5천" required><span>2,000만원 ~ 5,000만원</span></label>
+          <label class="opt"><input type="radio" name="option1" value="5천~7천" required><span>5,000만원 ~ 7,000만원</span></label>
+          <label class="opt"><input type="radio" name="option1" value="7천~1억" required><span>7,000만원 ~ 1억원</span></label>
+          <label class="opt"><input type="radio" name="option1" value="1억이상" required><span>1억원 이상</span></label>
+        </div>
+
+        <div class="form-q">
+          <div class="form-q__title">성함</div>
+        </div>
+        <input class="field" type="text" name="name" placeholder="성함" autocomplete="name" required>
+
+        <div class="form-q">
+          <div class="form-q__title">연락처</div>
+        </div>
+        <div class="phone">
+          <select class="field" name="tel1" required>
+            <option>010</option><option>011</option><option>016</option><option>017</option><option>018</option><option>019</option>
+          </select>
+          <input class="field" type="text" name="tel2" inputmode="numeric" maxlength="4" pattern="[0-9]{3,4}" title="숫자 3~4자리" placeholder="연락처" required>
+          <input class="field" type="text" name="tel3" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" title="숫자 4자리" placeholder="연락처" required>
+        </div>
+
+        <div class="form-q">
+          <div class="form-q__title">월소득</div>
+        </div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="option2" value="200만원미만" required><span>200만원 미만</span></label>
+          <label class="opt"><input type="radio" name="option2" value="300만원미만" required><span>300만원 미만</span></label>
+          <label class="opt"><input type="radio" name="option2" value="300만원이상" required><span>300만원 이상</span></label>
+          <label class="opt"><input type="radio" name="option2" value="없음" required><span>없음</span></label>
+        </div>
+
+        <div class="form-q">
+          <div class="form-q__title">기혼자 유무</div>
+        </div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="option3" value="있음" required><span>있음</span></label>
+          <label class="opt"><input type="radio" name="option3" value="없음" required><span>없음</span></label>
+        </div>
+
+        <div class="form-q">
+          <div class="form-q__title">통화 가능 시간</div>
+        </div>
+        <select class="field" name="option4" required>
+          <option value="">- 통화 가능 시간 선택 -</option>
+          <option value="09시11시">09:00 ~ 11:00</option>
+          <option value="12시14시">12:00 ~ 14:00</option>
+          <option value="14시16시">14:00 ~ 16:00</option>
+          <option value="16시19시">16:00 ~ 19:00</option>
+          <option value="언제든가능">언제든 가능</option>
+        </select>
+
+        <div class="agree">
+          <input id="policy" type="checkbox" name="agree1" value="Y" required>
+          <label for="policy">개인정보처리방침 동의</label>
+          <span id="show-Box" class="show-Box1" role="button" tabindex="0">[약관보기]</span>
+        </div>
+        <button type="submit" class="btn-cta">지금 무료상담 신청하기</button>
+        <p class="safe">입력하신 정보는 상담 외 목적으로 쓰이지 않습니다</p>
+      </form>
+    </section>
+
+    <h2>다른 사례도 비슷했다</h2>
+    <p>A씨만의 이야기가 아니다. 소득과 가족 상황에 따라 차이는 있지만, 개인회생을 통해 <b>한 달 20만원대</b>로 변제하는 사례는 적지 않다.</p>
+    <table class="table">
+      <caption>* 실제 사례이며, 결과는 법원의 심사와 개인의 소득·재산·채무 상황에 따라 다릅니다.</caption>
+      <thead><tr><th scope="col">사례</th><th scope="col">조정 전</th><th scope="col">한 달</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">A씨 (40대 직장인)<small>36개월 · 94% 감면</small></th><td><s>1억5천만원</s></td><td><strong>25만원</strong></td></tr>
+        <tr><th scope="row">B씨 (30대 사업자)<small>60개월 · 98% 감면</small></th><td><s>6억원</s></td><td><strong>20만원</strong></td></tr>
+        <tr><th scope="row">C씨 (30대 직장인)<small>36개월 · 93% 감면</small></th><td><s>1억1천만원</s></td><td><strong>22만원</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h2>신청은 어떻게 하나</h2>
+    <ol class="steps">
+      <li><b>무료 상담 신청</b> — 1분이면 끝난다</li>
+      <li><b>전화 상담·자격 확인</b> — 가능 여부와 예상 변제금 안내</li>
+      <li><b>서류 준비·법원 접수</b> — 서류 발급부터 접수까지 지원</li>
+      <li><b>변제·면책</b> — 정해진 금액을 갚으면 남은 빚이 사라진다</li>
+    </ol>
+
+    <h2>자주 묻는 질문</h2>
+    <dl class="qa">
+      <dt>상담 비용이 드나요?</dt><dd>상담 비용은 받지 않습니다. 상담 후 진행 여부는 천천히 결정하셔도 됩니다.</dd>
+      <dt>회사나 가족에게 알려지나요?</dt><dd>모든 상담은 1:1 비밀 보장으로 진행됩니다.</dd>
+      <dt>이미 연체 중이어도 되나요?</dt><dd>네. 연체 전이어도, 연체 중이어도 신청할 수 있습니다.</dd>
+      <dt>신청하면 언제 연락이 오나요?</dt><dd>신청하실 때 선택하신 통화 가능 시간에 맞춰 연락드립니다.</dd>
+    </dl>
+
+    <div class="inline-cta">
+      <p>혼자 고민하는 동안에도 이자는 늘어납니다<small>채무 2천만원 이상 · 1분 신청</small></p>
+      <a href="#apply">무료 상담</a>
+    </div>
+  </div>
+
+  <div class="article__end">
+    <p>※ 감면율(최대 95%) 및 이자 면제 등은 법원의 심사 결과 및 개인의 소득·재산·채무 상황에 따라 달라질 수 있으며, 확정된 결과를 보장하지 않습니다.</p>
+    <div class="tags"><span>#개인회생</span><span>#채무조정</span><span>#이자감면</span><span>#무료상담</span></div>
+  </div>
+</article>
+
+<!-- Footer -->
+<footer class="footer">
+  <a href="https://land.withusmk.co.kr/assets/etc/file/policy.html" target="_blank" class="footer__policy show-Box1">개인정보 취급방침</a>
+  <div class="footer__info">
+    <span>상호명 : 법무법인 레온</span>
+    <span>사업장 소재지 : 경기도 부천시 원미구 상일로 130, 11층</span>
+    <span>사업자번호 : 426-87-03573</span>
+  </div>
+  <p class="footer__copy">© 법무법인 레온 All rights reserved.</p>
+</footer>
+
+<!-- 하단 고정 바 -->
+<div class="sticky-cta">
+  <p>내 빚도 월 20만원대로 줄일 수 있을까?<small>채무 2천만원 이상 · 상담 비용 0원</small></p>
+  <a href="#apply">무료 상담</a>
+</div>
+
+</div><!-- //.wrap -->
+
+<script>
+/* 폼 전송·유효성 검사는 브라우저 기본 동작(required / pattern)에 맡깁니다. */
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.js-year').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+  // 연락처 숫자만 입력
+  document.querySelectorAll('[name=tel2],[name=tel3]').forEach(function (inp) {
+    inp.addEventListener('input', function () { inp.value = inp.value.replace(/[^0-9]/g, ''); });
+  });
+
+  // 하단 바 : 신청 폼이 화면에 보이면 숨김
+  var sticky = document.querySelector('.sticky-cta');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      sticky.classList.toggle('is-hidden', entries[0].isIntersecting);
+    }, { threshold: 0.1 }).observe(document.getElementById('apply'));
+  }
+
+  // 약관 팝업
+  document.querySelectorAll('.show-Box1').forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+      var popup = window.open('https://land.withusmk.co.kr/assets/etc/file/policy.html', '개인정보이용동의', 'width=600,height=500,scrollbars=yes');
+      if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+        alert('팝업 차단이 감지되었습니다! 팝업 허용을 설정해주세요.');
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
