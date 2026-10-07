@@ -13,23 +13,23 @@
    - 레이아웃 : .wrap 최대 800px 한 줄 / 글자 : cqw / 세로 : lh·% / 가로 : %·em
    ========================================================= */
 :root {
-  /* 컬러 : 네이비 + 블루 + 골드 CTA */
-  --ink: #0f1f4b;          /* 메인 네이비 */
-  --ink-2: #1a2f6b;
-  --mint: #2b5cd9;         /* 포인트 블루 (변수명은 그대로) */
-  --mint-dark: #1e46b3;
-  --mint-soft: #ebf0fc;
+  /* 컬러 : 딥그린 + 그린 + 골드 CTA */
+  --ink: #0d3b2e;          /* 메인 딥그린 */
+  --ink-2: #14523f;
+  --mint: #1e8a5a;         /* 포인트 그린 (변수명은 그대로) */
+  --mint-dark: #166c46;
+  --mint-soft: #e8f4ed;
   --cta: #f2b631;          /* 신청 버튼 (골드) */
   --cta-2: #e0a11b;
   --cta-shadow: #b37d0e;
-  --cta-text: #0f1f4b;     /* 골드 위 글씨는 네이비 */
+  --cta-text: #0d3b2e;     /* 골드 위 글씨는 딥그린 */
   --hl: #ffd76a;           /* 어두운 배경 위 강조 (라이트 골드) */
-  --gold-text: #b8860b;    /* 흰 배경 위 강조 숫자 (진한 골드) */
+  --gold-text: #a87a0a;    /* 흰 배경 위 강조 숫자 (진한 골드) */
   --red: #ef4444;
   --text: #1f2937;
   --sub: #5b6577;
-  --line: #e3e8f2;
-  --bg: #f4f6fc;
+  --line: #dfe9e3;
+  --bg: #f2f7f4;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -114,7 +114,7 @@ section { position: relative; overflow: hidden; }
 .hero {
   padding: 1.8lh 5% 2lh;
   background:
-    radial-gradient(circle at 90% 0%, rgba(43, 92, 217, .5), transparent 50%),
+    radial-gradient(circle at 90% 0%, rgba(30, 138, 90, .45), transparent 50%),
     linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
   color: #fff;
   text-align: center;
@@ -165,7 +165,7 @@ section { position: relative; overflow: hidden; }
 .apply-form__title { display: flex; justify-content: space-between; align-items: baseline; font-size: 4.4cqw; font-weight: 900; color: var(--ink); letter-spacing: -0.03em; }
 .apply-form__count { font-size: 3.2cqw; font-weight: 800; color: var(--mint-dark); }
 .progress { margin-top: 0.3lh; height: 0.25lh; border-radius: 999em; background: var(--line); overflow: hidden; }
-.progress span { display: block; width: 20%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #7d9cf0, var(--mint)); transition: width .35s ease; }
+.progress span { display: block; width: 20%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #7cc9a2, var(--mint)); transition: width .35s ease; }
 .apply-form__body { padding: 0.9lh 6% 1lh; }
 
 .step + .step { margin-top: 0.8lh; }

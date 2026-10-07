@@ -7,7 +7,8 @@
 | v2 | `versions/v2/` (`index.html` + `css/` + `js/`) | 섹션 디자인을 많이 바꾼 버전 (라벨 + 제목, 말풍선, 3열 비교표 등) |
 | v2 (한 파일) | `versions/v2-all-in-one.html` | 위 v2를 HTML 하나로 합친 것 |
 | 메인 레온 (한 파일) | `versions/main-leon-all-in-one.html` | 메인 + 법무법인 레온 푸터, 변호사 사진 영역 주석 처리, 입력폼 항목·감면 사례 변경 |
-| 전환형 새 랜딩 (한 파일) | `versions/new-cv/index.html` | 레온 정보 기반 새 구성: 단계형 폼, 마감 카운트다운, 월 변제금 사례, 3초 자가진단, FAQ |
+| 전환형 새 랜딩 (한 파일) | `versions/new-cv/index.html` | 레온 정보 기반 새 구성: 단계형 폼, 마감 카운트다운, 월 변제금 사례, 3초 자가진단, FAQ (네이비 + 골드) |
+| 전환형 컬러 3종 | `versions/new-cv/navy-gold.html` · `green-gold.html` · `charcoal-lime.html` | 위 새 랜딩과 내용·폼은 같고 색만 다름 (네이비+골드 = index.html과 동일) |
 | v2 레온 (한 파일) | `versions/v2-leon-all-in-one.html` | v2 + 법무법인 레온 푸터, 변호사 사진 영역 주석 처리, 입력폼 항목 변경 |
 
 - 메인·v2 입력폼: `apply.html` POST, name / tel1~3 / option1·2·5·6·7 / agree1
