@@ -13,7 +13,7 @@
    - 안내 카드 → [지금 상담 신청하기] 또는 [좀 더 알아볼게요]
    - 좀 더 알아보기 : 사례 / 신청 조건 / 비용·비밀 중 골라서 보고, 본 건 빠진 채로 다시 질문
    - 상담 신청 : 질문 4개 + 연락처 (실제 신청 폼)
-   - 폼 아래 : 신청을 시작하면, 아직 안 본 내용만 스크롤에 맞춰 등장 (AOS)
+   - 폼 아래 : 신청 보내기 폼이 나온 뒤, 아직 안 본 내용만 스크롤에 맞춰 등장 (AOS)
    - 레이아웃 : .wrap 최대 800px 한 줄 / 글자 : cqw / 세로 : lh·% / 가로 : %·em
    ========================================================= */
 :root {
@@ -657,6 +657,11 @@ document.addEventListener('DOMContentLoaded', function () {
     stepEl.textContent = shown < 0 ? '무료 상담' : (shown + 1) + ' / 5';
     dockText.textContent = shown > 0 ? '답변 이어하기 (' + (shown + 1) + '/5)' : '무료 상담 메시지 보내기…';
   }
+  // 폼 아래 내용 : 마지막(연락처 + 신청 보내기) 질문이 나온 뒤, 아직 안 본 주제가 있을 때만 보여줌
+  function showMore() {
+    more.hidden = !more.querySelector('.more-topic:not([hidden])');
+    if (window.AOS) AOS.refresh();
+  }
   function reveal(i, instant) {
     if (i <= shown || i >= turns.length) return;
     function open() {
@@ -665,6 +670,7 @@ document.addEventListener('DOMContentLoaded', function () {
       hideTyping();
       busy = false;
       updateStep();
+      if (shown === turns.length - 1) showMore();
       if (!instant) scrollTo(turns[i]);
     }
     if (instant) return open();
@@ -679,9 +685,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // 열려 있는 선택 버튼은 정리
     log.querySelectorAll('.acts').forEach(function (b) { b.remove(); });
     reveal(0);
-    // 폼 아래 내용은 신청을 시작한 뒤에만, 아직 안 본 주제가 있을 때만 보여줌
-    more.hidden = !more.querySelector('.more-topic:not([hidden])');
-    if (window.AOS) setTimeout(function () { AOS.refresh(); }, WAIT + 50);
   }
   form.querySelectorAll('.chip input').forEach(function (r) {
     r.addEventListener('change', function () {
