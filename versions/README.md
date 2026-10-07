@@ -9,7 +9,7 @@
 | 메인 레온 (한 파일) | `versions/main-leon-all-in-one.html` | 메인 + 법무법인 레온 푸터, 변호사 사진 영역 주석 처리, 입력폼 항목·감면 사례 변경 |
 | 전환형 새 랜딩 (한 파일) | `versions/new-cv/index.html` | 레온 정보 기반 새 구성: 단계형 폼, 마감 카운트다운, 월 변제금 사례, 3초 자가진단, FAQ (네이비 + 골드) |
 | 전환형 컬러 3종 | `versions/new-cv/navy-gold.html` · `green-gold.html` · `charcoal-lime.html` | 위 새 랜딩과 내용·폼은 같고 색만 다름 (네이비+골드 = index.html과 동일) |
-| 메시지 버전 (한 파일) | `versions/message/index.html` | 페이지 전체가 대화창: 안내 카드 → 질문 5개를 말풍선으로 하나씩 → 사례·조건·FAQ 도 대화로 (메신저 블루 + 노랑) |
+| 메시지 버전 (한 파일) | `versions/message/index.html` | 챗봇·알림봇 느낌: 감면 영수증 히어로 → 상담 매니저와 대화하듯 답하는 신청 폼 → 사례 카드 넘기기, 지금 vs 개인회생 후 비교표, 대화형 FAQ (블루 + 옐로) |
 | 입력폼 버전 (한 파일) | `versions/form/index.html` | 모든 항목을 한 번에 펼친 신청서 + 작성 진행 표시, 막대 그래프 사례, 왜 지금 상담해야 하는지 (인디고 + 코랄) |
 | v2 레온 (한 파일) | `versions/v2-leon-all-in-one.html` | v2 + 법무법인 레온 푸터, 변호사 사진 영역 주석 처리, 입력폼 항목 변경 |
 
