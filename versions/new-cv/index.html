@@ -13,18 +13,21 @@
    - 레이아웃 : .wrap 최대 800px 한 줄 / 글자 : cqw / 세로 : lh·% / 가로 : %·em
    ========================================================= */
 :root {
-  --ink: #0f1d3a;          /* 메인 남색 */
-  --ink-2: #1c2d55;
-  --mint: #16b88f;         /* 포인트 민트 */
-  --mint-dark: #0c8a6a;
-  --mint-soft: #e7f8f2;
-  --cta: #ffcf33;          /* 신청 버튼 */
-  --cta-shadow: #e0a800;
+  /* 컬러 : 로열 네이비 + 브라이트 블루 + 오렌지 CTA */
+  --ink: #14215a;          /* 메인 남색 */
+  --ink-2: #1f3384;
+  --mint: #2f6bff;         /* 포인트 블루 (변수명은 그대로) */
+  --mint-dark: #1f4fd6;
+  --mint-soft: #eaf0ff;
+  --cta: #ff7a2f;          /* 신청 버튼 (오렌지) */
+  --cta-shadow: #d65a14;
+  --cta-text: #fff;
+  --hl: #ffd25c;           /* 강조 글자 (노랑) */
   --red: #ef4444;
   --text: #1f2937;
   --sub: #5b6577;
-  --line: #e5e9f0;
-  --bg: #f5f7fb;
+  --line: #e3e8f2;
+  --bg: #f4f6fc;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -67,7 +70,7 @@ section { position: relative; overflow: hidden; }
   border: 0;
   border-radius: 0.5em;
   background: var(--cta);
-  color: var(--ink);
+  color: var(--cta-text);
   font: inherit;
   font-size: 5cqw;
   font-weight: 900;
@@ -97,7 +100,7 @@ section { position: relative; overflow: hidden; }
   font-size: 3.2cqw;
   font-weight: 700;
 }
-.topbar__deadline b { color: var(--cta); font-variant-numeric: tabular-nums; }
+.topbar__deadline b { color: var(--hl); font-variant-numeric: tabular-nums; }
 .header { padding: 0.35lh 4%; background: #fff; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
 .logo { display: flex; align-items: center; gap: 0.35em; font-size: 4.2cqw; font-weight: 900; color: var(--ink); letter-spacing: -0.03em; }
 .logo i { width: 0.9em; height: 0.9em; border-radius: 0.25em; background: var(--mint); }
@@ -109,7 +112,7 @@ section { position: relative; overflow: hidden; }
 .hero {
   padding: 1.8lh 5% 2lh;
   background:
-    radial-gradient(circle at 90% 0%, rgba(22, 184, 143, .35), transparent 45%),
+    radial-gradient(circle at 90% 0%, rgba(47, 107, 255, .55), transparent 50%),
     linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
   color: #fff;
   text-align: center;
@@ -130,7 +133,7 @@ section { position: relative; overflow: hidden; }
   line-height: 1.3;
   letter-spacing: -0.05em;
 }
-.hero__title em { font-style: normal; color: var(--cta); }
+.hero__title em { font-style: normal; color: var(--hl); }
 .hero__sub { margin-top: 0.5lh; font-size: 4cqw; font-weight: 600; color: rgba(255, 255, 255, .85); }
 .hero__note { margin-top: 0.2lh; font-size: 2.6cqw; color: rgba(255, 255, 255, .55); }
 .trust { margin-top: 0.8lh; display: flex; justify-content: center; gap: 2%; }
@@ -143,7 +146,7 @@ section { position: relative; overflow: hidden; }
   font-weight: 700;
   line-height: 1.35;
 }
-.trust b { display: block; font-size: 1.5em; color: var(--mint); font-weight: 900; }
+.trust b { display: block; font-size: 1.5em; color: #9db8ff; font-weight: 900; }
 
 /* =========================================================
    단계형 신청 폼 (JS가 없으면 모든 단계가 한 번에 보임)
@@ -160,7 +163,7 @@ section { position: relative; overflow: hidden; }
 .apply-form__title { display: flex; justify-content: space-between; align-items: baseline; font-size: 4.4cqw; font-weight: 900; color: var(--ink); letter-spacing: -0.03em; }
 .apply-form__count { font-size: 3.2cqw; font-weight: 800; color: var(--mint-dark); }
 .progress { margin-top: 0.3lh; height: 0.25lh; border-radius: 999em; background: var(--line); overflow: hidden; }
-.progress span { display: block; width: 20%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #4fe0b8, var(--mint)); transition: width .35s ease; }
+.progress span { display: block; width: 20%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #7fa4ff, var(--mint)); transition: width .35s ease; }
 .apply-form__body { padding: 0.9lh 6% 1lh; }
 
 .step + .step { margin-top: 0.8lh; }
@@ -273,8 +276,8 @@ select.field {
 .case__main { padding: 0.6lh 6% 0.7lh; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; text-align: center; gap: 0.5em; }
 .case__main small { display: block; font-size: 2.9cqw; color: var(--sub); }
 .case__before { font-size: 4.4cqw; font-weight: 700; color: #a2abb8; text-decoration: line-through; }
-.case__arrow { font-size: 5cqw; font-weight: 900; color: var(--mint); }
-.case__pay { font-size: 7.4cqw; font-weight: 900; color: var(--mint-dark); letter-spacing: -0.04em; line-height: 1.2; }
+.case__arrow { font-size: 5cqw; font-weight: 900; color: var(--cta); }
+.case__pay { font-size: 7.4cqw; font-weight: 900; color: var(--cta); letter-spacing: -0.04em; line-height: 1.2; }
 .case__pay span { font-size: 0.5em; }
 .case__foot { padding: 0.35lh 6%; background: var(--bg); text-align: center; font-size: 3.1cqw; color: var(--sub); }
 .case__foot b { color: var(--ink); }
@@ -325,7 +328,7 @@ select.field {
   text-align: center;
 }
 .check__result p { font-size: 4.2cqw; font-weight: 800; }
-.check__result p b { color: var(--cta); }
+.check__result p b { color: var(--hl); }
 .check__result .btn-cta { margin-top: 0.4lh; }
 
 /* =========================================================
@@ -414,7 +417,7 @@ select.field {
    ========================================================= */
 .final { padding: 2.2lh 6%; background: linear-gradient(180deg, var(--ink), var(--ink-2)); color: #fff; text-align: center; }
 .final h2 { font-size: 6.4cqw; font-weight: 900; line-height: 1.35; letter-spacing: -0.045em; }
-.final h2 em { font-style: normal; color: var(--cta); }
+.final h2 em { font-style: normal; color: var(--hl); }
 .final__period { margin: 0.5lh 0 0.7lh; font-size: 3.6cqw; color: rgba(255, 255, 255, .8); }
 .final__period b { color: #fff; }
 .final__timer { display: flex; justify-content: center; gap: 2%; margin-bottom: 0.8lh; }
@@ -430,7 +433,7 @@ select.field {
 .footer__info { display: flex; flex-direction: column; }
 .footer__copy { margin-top: 0.3lh; color: #9aa3b2; }
 .sticky-cta { position: sticky; bottom: 0; z-index: 60; display: flex; box-shadow: 0 -0.25em 1em rgba(0, 0, 0, .15); }
-.sticky-cta a { flex: 1; padding: 0.4lh 0; background: var(--cta); color: var(--ink); text-align: center; font-size: 4.4cqw; font-weight: 900; line-height: 1.4; }
+.sticky-cta a { flex: 1; padding: 0.4lh 0; background: var(--cta); color: var(--cta-text); text-align: center; font-size: 4.4cqw; font-weight: 900; line-height: 1.4; }
 .sticky-cta a small { display: block; font-size: 0.62em; font-weight: 700; }
 </style>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
