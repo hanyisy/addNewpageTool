@@ -8,23 +8,24 @@
 <style>
 @charset "utf-8";
 /* =========================================================
-   요양등급 상담 랜딩 : 보호자(40~60대)가 읽기 쉽게 큰 글자 + 높은 대비
-   - 순서 : 히어로(진한 그린) → 이런 어르신이라면(말풍선) → 신청 폼 → 달라지는 점 → 우리 가족의 권리 → 푸터
-   - 사진으로 바꿀 자리는 .media (지금은 일러스트, <img> 를 넣으면 사진이 덮음)
+   요양등급 상담 랜딩 : 네이비 + 살구 + 코랄 버튼
+   - 보호자(40~60대)가 읽기 쉽게 큰 글자 + 높은 대비
+   - 사진으로 바꿀 자리는 .media (지금은 그림, <img> 를 넣으면 사진이 덮음)
    - 레이아웃 : .wrap 최대 800px 한 줄 / 글자 : cqw / 세로 : lh·% / 가로 : %·em
    ========================================================= */
 :root {
-  --ink: #1d2420;          /* 본문 진한 글자 */
-  --sub: #4b5650;          /* 보조 글자 (대비 확보) */
-  --line: #e4ded2;
-  --cream: #faf6ee;        /* 따뜻한 아이보리 */
-  --cream-2: #f2ebde;
-  --green: #1d4d3c;        /* 메인 딥그린 */
-  --green-2: #15392c;
-  --green-soft: #e6efe9;
-  --cta: #e2622a;          /* 신청 버튼 (따뜻한 주황) */
-  --cta-shadow: #b0461a;
-  --sun: #f5bd4f;          /* 강조 노랑 */
+  --navy: #1b2a4a;         /* 메인 네이비 (제목·배경) */
+  --navy-2: #24365c;
+  --ink: #1b2a4a;
+  --sub: #4f5b70;
+  --peach: #ffe3d3;        /* 살구 */
+  --peach-2: #fff3eb;
+  --peach-deep: #f7b896;
+  --coral: #f2553a;        /* 신청 버튼 */
+  --coral-shadow: #c23a22;
+  --cream: #fffaf6;
+  --line: #eadfd6;
+  --mint: #d9efe6;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -33,7 +34,7 @@ body {
   font-size: 30px;
   line-height: 1.6;
   color: var(--ink);
-  background: #e9e2d4;
+  background: #f3e9e1;
   -webkit-font-smoothing: antialiased;
   word-break: keep-all;
   overflow-x: hidden;
@@ -44,7 +45,7 @@ img { display: block; max-width: 100%; }
 ul, ol { list-style: none; }
 button { font: inherit; }
 select { -webkit-appearance: none; appearance: none; border-radius: 0; font: inherit; }
-input::placeholder { color: #8b938e; }
+input::placeholder { color: #98a0ad; }
 
 @media (min-width: 661px) and (max-width: 730px) { body { font-size: 28px; } }
 @media (min-width: 591px) and (max-width: 660px) { body { font-size: 24px; } }
@@ -55,20 +56,19 @@ input::placeholder { color: #8b938e; }
 @media (max-width: 349px) { body { font-size: 13px; } }
 
 /* 공통 */
-.sec { padding: 2.2lh 6%; }
-.sec-title { font-size: 7cqw; font-weight: 800; line-height: 1.38; letter-spacing: -0.045em; color: var(--ink); }
-.sec-title em { font-style: normal; color: var(--green); }
+.sec { padding: 2.4lh 6%; }
+.sec-title { text-align: center; font-size: 7.2cqw; font-weight: 900; line-height: 1.35; letter-spacing: -0.05em; color: var(--navy); }
+.sec-title em { font-style: normal; color: var(--coral); }
 
 .btn {
-  display: flex; align-items: center; justify-content: center; gap: 0.4em; width: 100%; min-height: 3em; padding: 0.4lh 0; border: 0; border-radius: 0.7em;
-  background: var(--cta); color: #fff; font: inherit; font-size: 5.2cqw; font-weight: 800; line-height: 1.4; letter-spacing: -0.03em; text-align: center;
-  box-shadow: 0 0.18em 0 var(--cta-shadow); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; width: 100%; min-height: 3.1em; padding: 0.4lh 0; border: 0; border-radius: 999em;
+  background: var(--coral); color: #fff; font: inherit; font-size: 5.3cqw; font-weight: 800; line-height: 1.4; letter-spacing: -0.03em; text-align: center;
+  box-shadow: 0 0.2em 0 var(--coral-shadow), 0 0.8em 1.6em rgba(242, 85, 58, .25); cursor: pointer;
 }
-.btn::after { content: "→"; font-weight: 700; }
-.btn:active { transform: translateY(0.1em); box-shadow: 0 0.08em 0 var(--cta-shadow); }
-.btn:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+.btn:active { transform: translateY(0.1em); box-shadow: 0 0.08em 0 var(--coral-shadow); }
+.btn:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
 
-/* 사진 자리 : 지금은 일러스트, 안에 <img> 를 넣으면 사진이 위를 덮음 */
+/* 사진 자리 : 지금은 그림, 안에 <img> 를 넣으면 사진이 위를 덮음 */
 .media { position: relative; overflow: hidden; }
 .media > svg { display: block; width: 100%; height: 100%; }
 .media > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -76,59 +76,66 @@ input::placeholder { color: #8b938e; }
 /* =========================================================
    헤더
    ========================================================= */
-.header { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0.35lh 6%; background: var(--green-2); color: #fff; }
-.header__name { display: flex; align-items: center; gap: 0.45em; font-size: 4.2cqw; font-weight: 800; letter-spacing: -0.03em; }
-.header__name i { width: 0.75em; height: 0.75em; border-radius: 50%; background: var(--sun); }
-.header__cta { padding: 0.1lh 0.9em; border-radius: 999em; background: var(--cta); font-size: 3.5cqw; font-weight: 800; }
+.header { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0.35lh 6%; background: rgba(255, 250, 246, .96); border-bottom: 1px solid var(--line); }
+.header__name { display: flex; align-items: center; gap: 0.4em; font-size: 4.3cqw; font-weight: 900; color: var(--navy); letter-spacing: -0.04em; }
+.header__name svg { width: 1.1em; height: 1.1em; }
+.header__cta { padding: 0.1lh 1em; border-radius: 999em; background: var(--navy); color: #fff; font-size: 3.5cqw; font-weight: 700; }
 
 /* =========================================================
-   Hero : 진한 그린 + 큰 제목
+   Hero : 살구 원 + 큰 제목 (가운데 정렬)
    ========================================================= */
-.hero { padding: 1.6lh 6% 2lh; background: var(--green); color: #fff; }
-.hero__title { font-size: 8.6cqw; font-weight: 800; line-height: 1.36; letter-spacing: -0.05em; }
-.hero__title em { font-style: normal; color: var(--sun); }
-.hero__media { margin-top: 1lh; aspect-ratio: 16 / 10; border-radius: 1em; background: #e6efe9; }
-.hero__sub { margin-top: 0.9lh; font-size: 4.7cqw; line-height: 1.65; color: rgba(255, 255, 255, .88); }
+.hero { position: relative; padding: 1.6lh 6% 2.2lh; text-align: center; overflow: hidden; }
+.hero::before { content: ""; position: absolute; left: 50%; top: -38cqw; width: 150cqw; height: 120cqw; border-radius: 50%; background: var(--peach); transform: translateX(-50%); z-index: 0; }
+.hero > * { position: relative; }
+.hero__title { font-size: 8.8cqw; font-weight: 900; line-height: 1.33; letter-spacing: -0.055em; color: var(--navy); }
+.hero__title em { font-style: normal; color: var(--coral); }
+.hero__media { width: 78%; margin: 1lh auto 0; aspect-ratio: 1 / 1; border-radius: 50%; background: #fff; border: 0.5em solid #fff; box-shadow: 0 1em 2.4em rgba(27, 42, 74, .12); }
+.hero__sub { margin-top: 1lh; font-size: 4.8cqw; font-weight: 500; line-height: 1.7; color: var(--sub); }
+.hero__sub b { color: var(--navy); font-weight: 800; }
 .hero .btn { margin-top: 1lh; }
-/* 진행 3단계 (작은 칩) */
-.steps { display: flex; align-items: center; justify-content: center; gap: 0.35em; margin-top: 0.7lh; font-size: 3.6cqw; font-weight: 700; color: rgba(255, 255, 255, .85); }
-.steps li:not(.steps__arrow) { padding: 0.05lh 0.7em; border-radius: 999em; background: rgba(255, 255, 255, .12); white-space: nowrap; }
-.steps__arrow { color: rgba(255, 255, 255, .45); }
+
+/* 진행 3단계 : 점선으로 이어진 타임라인 */
+.steps { display: flex; justify-content: space-between; margin: 1.1lh 4% 0; font-size: 3.7cqw; font-weight: 700; color: var(--navy); counter-reset: s; }
+.steps li { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.2lh; counter-increment: s; }
+.steps li::before { content: counter(s); position: relative; z-index: 1; display: grid; place-items: center; width: 2em; height: 2em; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 900; }
+.steps li + li::after { content: ""; position: absolute; top: 1em; right: 50%; width: 100%; border-top: 2px dashed var(--peach-deep); }
 
 /* =========================================================
-   이런 어르신이라면 : 말풍선 카드
+   이런 어르신이라면 : 큰 따옴표 카드
    ========================================================= */
-.worry { background: var(--cream); }
-.worry__list { display: flex; flex-direction: column; gap: 0.6lh; margin-top: 1lh; }
-.worry__item { position: relative; display: flex; align-items: center; gap: 0.8em; padding: 0.7lh 5%; border-radius: 1em 1em 1em 0.2em; background: #fff; box-shadow: 0 0.3em 1em rgba(29, 36, 32, .06); }
-.worry__icon { flex: none; display: grid; place-items: center; width: 2.6em; height: 2.6em; border-radius: 50%; background: var(--green-soft); font-size: 4cqw; }
-.worry__icon svg { width: 60%; height: 60%; fill: none; stroke: var(--green); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.worry__item p { font-size: 4.9cqw; font-weight: 700; line-height: 1.5; color: var(--ink); }
+.worry { background: var(--navy); color: #fff; }
+.worry .sec-title { color: #fff; }
+.worry .sec-title em { color: var(--peach-deep); }
+.worry__list { display: grid; gap: 0.6lh; margin-top: 1.1lh; }
+.worry__item { position: relative; padding: 0.9lh 7% 0.8lh 17%; border-radius: 1em; background: var(--navy-2); font-size: 5cqw; font-weight: 700; line-height: 1.5; }
+.worry__item::before { content: "\201C"; position: absolute; left: 4%; top: 0.05lh; font-size: 2.6em; font-weight: 900; line-height: 1; color: var(--peach-deep); }
 
 /* =========================================================
    신청 폼
    ========================================================= */
-.apply { padding: 2lh 5%; background: var(--cream-2); }
-.form { padding: 1.1lh 6% 1.2lh; border-top: 0.35em solid var(--cta); border-radius: 0.6em 0.6em 1em 1em; background: #fff; box-shadow: 0 0.8em 2em rgba(29, 36, 32, .1); }
-.form__title { font-size: 7.4cqw; font-weight: 800; line-height: 1.35; letter-spacing: -0.045em; color: var(--ink); }
-.form__desc { margin-top: 0.15lh; font-size: 4.3cqw; color: var(--sub); }
-.q { margin-top: 1lh; border: 0; }
-.q__label { display: block; margin-bottom: 0.35lh; font-size: 4.8cqw; font-weight: 800; color: var(--ink); }
+.apply { padding: 2.2lh 5%; background: var(--peach-2); }
+.form { padding: 1.2lh 6%; border-radius: 1.4em; background: #fff; box-shadow: 0 1em 2.6em rgba(27, 42, 74, .1); }
+.form__title { text-align: center; font-size: 7.6cqw; font-weight: 900; line-height: 1.3; letter-spacing: -0.05em; color: var(--navy); }
+.form__desc { margin-top: 0.2lh; text-align: center; font-size: 4.2cqw; color: var(--sub); }
+.form { counter-reset: q; }
+.q { margin-top: 1.1lh; border: 0; counter-increment: q; }
+.q__label { display: flex; align-items: center; gap: 0.5em; margin-bottom: 0.4lh; font-size: 4.9cqw; font-weight: 800; color: var(--navy); }
+.q__label::before { content: counter(q); flex: none; display: grid; place-items: center; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--peach); color: var(--coral); font-size: 0.8em; font-weight: 900; }
 
-/* 라디오를 큰 버튼으로 (동그라미 + 왼쪽 정렬) */
+/* 라디오 : 알약 모양 큰 버튼 (동그라미 + 왼쪽 정렬) */
 .opts { display: grid; gap: 0.5em; }
 .opts--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .opt { position: relative; cursor: pointer; }
 .opt input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
-.opt span { display: flex; align-items: center; gap: 0.6em; min-height: 2.9em; padding: 0.3lh 0.9em; border: 2px solid var(--line); border-radius: 0.6em; background: var(--cream); font-size: 4.5cqw; font-weight: 600; line-height: 1.4; color: var(--ink); transition: border-color .15s, background .15s; }
-.opt span::before { content: ""; flex: none; width: 1.1em; height: 1.1em; border: 2px solid #9aa39d; border-radius: 50%; background: #fff; }
-.opt input:checked + span { border-color: var(--green); background: var(--green-soft); font-weight: 800; }
-.opt input:checked + span::before { border-color: var(--green); background: radial-gradient(var(--green) 45%, #fff 50%); }
-.opt input:focus-visible + span { outline: 3px solid var(--sun); outline-offset: 2px; }
+.opt span { display: flex; align-items: center; gap: 0.6em; min-height: 2.9em; padding: 0.3lh 1em; border: 2px solid var(--line); border-radius: 1.5em; background: #fff; font-size: 4.5cqw; font-weight: 600; line-height: 1.4; color: var(--ink); transition: border-color .15s, background .15s, color .15s; }
+.opt span::before { content: ""; flex: none; width: 1.1em; height: 1.1em; border: 2px solid #b3bac6; border-radius: 50%; background: #fff; }
+.opt input:checked + span { border-color: var(--navy); background: var(--navy); color: #fff; font-weight: 800; }
+.opt input:checked + span::before { border-color: #fff; background: radial-gradient(var(--coral) 45%, #fff 50%); }
+.opt input:focus-visible + span { outline: 3px solid var(--coral); outline-offset: 2px; }
 
-.field { width: 100%; min-height: 2.9em; padding: 0.3lh 0.9em; border: 2px solid var(--line); border-radius: 0.6em; background: var(--cream); color: var(--ink); font: inherit; font-size: 4.5cqw; font-weight: 600; outline: none; }
-.field:focus { border-color: var(--green); background: #fff; }
-select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0h10L5 6z' fill='%231d2420'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.8em center; background-size: 0.55em; }
+.field { width: 100%; min-height: 2.9em; padding: 0.3lh 1em; border: 2px solid var(--line); border-radius: 0.8em; background: #fff; color: var(--ink); font: inherit; font-size: 4.5cqw; font-weight: 600; outline: none; }
+.field:focus { border-color: var(--navy); }
+select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0h10L5 6z' fill='%231b2a4a'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.9em center; background-size: 0.55em; }
 .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5em; }
 .stack { display: grid; gap: 0.5em; }
 .phone { display: grid; grid-template-columns: 1fr 1.2fr 1.2fr; gap: 0.5em; }
@@ -136,44 +143,45 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 .phone select.field { padding-right: 1.5em; background-position: right 0.5em center; }
 
 /* 동의 */
-.consent { margin-top: 1lh; padding: 0.6lh 5%; border-radius: 0.8em; background: var(--cream); font-size: 4cqw; }
+.consent { margin-top: 1.1lh; padding: 0.6lh 5%; border-radius: 1em; background: var(--peach-2); font-size: 4cqw; }
 .check { display: flex; align-items: center; gap: 0.5em; padding: 0.2lh 0; cursor: pointer; }
-.check input { flex: none; width: 1.3em; height: 1.3em; accent-color: var(--green); }
+.check input { flex: none; width: 1.3em; height: 1.3em; accent-color: var(--coral); }
 .check--all { padding-bottom: 0.4lh; margin-bottom: 0.2lh; border-bottom: 1px solid var(--line); font-size: 1.08em; font-weight: 800; }
 .agree { display: flex; align-items: center; gap: 0.5em; padding: 0.2lh 0; }
-.agree input { flex: none; width: 1.3em; height: 1.3em; accent-color: var(--green); }
+.agree input { flex: none; width: 1.3em; height: 1.3em; accent-color: var(--coral); }
 .agree #show-Box { margin-left: auto; color: var(--sub); text-decoration: underline; cursor: pointer; white-space: nowrap; }
 .consent__note { padding-left: 1.8em; font-size: 0.86em; color: var(--sub); line-height: 1.55; }
-.form .btn { margin-top: 0.9lh; }
+.form .btn { margin-top: 1lh; }
 
 /* =========================================================
-   등급을 받으시면 : 한 줄씩 (사진 자리 + 글)
+   등급을 받으시면 : 2x2 동그란 사진 카드
    ========================================================= */
-.benefits { background: #fff; }
-.benefit-list { display: flex; flex-direction: column; gap: 0.7lh; margin-top: 1lh; }
-.benefit { display: flex; align-items: center; gap: 0.9em; }
-.benefit__media { flex: none; width: 30%; aspect-ratio: 1 / 1; border-radius: 0.9em; background: var(--green-soft); }
-.benefit__media svg { padding: 24%; }
-.benefit h3 { font-size: 5.2cqw; font-weight: 800; line-height: 1.35; color: var(--ink); }
-.benefit p { margin-top: 0.1lh; font-size: 4.2cqw; line-height: 1.55; color: var(--sub); }
+.benefits { background: var(--cream); }
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1lh 4%; margin-top: 1.2lh; }
+.card { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.card__media { width: 78%; aspect-ratio: 1 / 1; border-radius: 50%; background: var(--peach); }
+.card__media svg { padding: 26%; }
+.card:nth-child(2) .card__media, .card:nth-child(3) .card__media { background: var(--mint); }
+.card h3 { margin-top: 0.4lh; font-size: 5cqw; font-weight: 900; line-height: 1.35; color: var(--navy); }
+.card p { margin-top: 0.15lh; font-size: 3.9cqw; line-height: 1.6; color: var(--sub); }
 
 /* =========================================================
-   우리 가족의 권리
+   우리 가족의 권리 : 살구 띠 + 큰 문장
    ========================================================= */
-.rights { padding: 2.2lh 6%; background: var(--green); color: #fff; }
-.rights__eyebrow { display: inline-block; padding: 0.05lh 0.8em; border-radius: 999em; background: var(--sun); color: var(--green-2); font-size: 3.6cqw; font-weight: 800; }
-.rights__text { margin-top: 0.6lh; font-size: 5.8cqw; font-weight: 600; line-height: 1.6; letter-spacing: -0.03em; }
-.rights__text strong { color: var(--sun); font-weight: 800; }
+.rights { padding: 2.2lh 7%; background: var(--peach); text-align: center; }
+.rights__eyebrow { display: inline-block; padding: 0.05lh 1em; border-radius: 999em; background: var(--navy); color: #fff; font-size: 3.6cqw; font-weight: 800; }
+.rights__text { margin-top: 0.7lh; font-size: 5.6cqw; font-weight: 600; line-height: 1.65; letter-spacing: -0.03em; color: var(--navy); }
+.rights__text strong { color: var(--coral); font-weight: 900; }
 .rights .btn { margin-top: 1.2lh; }
 
 /* Footer */
-.footer { padding: 1.4lh 6% 2.2lh; background: var(--cream); font-size: 3.4cqw; line-height: 1.7; color: var(--sub); }
+.footer { padding: 1.4lh 6% 2.2lh; background: var(--navy); font-size: 3.4cqw; line-height: 1.7; color: rgba(255, 255, 255, .75); text-align: center; }
 .footer p + p { margin-top: 0.2lh; }
-.footer__policy { display: inline-block; margin-top: 0.5lh; font-weight: 700; text-decoration: underline; cursor: pointer; }
+.footer__policy { display: inline-block; margin-top: 0.5lh; font-weight: 700; color: #fff; text-decoration: underline; cursor: pointer; }
 
 /* 하단 고정 버튼 (신청 폼이 안 보일 때만) */
-.sticky-cta { position: sticky; bottom: 0; z-index: 60; padding: 0.3lh 5%; background: linear-gradient(rgba(250, 246, 238, 0), var(--cream) 35%); transition: transform .25s, opacity .25s; }
-.sticky-cta.is-hidden { transform: translateY(100%); opacity: 0; pointer-events: none; }
+.sticky-cta { position: sticky; bottom: 0; z-index: 60; padding: 0.3lh 5%; transition: transform .25s, opacity .25s; }
+.sticky-cta.is-hidden { transform: translateY(130%); opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
 </head>
@@ -182,40 +190,31 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 
 <!-- 헤더 -->
 <header class="header">
-  <a href="#apply" class="header__name"><i aria-hidden="true"></i>어르신 돌봄 1분 확인</a>
+  <a href="#apply" class="header__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7v9H3z" fill="#ffe3d3" stroke="#1b2a4a" stroke-width="2" stroke-linejoin="round"/><path d="M12 17s-3.5-2-3.5-4.2a1.9 1.9 0 0 1 3.5-1 1.9 1.9 0 0 1 3.5 1C15.5 15 12 17 12 17z" fill="#f2553a"/></svg>어르신 돌봄 1분 확인</a>
   <a href="#apply" class="header__cta">무료 상담</a>
 </header>
 
 <!-- Hero -->
 <section class="hero">
   <h1 class="hero__title">매달 내는 건강보험료로<br><em>가족 어르신 돌봄</em>을<br>받을 수 있어요</h1>
-  <!-- [사진 1] 요양보호사가 어르신 댁에서 함께 식사하거나 웃으며 이야기하는 모습 (가로 16:10) -->
+  <!-- [사진 1] 요양보호사와 어르신이 함께 웃는 모습 (정사각형, 원형으로 잘림) -->
   <div class="media hero__media" aria-hidden="true">
-    <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
-      <rect width="320" height="200" fill="#e6efe9"/>
-      <rect x="190" y="20" width="110" height="120" rx="6" fill="#fff" stroke="#d3ddd6" stroke-width="3"/>
-      <line x1="245" y1="20" x2="245" y2="140" stroke="#d3ddd6" stroke-width="3"/>
-      <line x1="190" y1="80" x2="300" y2="80" stroke="#d3ddd6" stroke-width="3"/>
-      <circle cx="275" cy="50" r="14" fill="#f5bd4f"/>
-      <polygon points="190,140 300,140 230,200 120,200" fill="#f5bd4f" opacity=".2"/>
-      <rect x="40" y="132" width="200" height="10" rx="5" fill="#1d4d3c"/>
-      <rect x="56" y="142" width="8" height="58" fill="#1d4d3c"/>
-      <rect x="216" y="142" width="8" height="58" fill="#1d4d3c"/>
-      <rect x="88" y="108" width="34" height="24" rx="6" fill="#fff" stroke="#1d4d3c" stroke-width="3"/>
-      <path d="M122 114 q12 0 0 12" fill="none" stroke="#1d4d3c" stroke-width="3"/>
-      <rect x="150" y="108" width="34" height="24" rx="6" fill="#fff" stroke="#1d4d3c" stroke-width="3"/>
-      <path d="M184 114 q12 0 0 12" fill="none" stroke="#1d4d3c" stroke-width="3"/>
-      <path d="M98 100 q4 -8 0 -16 M160 100 q4 -8 0 -16" fill="none" stroke="#7b857f" stroke-width="2" stroke-linecap="round"/>
+    <svg viewBox="0 0 200 200">
+      <rect width="200" height="200" fill="#fff3eb"/>
+      <circle cx="150" cy="52" r="18" fill="#ffd27a"/>
+      <path d="M40 112 100 64l60 48v62H40z" fill="#fff" stroke="#1b2a4a" stroke-width="5" stroke-linejoin="round"/>
+      <rect x="86" y="132" width="28" height="42" rx="4" fill="#ffe3d3" stroke="#1b2a4a" stroke-width="4"/>
+      <path d="M100 116s-16-9-16-19a8.5 8.5 0 0 1 16-4.5 8.5 8.5 0 0 1 16 4.5c0 10-16 19-16 19z" fill="#f2553a"/>
+      <path d="M20 174h160" stroke="#1b2a4a" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="42" cy="160" r="12" fill="#d9efe6"/><circle cx="162" cy="162" r="10" fill="#d9efe6"/>
     </svg>
     <!-- <img src="사진 주소" alt=""> -->
   </div>
-  <p class="hero__sub">요양등급을 받으시면 요양보호사가 어르신 댁으로 찾아와 식사, 청소, 빨래까지 도와드려요.</p>
+  <p class="hero__sub"><b>요양등급</b>을 받으시면 요양보호사가 어르신 댁으로 찾아와 식사, 청소, 빨래까지 도와드려요.</p>
   <a href="#apply" class="btn">어르신 해당되는지 1분 확인하기</a>
   <ol class="steps" aria-label="이렇게 진행돼요">
     <li>1분 확인</li>
-    <li class="steps__arrow" aria-hidden="true">›</li>
     <li>무료 전화 상담</li>
-    <li class="steps__arrow" aria-hidden="true">›</li>
     <li>등급 신청 도움</li>
   </ol>
 </section>
@@ -224,18 +223,9 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 <section class="sec worry">
   <h2 class="sec-title">이런 어르신이라면<br><em>확인해 보세요</em></h2>
   <ul class="worry__list">
-    <li class="worry__item">
-      <span class="worry__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 21h8M9 3l3 3 3-3"/></svg></span>
-      <p>혼자 계실 때 TV만 보고 계세요</p>
-    </li>
-    <li class="worry__item">
-      <span class="worry__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M8 7c0-1.5 1-2 1-3.5M12 7c0-1.5 1-2 1-3.5M16 7c0-1.5 1-2 1-3.5"/></svg></span>
-      <p>식사 여쭤보면 늘 "밥은 먹었다, 걱정 마라" 하세요</p>
-    </li>
-    <li class="worry__item">
-      <span class="worry__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h5v-5h5v-5h5V6h3"/><path d="M4 12l7-7"/></svg></span>
-      <p>계단에서 난간을 꼭 잡으세요</p>
-    </li>
+    <li class="worry__item">혼자 계실 때 TV만 보고 계세요</li>
+    <li class="worry__item">식사 여쭤보면 늘 "밥은 먹었다, 걱정 마라" 하세요</li>
+    <li class="worry__item">계단에서 난간을 꼭 잡으세요</li>
   </ul>
 </section>
 
@@ -322,34 +312,38 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 <!-- 등급을 받으시면 -->
 <section class="sec benefits">
   <h2 class="sec-title">등급을 받으시면<br><em>이렇게 달라져요</em></h2>
-  <ul class="benefit-list">
-    <li class="benefit">
+  <div class="cards">
+    <div class="card">
       <!-- [사진 2] 요양보호사가 어르신 댁을 방문해 식사를 챙기는 모습 (정사각형) -->
-      <div class="media benefit__media" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M6 19 20 7l14 12" fill="none" stroke="#1d4d3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="11" y="18" width="18" height="15" rx="2" fill="none" stroke="#1d4d3c" stroke-width="3"/><circle cx="20" cy="25" r="3" fill="#e2622a"/></svg></div>
-      <div><h3>요양보호사 방문</h3><p>어르신 댁으로 찾아와 식사를 챙기고, 청소와 빨래를 하고, 말동무가 되어 드려요.</p></div>
-    </li>
-    <li class="benefit">
+      <div class="media card__media" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M6 19 20 7l14 12" fill="none" stroke="#1b2a4a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="11" y="18" width="18" height="15" rx="2" fill="none" stroke="#1b2a4a" stroke-width="3"/><circle cx="20" cy="25" r="3" fill="#f2553a"/></svg></div>
+      <h3>요양보호사 방문</h3>
+      <p>어르신 댁으로 찾아와 식사를 챙기고, 청소와 빨래를 하고, 말동무가 되어 드려요.</p>
+    </div>
+    <div class="card">
       <!-- [사진 3] 방문 목욕 (욕실 · 목욕 도움, 노출 없는 연출) (정사각형) -->
-      <div class="media benefit__media" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M6 21h28v4a8 8 0 0 1-8 8H14a8 8 0 0 1-8-8z" fill="none" stroke="#1d4d3c" stroke-width="3" stroke-linejoin="round"/><path d="M11 21V10a4 4 0 0 1 7-2" fill="none" stroke="#1d4d3c" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="12" r="2" fill="#e2622a"/><circle cx="29" cy="15" r="1.6" fill="#e2622a"/></svg></div>
-      <div><h3>방문 목욕</h3><p>혼자 하시기 버거운 목욕을 집에서 도와드려요.</p></div>
-    </li>
-    <li class="benefit">
+      <div class="media card__media" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M6 21h28v4a8 8 0 0 1-8 8H14a8 8 0 0 1-8-8z" fill="none" stroke="#1b2a4a" stroke-width="3" stroke-linejoin="round"/><path d="M11 21V10a4 4 0 0 1 7-2" fill="none" stroke="#1b2a4a" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="12" r="2" fill="#f2553a"/><circle cx="29" cy="15" r="1.6" fill="#f2553a"/></svg></div>
+      <h3>방문 목욕</h3>
+      <p>혼자 하시기 버거운 목욕을 집에서 도와드려요.</p>
+    </div>
+    <div class="card">
       <!-- [사진 4] 주간보호센터에서 어르신들이 함께 프로그램에 참여하는 모습 (정사각형) -->
-      <div class="media benefit__media" aria-hidden="true"><svg viewBox="0 0 40 40"><rect x="5" y="12" width="30" height="16" rx="4" fill="none" stroke="#1d4d3c" stroke-width="3"/><path d="M5 20h30" stroke="#1d4d3c" stroke-width="2"/><circle cx="12" cy="30" r="3.5" fill="#e2622a"/><circle cx="28" cy="30" r="3.5" fill="#e2622a"/></svg></div>
-      <div><h3>주간보호센터</h3><p>낮 동안 센터에서 식사와 프로그램을 함께하시고, 차량으로 모셔가고 모셔다드려요.</p></div>
-    </li>
-    <li class="benefit">
+      <div class="media card__media" aria-hidden="true"><svg viewBox="0 0 40 40"><rect x="5" y="12" width="30" height="16" rx="4" fill="none" stroke="#1b2a4a" stroke-width="3"/><path d="M5 20h30" stroke="#1b2a4a" stroke-width="2"/><circle cx="12" cy="30" r="3.5" fill="#f2553a"/><circle cx="28" cy="30" r="3.5" fill="#f2553a"/></svg></div>
+      <h3>주간보호센터</h3>
+      <p>낮 동안 센터에서 식사와 프로그램을 함께하시고, 차량으로 모셔가고 모셔다드려요.</p>
+    </div>
+    <div class="card">
       <!-- [사진 5] 전동침대 · 휠체어 · 안전손잡이 같은 복지용구 (정사각형) -->
-      <div class="media benefit__media" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M5 30V17m0 8h30v5M5 23l6-6h12l4 6" fill="none" stroke="#1d4d3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="31" cy="15" r="3" fill="#e2622a"/></svg></div>
-      <div><h3>복지용구</h3><p>전동침대, 휠체어, 안전손잡이 같은 생활용품을 지원받아 쓰실 수 있어요.</p></div>
-    </li>
-  </ul>
+      <div class="media card__media" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M5 30V17m0 8h30v5M5 23l6-6h12l4 6" fill="none" stroke="#1b2a4a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="31" cy="15" r="3" fill="#f2553a"/></svg></div>
+      <h3>복지용구</h3>
+      <p>전동침대, 휠체어, 안전손잡이 같은 생활용품을 지원받아 쓰실 수 있어요.</p>
+    </div>
+  </div>
 </section>
 
 <!-- 우리 가족의 권리 -->
 <section class="rights">
   <span class="rights__eyebrow">우리 가족의 권리</span>
-  <p class="rights__text">건강보험료 안에 장기요양보험료가 들어 있어요. 요양등급은 그 보험료로 받는 <strong>우리 가족의 권리</strong>입니다.</p>
+  <p class="rights__text">건강보험료 안에 장기요양보험료가 들어 있어요.<br>요양등급은 그 보험료로 받는<br><strong>우리 가족의 권리</strong>입니다.</p>
   <a href="#apply" class="btn">어르신 해당되는지 1분 확인하기</a>
 </section>
 
