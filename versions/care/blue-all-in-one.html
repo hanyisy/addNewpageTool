@@ -10,7 +10,7 @@
 @charset "utf-8";
 /* =========================================================
    요양등급 상담 랜딩
-   컬러 : 로즈(사진 속 분홍 앞치마) + 웜 차콜 + 아이보리
+   컬러 : 블루 + 옐로 버튼 + 네이비 (혜택 2x2 격자)
    [디자인 기준]
    - 글자   : 제목1 8cqw / 제목2 7cqw / 카드 제목 5.2cqw / 본문 4.4cqw / 보조 3.6cqw
    - 여백   : 섹션 2.6lh 6% / 제목→내용 1.2lh / 카드 사이 0.8lh / 카드 안 0.9lh 7%
@@ -19,19 +19,19 @@
    - 레이아웃 : .wrap 최대 800px / 글자 cqw / 세로 lh·% / 가로 %·em
    ========================================================= */
 :root {
-  --rose: #d6456a;          /* 메인 · 버튼 */
-  --rose-dark: #a92f50;
-  --rose-soft: #fcecef;     /* 연한 배경 */
-  --rose-line: #f5d3db;
-  --char: #2c2623;          /* 웜 차콜 (글자 · 어두운 배경) */
-  --sub: #6b615c;
-  --ivory: #fbf8f4;
-  --line: #ece5de;
+  --rose: #2f6fe0;          /* 메인 · 버튼 */
+  --rose-dark: #1f55c0;
+  --rose-soft: #eaf1fd;     /* 연한 배경 */
+  --rose-line: #cfdcf7;
+  --char: #16233d;          /* 웜 차콜 (글자 · 어두운 배경) */
+  --sub: #57647a;
+  --ivory: #f7f9fc;
+  --line: #e2e8f1;
   --white: #fff;
   --shadow: 0 0.6em 1.8em rgba(60, 35, 30, .09);
-  --hl: #ffb3c4;            /* 어두운 배경 위 강조 글자 */
-  --btn-text: #fff;
-  --btn-shadow: 0 0.5em 1.2em rgba(214, 69, 106, .35);
+  --hl: #ffd45c;            /* 어두운 배경 위 강조 글자 */
+  --btn-text: #16233d;
+  --btn-shadow: 0 0.5em 1.2em rgba(255, 186, 0, .35);
 
   --fs-h1: 8cqw;
   --fs-h2: 7cqw;
@@ -112,7 +112,7 @@ input::placeholder { color: #a59b95; }
 .checks { padding: 0.4lh 7% 0.6lh; }
 .checks li { display: flex; align-items: center; gap: 0.8em; padding: 0.7lh 0; font-size: var(--fs-h3); font-weight: 700; line-height: 1.45; letter-spacing: -0.03em; }
 .checks li + li { border-top: 1px dashed var(--line); }
-.checks li::before { content: ""; flex: none; width: 1.5em; height: 1.5em; border-radius: 50%; background: var(--rose-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23d6456a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 62% no-repeat; }
+.checks li::before { content: ""; flex: none; width: 1.5em; height: 1.5em; border-radius: 50%; background: var(--rose-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%232f6fe0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 62% no-repeat; }
 
 /* ---------- 신청 폼 ---------- */
 .form { padding: 1.2lh 7% 1.3lh; border-radius: 1.2em; background: var(--white); box-shadow: var(--shadow); counter-reset: q; }
@@ -177,6 +177,17 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 .sticky-cta { position: fixed; left: 50%; bottom: 0; z-index: 60; width: 100%; max-width: 800px; padding: 0.3lh 6% calc(0.4lh + env(safe-area-inset-bottom, 0px)); background: linear-gradient(rgba(251, 248, 244, 0), rgba(251, 248, 244, .96) 45%); transform: translateX(-50%); transition: transform .25s, opacity .25s; }
 .sticky-cta.is-hidden { transform: translate(-50%, 130%); opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+/* ---------- 이 버전만의 배치 ---------- */
+.btn { background: #ffc933; }
+.btn:hover { background: #ffba00; }
+.header__cta { background: var(--rose); }
+.cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7lh 4%; }
+.card__photo { aspect-ratio: 1 / 1; }
+.card__text { padding: 0.6lh 8% 0.8lh; }
+.card h3 { font-size: 4.6cqw; }
+.card p { font-size: 3.9cqw; }
+.card:nth-child(2) .card__photo img { object-position: 45% 50%; }
+.card:nth-child(4) .card__photo img { object-position: 75% 50%; }
 </style>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
 </head>
@@ -185,7 +196,7 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 
 <!-- 헤더 -->
 <header class="header">
-  <a href="#apply" class="header__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.2-7-9.5A4 4 0 0 1 12 8a4 4 0 0 1 7 2.5C19 15.8 12 20 12 20z" fill="#d6456a"/></svg>어르신 돌봄 1분 확인</a>
+  <a href="#apply" class="header__name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.2-7-9.5A4 4 0 0 1 12 8a4 4 0 0 1 7 2.5C19 15.8 12 20 12 20z" fill="#2f6fe0"/></svg>어르신 돌봄 1분 확인</a>
   <a href="#apply" class="header__cta">무료 상담</a>
 </header>
 
