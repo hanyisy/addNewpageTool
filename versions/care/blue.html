@@ -191,7 +191,14 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 /* 읽기 편하게 : 줄바꿈 균형 + 가운데 정렬 */
 .hero__title, .hero__sub, .card__text, .rights__body { text-align: center; }
 .hero__title { left: 4%; right: 4%; }
-.card p { text-wrap: balance; }
+.sec--cards { padding-left: 4%; padding-right: 4%; }
+.cards { column-gap: 2.5%; }
+.card__text { padding-left: 1.5%; padding-right: 1.5%; }
+.card h3 { font-size: 4.3cqw; }
+.card p { font-size: 2.95cqw; line-height: 1.6; letter-spacing: -0.05em; }
+.checks { padding-left: 5%; padding-right: 5%; }
+.checks li { gap: 0.6em; padding: 0.55lh 0; font-size: 4.5cqw; letter-spacing: -0.04em; }
+.checks li span { white-space: nowrap; }
 .rights__body { padding-left: 4%; padding-right: 4%; }
 .rights__text { font-size: 3.85cqw; line-height: 1.75; letter-spacing: -0.04em; }
 .nw { white-space: nowrap; }
@@ -233,9 +240,9 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
   <div class="panel sec-body" data-aos="fade-up">
     <div class="panel__photo"><img class="photo" src="img/worry.jpg" alt="요양보호사가 휠체어에 앉은 어르신의 손을 잡고 이야기하는 모습" loading="lazy"></div>
     <ul class="checks">
-      <li><span>혼자 계실 때<br>TV만 보고 계세요</span></li>
-      <li><span>식사 여쭤보면 늘<br>"밥은 먹었다, 걱정 마라"<br>하세요</span></li>
-      <li><span>계단에서<br>난간을 꼭 잡으세요</span></li>
+      <li><span>혼자 계실 때 TV만 보고 계세요</span></li>
+      <li><span>식사 여쭤보면 늘<br>"밥은 먹었다, 걱정 마라" 하세요</span></li>
+      <li><span>계단에서 난간을 꼭 잡으세요</span></li>
     </ul>
   </div>
 </section>
@@ -321,7 +328,7 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 </section>
 
 <!-- 등급을 받으시면 -->
-<section class="sec">
+<section class="sec sec--cards">
   <h2 class="sec-title" data-aos="fade-up">등급을 받으시면<br><em>이렇게 달라져요</em></h2>
   <ul class="cards sec-body">
     <li class="card" data-aos="fade-up">
@@ -330,15 +337,15 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
     </li>
     <li class="card" data-aos="fade-up">
       <div class="card__photo"><img class="photo" src="img/bath-w.jpg" alt="요양보호사가 어르신이 일어나시도록 돕는 모습" loading="lazy"><span class="card__no">02</span></div>
-      <div class="card__text"><h3>방문 목욕</h3><p>혼자 하시기 버거운 목욕을 집에서 도와드려요.</p></div>
+      <div class="card__text"><h3>방문 목욕</h3><p>혼자 하시기 버거운 목욕을<br>집에서 도와드려요.</p></div>
     </li>
     <li class="card" data-aos="fade-up">
       <div class="card__photo"><img class="photo" src="img/daycare-w.jpg" alt="요양보호사와 어르신이 함께 책을 보는 모습" loading="lazy"><span class="card__no">03</span></div>
-      <div class="card__text"><h3>주간보호센터</h3><p>낮 동안 센터에서 식사와 프로그램을 함께하시고, 차량으로 모셔가고 모셔다드려요.</p></div>
+      <div class="card__text"><h3>주간보호센터</h3><p>낮 동안 센터에서 식사와<br>프로그램을 함께하시고,<br>차량으로 모셔가고 모셔다드려요.</p></div>
     </li>
     <li class="card" data-aos="fade-up">
       <div class="card__photo"><img class="photo" src="img/welfare-w.jpg" alt="휠체어에 앉은 어르신과 요양보호사" loading="lazy"><span class="card__no">04</span></div>
-      <div class="card__text"><h3>복지용구</h3><p>전동침대, 휠체어, 안전손잡이 같은 생활용품을 지원받아 쓰실 수 있어요.</p></div>
+      <div class="card__text"><h3>복지용구</h3><p>전동침대, 휠체어, 안전손잡이<br>같은 생활용품을 지원받아<br>쓰실 수 있어요.</p></div>
     </li>
   </ul>
 </section>
