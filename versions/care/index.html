@@ -9,29 +9,27 @@
 <style>
 @charset "utf-8";
 /* =========================================================
-   요양등급 상담 랜딩
+   요양등급 상담 랜딩 (사진 중심)
    [디자인 기준] 모든 섹션이 아래 값만 씀
-   - 글자   : 제목1 8.6cqw / 제목2 7cqw / 카드 제목 5cqw / 본문 4.4cqw / 보조 3.6cqw
+   - 글자   : 제목1 7.6cqw / 제목2 7cqw / 카드 제목 5cqw / 본문 4.4cqw / 보조 3.6cqw
    - 여백   : 섹션 2.4lh 6% / 제목→내용 1.1lh / 카드 사이 0.6lh / 카드 안 0.75lh 6%
-   - 모서리 : 카드 1em / 입력칸 0.8em / 버튼 999em
+   - 모서리 : 사진·카드 1em / 입력칸 0.8em / 버튼 999em
    - 테두리 : 1.5px var(--line) 하나만 / 그림자 : var(--shadow) 하나만
-   - 배경   : 살구(히어로·폼) / 네이비(걱정·권리) / 아이보리(혜택·푸터) 번갈아
+   - 사진   : img/ 폴더 (서버에 올린 뒤 경로만 바꾸면 됨)
    - 레이아웃 : .wrap 최대 800px / 글자 cqw / 세로 lh·% / 가로 %·em
    ========================================================= */
 :root {
   --navy: #1b2a4a;
-  --navy-2: #26375c;
   --sub: #525e73;
   --peach: #ffe3d3;
   --peach-2: #fff2ea;
   --coral: #f2553a;
   --coral-shadow: #c23a22;
   --cream: #fffaf6;
-  --mint: #d9efe6;
   --line: #ecdfd5;
-  --shadow: 0 0.5em 1.4em rgba(27, 42, 74, .08);
+  --shadow: 0 0.5em 1.4em rgba(27, 42, 74, .1);
 
-  --fs-h1: 8.6cqw;
+  --fs-h1: 7.6cqw;
   --fs-h2: 7cqw;
   --fs-h3: 5cqw;
   --fs-body: 4.4cqw;
@@ -83,6 +81,8 @@ input::placeholder { color: #98a0ad; }
 .btn:active { transform: translateY(0.1em); box-shadow: 0 0.08em 0 var(--coral-shadow); }
 .btn:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
 
+.photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+
 /* 카드 (모든 섹션 공통 한 가지) */
 .card { padding: 0.75lh 6%; border: 1.5px solid var(--line); border-radius: 1em; background: #fff; box-shadow: var(--shadow); color: var(--navy); }
 .sec--navy .card { border-color: transparent; }
@@ -91,17 +91,8 @@ input::placeholder { color: #98a0ad; }
 .row-list { display: grid; gap: 0.6lh; }
 .row-card { display: flex; align-items: center; gap: 0.9em; }
 .ico { flex: none; display: grid; place-items: center; width: 3em; height: 3em; border-radius: 50%; background: var(--peach); font-size: var(--fs-small); }
-.ico--mint { background: var(--mint); }
 .ico svg { width: 56%; height: 56%; fill: none; stroke: var(--navy); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.ico svg .dot { fill: var(--coral); stroke: none; }
-.row-card__text { min-width: 0; }
 .row-card__title { font-size: var(--fs-h3); font-weight: 800; line-height: 1.4; letter-spacing: -0.03em; }
-.row-card__desc { margin-top: 0.1lh; font-size: var(--fs-body); line-height: 1.6; color: var(--sub); }
-
-/* 사진 자리 : 지금은 그림, 안에 <img> 를 넣으면 사진이 위를 덮음 */
-.media { position: relative; overflow: hidden; }
-.media > svg { display: block; width: 100%; height: 100%; }
-.media > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------- 헤더 ---------- */
 .header { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0.35lh 6%; background: rgba(255, 250, 246, .96); border-bottom: 1.5px solid var(--line); }
@@ -109,20 +100,27 @@ input::placeholder { color: #98a0ad; }
 .header__name svg { width: 1.2em; height: 1.2em; }
 .header__cta { padding: 0.1lh 1em; border-radius: 999em; background: var(--navy); color: #fff; font-size: var(--fs-small); font-weight: 700; }
 
-/* ---------- 히어로 ---------- */
-.hero { position: relative; padding: 2lh 6% 2.4lh; background: var(--peach-2); text-align: center; overflow: hidden; }
-.hero::before { content: ""; position: absolute; left: 50%; top: -60cqw; width: 160cqw; height: 130cqw; border-radius: 50%; background: var(--peach); transform: translateX(-50%); }
-.hero > * { position: relative; }
+/* ---------- 히어로 : 사진 위로 흰 카드가 올라옴 ---------- */
+.hero { background: var(--peach-2); padding-bottom: 2.4lh; }
+.hero__photo { position: relative; aspect-ratio: 1 / 1; }
+.hero__photo::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(rgba(255, 242, 234, 0), var(--peach-2)); }
+.hero__photo img { object-position: 50% 15%; }
+@media (min-width: 600px) { .hero__photo { aspect-ratio: 4 / 3; } }
+.hero__card { position: relative; z-index: 1; margin: -2.6lh 4% 0; padding: 1.1lh 5% 1.2lh; border-radius: 1.2em; background: #fff; box-shadow: var(--shadow); text-align: center; }
 .hero__title { font-size: var(--fs-h1); font-weight: 900; line-height: 1.33; letter-spacing: -0.055em; }
 .hero__title em { font-style: normal; color: var(--coral); }
-.hero__media { width: 64%; margin: 1.1lh auto 0; aspect-ratio: 1 / 1; border-radius: 50%; background: #fff; border: 0.45em solid #fff; box-shadow: var(--shadow); }
-.hero__sub { margin-top: 1.1lh; font-size: var(--fs-body); line-height: 1.7; color: var(--sub); }
+.hero__sub { margin-top: 0.6lh; font-size: var(--fs-body); line-height: 1.7; color: var(--sub); }
 .hero__sub b { color: var(--navy); font-weight: 800; }
-.hero .btn { margin-top: 1.1lh; }
-.steps { display: flex; margin-top: 1.1lh; font-size: var(--fs-small); font-weight: 700; counter-reset: s; }
+.hero__card .btn { margin-top: 0.9lh; }
+.steps { display: flex; margin-top: 0.9lh; font-size: var(--fs-small); font-weight: 700; counter-reset: s; }
 .steps li { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.2lh; counter-increment: s; }
 .steps li::before { content: counter(s); position: relative; z-index: 1; display: grid; place-items: center; width: 2em; height: 2em; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 900; }
 .steps li + li::after { content: ""; position: absolute; top: 1em; right: 50%; width: 100%; border-top: 2px dashed #f0b394; }
+
+/* ---------- 이런 어르신이라면 ---------- */
+.worry__photo { aspect-ratio: 16 / 9; margin-top: 1.1lh; border-radius: 1em; overflow: hidden; }
+.worry__photo img { object-position: 50% 45%; }
+.worry .row-list { margin-top: 0.6lh; }
 
 /* ---------- 신청 폼 ---------- */
 .form { padding: 1.1lh 6% 1.2lh; counter-reset: q; }
@@ -149,19 +147,28 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 .phone .field { padding-left: 0.5em; padding-right: 0.5em; text-align: center; }
 .phone select.field { padding-right: 1.5em; background-position: right 0.5em center; }
 .consent { margin-top: 1.1lh; padding: 0.5lh 5%; border: 1.5px solid var(--line); border-radius: 0.8em; background: var(--cream); font-size: 4cqw; }
-.agree label { white-space: nowrap; }
 .check, .agree { display: flex; align-items: center; gap: 0.5em; padding: 0.2lh 0; }
 .check { cursor: pointer; }
 .check input, .agree input { flex: none; width: 1.25em; height: 1.25em; accent-color: var(--coral); }
 .check--all { padding-bottom: 0.35lh; margin-bottom: 0.15lh; border-bottom: 1.5px solid var(--line); font-weight: 800; }
+.agree label { white-space: nowrap; }
 .agree #show-Box { margin-left: auto; color: var(--sub); text-decoration: underline; cursor: pointer; white-space: nowrap; }
 .consent__note { padding-left: 1.75em; font-size: var(--fs-small); line-height: 1.55; color: var(--sub); }
 .form .btn { margin-top: 1.1lh; }
 
-/* ---------- 우리 가족의 권리 ---------- */
-.rights { text-align: center; }
+/* ---------- 등급을 받으시면 : 사진 카드 ---------- */
+.photo-card { display: flex; align-items: center; gap: 0.9em; padding: 0.6lh 4%; }
+.photo-card__img { flex: none; width: 34%; aspect-ratio: 1 / 1; border-radius: 0.8em; overflow: hidden; }
+.photo-card__text { min-width: 0; }
+.photo-card h3 { font-size: var(--fs-h3); font-weight: 900; line-height: 1.35; letter-spacing: -0.03em; }
+.photo-card p { margin-top: 0.15lh; font-size: var(--fs-body); line-height: 1.6; color: var(--sub); }
+
+/* ---------- 우리 가족의 권리 : 가족 사진 위 남색 덮개 ---------- */
+.rights { position: relative; text-align: center; background: var(--navy) url("img/family.jpg") center 30% / cover no-repeat; }
+.rights::before { content: ""; position: absolute; inset: 0; background: rgba(27, 42, 74, .84); }
+.rights > * { position: relative; }
 .rights__eyebrow { display: inline-block; padding: 0.05lh 1em; border-radius: 999em; background: var(--coral); color: #fff; font-size: var(--fs-small); font-weight: 800; }
-.rights__text { margin-top: 0.7lh; text-wrap: balance; font-size: var(--fs-h3); font-weight: 600; line-height: 1.7; letter-spacing: -0.03em; }
+.rights__text { margin-top: 0.7lh; font-size: var(--fs-h3); font-weight: 600; line-height: 1.7; letter-spacing: -0.03em; text-wrap: balance; }
 .rights__text strong { color: #ffb08f; font-weight: 900; }
 .rights .btn { margin-top: 1.1lh; }
 
@@ -170,7 +177,7 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 .footer p + p { margin-top: 0.2lh; }
 .footer__policy { display: inline-block; margin-top: 0.5lh; font-weight: 700; color: var(--navy); text-decoration: underline; cursor: pointer; }
 
-/* ---------- 하단 고정 버튼 (신청 폼이 안 보일 때만) ---------- */
+/* ---------- 하단 고정 버튼 : 화면 하단에 떠 있음, 폼·권리·푸터가 보이면 숨김 ---------- */
 .sticky-cta { position: fixed; left: 50%; bottom: 0; z-index: 60; width: 100%; max-width: 800px; padding: 0.3lh 6% calc(0.3lh + env(safe-area-inset-bottom, 0px)); background: linear-gradient(rgba(255, 250, 246, 0), rgba(255, 250, 246, .95) 40%); transform: translateX(-50%); transition: transform .25s, opacity .25s; }
 .sticky-cta.is-hidden { transform: translate(-50%, 130%); opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
@@ -188,33 +195,24 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 
 <!-- 히어로 -->
 <section class="hero">
-  <h1 class="hero__title" data-aos="fade-up">매달 내는 건강보험료로<br><em>가족 어르신 돌봄</em>을<br>받을 수 있어요</h1>
-  <!-- [사진 1] 요양보호사와 어르신이 함께 웃는 모습 (정사각형, 원형으로 잘림) -->
-  <div class="media hero__media" aria-hidden="true" data-aos="zoom-in" data-aos-delay="100">
-    <svg viewBox="0 0 200 200">
-      <rect width="200" height="200" fill="#fff2ea"/>
-      <circle cx="150" cy="52" r="18" fill="#ffd27a"/>
-      <path d="M40 112 100 64l60 48v62H40z" fill="#fff" stroke="#1b2a4a" stroke-width="5" stroke-linejoin="round"/>
-      <rect x="86" y="132" width="28" height="42" rx="4" fill="#ffe3d3" stroke="#1b2a4a" stroke-width="4"/>
-      <path d="M100 116s-16-9-16-19a8.5 8.5 0 0 1 16-4.5 8.5 8.5 0 0 1 16 4.5c0 10-16 19-16 19z" fill="#f2553a"/>
-      <path d="M20 174h160" stroke="#1b2a4a" stroke-width="5" stroke-linecap="round"/>
-      <circle cx="42" cy="160" r="12" fill="#d9efe6"/><circle cx="162" cy="162" r="10" fill="#d9efe6"/>
-    </svg>
-    <!-- <img src="사진 주소" alt=""> -->
+  <div class="hero__photo"><img class="photo" src="img/hero.jpg" alt="휠체어에 앉은 어르신과 뒤에서 웃고 있는 가족"></div>
+  <div class="hero__card" data-aos="fade-up">
+    <h1 class="hero__title">매달 내는 건강보험료로<br><em>가족 어르신 돌봄</em>을<br>받을 수 있어요</h1>
+    <p class="hero__sub"><b>요양등급</b>을 받으시면 요양보호사가 어르신 댁으로 찾아와 식사, 청소, 빨래까지 도와드려요.</p>
+    <a href="#apply" class="btn">어르신 해당되는지 1분 확인하기</a>
+    <ol class="steps" aria-label="이렇게 진행돼요">
+      <li>1분 확인</li>
+      <li>무료 전화 상담</li>
+      <li>등급 신청 도움</li>
+    </ol>
   </div>
-  <p class="hero__sub" data-aos="fade-up"><b>요양등급</b>을 받으시면 요양보호사가 어르신 댁으로 찾아와 식사, 청소, 빨래까지 도와드려요.</p>
-  <a href="#apply" class="btn" data-aos="fade-up">어르신 해당되는지 1분 확인하기</a>
-  <ol class="steps" aria-label="이렇게 진행돼요" data-aos="fade-up">
-    <li>1분 확인</li>
-    <li>무료 전화 상담</li>
-    <li>등급 신청 도움</li>
-  </ol>
 </section>
 
 <!-- 이런 어르신이라면 -->
-<section class="sec sec--navy">
+<section class="sec sec--navy worry">
   <h2 class="sec-title" data-aos="fade-up">이런 어르신이라면<br><em>확인해 보세요</em></h2>
-  <ul class="row-list sec-body">
+  <div class="worry__photo" data-aos="fade-up"><img class="photo" src="img/worry.jpg" alt="요양보호사가 휠체어에 앉은 어르신의 손을 잡고 이야기하는 모습" loading="lazy"></div>
+  <ul class="row-list">
     <li class="card row-card" data-aos="fade-up">
       <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 21h8M9 3l3 3 3-3"/></svg></span>
       <p class="row-card__title">혼자 계실 때 TV만 보고 계세요</p>
@@ -232,7 +230,7 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 
 <!-- 신청 폼 -->
 <section class="sec sec--peach" id="apply">
-  <form class="card form" data-aos="fade-up" id="applyForm" name="applyForm" method="post" action="apply.html">
+<form class="card form" data-aos="fade-up" id="applyForm" name="applyForm" method="post" action="apply.html">
     <h2 class="form__title">1분이면 끝나요</h2>
     <p class="form__desc">버튼만 누르시면 돼요. 마지막에 연락처만 적어 주세요.</p>
 
@@ -314,25 +312,21 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 <section class="sec sec--cream">
   <h2 class="sec-title" data-aos="fade-up">등급을 받으시면<br><em>이렇게 달라져요</em></h2>
   <ul class="row-list sec-body">
-    <li class="card row-card" data-aos="fade-up">
-      <!-- [사진 2] 요양보호사가 어르신 댁을 방문해 식사를 챙기는 모습 (정사각형, 원형) -->
-      <span class="ico media" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M6 10v10h12V10"/><circle class="dot" cx="12" cy="15" r="2"/></svg></span>
-      <div class="row-card__text"><h3 class="row-card__title">요양보호사 방문</h3><p class="row-card__desc">어르신 댁으로 찾아와 식사를 챙기고, 청소와 빨래를 하고, 말동무가 되어 드려요.</p></div>
+    <li class="card photo-card" data-aos="fade-up">
+      <div class="photo-card__img"><img class="photo" src="img/visit.jpg" alt="요양보호사가 어르신 식사를 챙기는 모습" loading="lazy"></div>
+      <div class="photo-card__text"><h3>요양보호사 방문</h3><p>어르신 댁으로 찾아와 식사를 챙기고, 청소와 빨래를 하고, 말동무가 되어 드려요.</p></div>
     </li>
-    <li class="card row-card" data-aos="fade-up" data-aos-delay="100">
-      <!-- [사진 3] 방문 목욕 (노출 없는 연출) (정사각형, 원형) -->
-      <span class="ico ico--mint media" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h18v2a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z"/><path d="M6 12V6a3 3 0 0 1 5-2"/><circle class="dot" cx="15" cy="7" r="1.3"/><circle class="dot" cx="18" cy="9" r="1"/></svg></span>
-      <div class="row-card__text"><h3 class="row-card__title">방문 목욕</h3><p class="row-card__desc">혼자 하시기 버거운 목욕을 집에서 도와드려요.</p></div>
+    <li class="card photo-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="photo-card__img"><img class="photo" src="img/bath.jpg" alt="요양보호사가 어르신이 일어나시도록 돕는 모습" loading="lazy"></div>
+      <div class="photo-card__text"><h3>방문 목욕</h3><p>혼자 하시기 버거운 목욕을 집에서 도와드려요.</p></div>
     </li>
-    <li class="card row-card" data-aos="fade-up" data-aos-delay="200">
-      <!-- [사진 4] 주간보호센터에서 어르신들이 함께 프로그램에 참여하는 모습 (정사각형, 원형) -->
-      <span class="ico media" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="3"/><path d="M2 12h20"/><circle class="dot" cx="7" cy="19" r="2"/><circle class="dot" cx="17" cy="19" r="2"/></svg></span>
-      <div class="row-card__text"><h3 class="row-card__title">주간보호센터</h3><p class="row-card__desc">낮 동안 센터에서 식사와 프로그램을 함께하시고, 차량으로 모셔가고 모셔다드려요.</p></div>
+    <li class="card photo-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="photo-card__img"><img class="photo" src="img/daycare.jpg" alt="요양보호사와 어르신이 함께 책을 보는 모습" loading="lazy"></div>
+      <div class="photo-card__text"><h3>주간보호센터</h3><p>낮 동안 센터에서 식사와 프로그램을 함께하시고, 차량으로 모셔가고 모셔다드려요.</p></div>
     </li>
-    <li class="card row-card" data-aos="fade-up" data-aos-delay="300">
-      <!-- [사진 5] 전동침대 · 휠체어 · 안전손잡이 같은 복지용구 (정사각형, 원형) -->
-      <span class="ico ico--mint media" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 19V9m0 5h18v5M3 13l4-4h7l3 4"/><circle class="dot" cx="19" cy="8" r="2"/></svg></span>
-      <div class="row-card__text"><h3 class="row-card__title">복지용구</h3><p class="row-card__desc">전동침대, 휠체어, 안전손잡이 같은 생활용품을 지원받아 쓰실 수 있어요.</p></div>
+    <li class="card photo-card" data-aos="fade-up" data-aos-delay="300">
+      <div class="photo-card__img"><img class="photo" src="img/welfare.jpg" alt="휠체어에 앉은 어르신과 요양보호사" loading="lazy"></div>
+      <div class="photo-card__text"><h3>복지용구</h3><p>전동침대, 휠체어, 안전손잡이 같은 생활용품을 지원받아 쓰실 수 있어요.</p></div>
     </li>
   </ul>
 </section>
