@@ -93,9 +93,9 @@ input::placeholder { color: #9a9fb8; }
 .header__cta { padding: 0.1lh 1em; border-radius: 0.5em; background: var(--indigo); color: var(--white); font-size: var(--fs-small); font-weight: 800; }
 
 /* ---------- 히어로 : 사진 위 아래쪽에 제목 ---------- */
-.hero__photo { position: relative; aspect-ratio: 4 / 5; }
-.hero__photo img { object-position: 50% 12%; }
-.hero__photo::after { content: ""; position: absolute; inset: 40% 0 0; background: linear-gradient(rgba(30, 36, 97, 0), rgba(30, 36, 97, .92) 75%); }
+.hero__photo { position: relative; aspect-ratio: 900 / 1249; }
+.hero__photo img { object-position: 50% 0; }
+.hero__photo::after { content: ""; position: absolute; inset: 58% 0 0; background: linear-gradient(rgba(30, 36, 97, 0), rgba(30, 36, 97, .9) 55%); }
 .hero__title { position: absolute; left: 6%; right: 6%; bottom: 1.1lh; z-index: 1; font-size: var(--fs-h1); font-weight: 900; line-height: 1.32; letter-spacing: -0.055em; color: var(--white); text-shadow: 0 0.1em 0.6em rgba(0, 0, 0, .25); }
 .hero__title em { font-style: normal; color: var(--amber); }
 .hero__body { padding: 1.1lh 6% 2.2lh; background: var(--indigo-deep); color: var(--white); }
@@ -174,7 +174,6 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 .sticky-cta { position: fixed; left: 50%; bottom: 0; z-index: 60; width: 100%; max-width: 800px; padding: 0.3lh 6% calc(0.3lh + env(safe-area-inset-bottom, 0px)); background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .95) 40%); transform: translateX(-50%); transition: transform .25s, opacity .25s; }
 .sticky-cta.is-hidden { transform: translate(-50%, 130%); opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
-@media (min-width: 600px) { .hero__photo { aspect-ratio: 4 / 3; } }
 </style>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
 </head>
@@ -400,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function () {
     inp.addEventListener('input', function () { inp.value = inp.value.replace(/[^0-9]/g, ''); });
   });
 
-  // 하단 버튼 : 신청 폼 · 권리(같은 버튼 있음) · 푸터가 보이면 숨김
+  // 하단 버튼 : 히어로 버튼 · 신청 폼 · 권리(같은 버튼 있음) · 푸터가 보이면 숨김
   var sticky = document.querySelector('.sticky-cta');
   if ('IntersectionObserver' in window) {
     var seen = new Set();
@@ -408,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function () {
       entries.forEach(function (en) { if (en.isIntersecting) seen.add(en.target); else seen.delete(en.target); });
       sticky.classList.toggle('is-hidden', seen.size > 0);
     }, { threshold: 0.05 });
-    ['#apply', '.rights', '.footer'].forEach(function (sel) { io.observe(document.querySelector(sel)); });
+    ['.hero__body', '#apply', '.rights', '.footer'].forEach(function (sel) { io.observe(document.querySelector(sel)); });
   }
 
   // 스크롤 등장 (AOS) : 못 불러오면 data-aos 를 지워서 내용이 숨은 채로 남지 않게
