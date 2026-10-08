@@ -53,9 +53,18 @@ if (!popup || popup.closed || typeof popup.closed === 'undefined') {
 }
 ```
 
+### 전 업종 공통 name 규칙
+
+다른 업종 폼도 같은 규칙입니다. 자세한 내용은 `prompts/form-rules.md`.
+
+- 고정 : `name`(이름), `tel1`·`tel2`·`tel3`(전화번호 3칸), `agree1`(동의, value `Y`). 한 칸짜리 `tel`/`hp`는 쓰지 않음(변수 값 오류).
+- 자유 항목 `option1`~`option9`, 번호마다 저장 글자 수가 다름 :
+  option1~4 · option8 · option9 약 10자 / option5 약 85자 / option6 · option7 약 33자.
+- 중복 선택(체크박스)은 `option6[]`만 사용.
+
 ### 예전 폼 (루트 메인 · v2 에서만 사용)
 
-name / tel1~3 / option1·2·5·6·7 / agree1. 글자 수 기준 : option1~4 약 10자, option5 약 85자, option6·7 약 33자.
+name / tel1~3 / option1·2·5·6·7 / agree1.
 
 ## 레이아웃 · 단위
 
