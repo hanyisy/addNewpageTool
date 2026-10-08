@@ -17,7 +17,7 @@
 | 씨에스 블루 (한 파일) | `versions/cs-blue/index.html` | 법무법인 씨에스용 그린 테마 랜딩을 블루 테마(기준색 #007bff)로 바꾼 것. 구조·문구·폼은 받은 원본 그대로 |
 | 요양등급 상담 (한 파일) | `versions/care/index.html` | 요양등급 수급 상담 신청. 원본 시안 문구 그대로, 디자인 새로(인디고 + 앰버 버튼, 제목 왼쪽 정렬, 사진 중심). 폼 : option1 성별 / option2 연세 / option7 상태 / option4 시도 / option8 시군구 / name / tel1~3 / agree1 + 민감정보 동의(전송 안 함). 사진 7장(versions/care/img/) 사용. 디자인 기준(글자·여백·모서리·테두리·그림자)을 CSS 맨 위에 정리, AOS 적용 |
 | 요양등급 상담 (사진 포함 한 파일) | `versions/care/index-all-in-one.html` | 위 요양등급 상담과 같음. 사진을 파일 안에 넣어서 이 파일 하나만 열어도 사진이 보임 (미리보기·전달용, 약 600KB) |
-| 요양등급 상담 컬러 3종 | `versions/care/index.html`(로즈) · `blue.html`(블루+옐로, 혜택 2x2) · `beige.html`(베이지+테라코타, 명조 제목, 혜택 가로형) | 같은 내용·폼, 색과 섹션 배치만 다름. 각각 `-all-in-one.html`은 사진 포함 한 파일 |
+| 요양등급 상담 컬러 3종 | `versions/care/index.html`(로즈) · `blue.html`(블루+옐로, 혜택 2x2, 문장 줄바꿈·가운데 정렬 정리) · `beige.html`(베이지+테라코타, 명조 제목, 혜택 가로형) | 같은 내용·폼, 색과 섹션 배치만 다름. 각각 `-all-in-one.html`은 사진 포함 한 파일 |
 | 입력폼 버전 (한 파일) | `versions/form/index.html` | 모든 항목을 한 번에 펼친 신청서 + 작성 진행 표시, 막대 그래프 사례, 왜 지금 상담해야 하는지 (인디고 + 코랄) |
 | v2 레온 (한 파일) | `versions/v2-leon-all-in-one.html` | v2 + 법무법인 레온 푸터, 변호사 사진 영역 주석 처리, 입력폼 항목 변경 |
 
