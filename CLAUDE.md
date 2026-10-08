@@ -86,6 +86,7 @@ body { font-size: 30px; line-height: 1.5; }
 
 - 글꼴 : Pretendard (`https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css`). 명조가 필요하면 Google Fonts Noto Serif KR.
 - `word-break: keep-all;`, 320 / 390 / 800px에서 가로 넘침이 없어야 합니다.
+- **줄 수 제한 (여러 번 요청받음, 꼭 지킬 것)** : 히어로 설명·권리 문구·체크리스트·푸터 고지 등 문장은 **최대 2줄**, 좁은 카드 설명은 **최대 3줄**. 뜻 단위로 끊고(`<br>` + 줄마다 `white-space: nowrap`), 넘치면 글자 크기와 좌우 여백을 줄입니다. 한 단어만 다음 줄로 넘어가는 줄도 만들지 않습니다. 수정 후 320 / 390 / 800px에서 줄 수를 재서 확인합니다.
 - 색은 `:root` 변수로 모아 두어 색만 바꾼 버전을 쉽게 만들 수 있게 합니다.
 - 라디오를 버튼 모양으로 만들 때 동그라미가 함께 있으면 글자는 **왼쪽 정렬**합니다.
 
