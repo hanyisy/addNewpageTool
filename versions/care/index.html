@@ -171,8 +171,8 @@ select.field { padding-right: 2em; background-image: url("data:image/svg+xml,%3C
 .footer__policy { display: inline-block; margin-top: 0.5lh; font-weight: 700; color: var(--navy); text-decoration: underline; cursor: pointer; }
 
 /* ---------- 하단 고정 버튼 (신청 폼이 안 보일 때만) ---------- */
-.sticky-cta { position: sticky; bottom: 0; z-index: 60; padding: 0.3lh 6%; transition: transform .25s, opacity .25s; }
-.sticky-cta.is-hidden { transform: translateY(130%); opacity: 0; pointer-events: none; }
+.sticky-cta { position: fixed; left: 50%; bottom: 0; z-index: 60; width: 100%; max-width: 800px; padding: 0.3lh 6% calc(0.3lh + env(safe-area-inset-bottom, 0px)); background: linear-gradient(rgba(255, 250, 246, 0), rgba(255, 250, 246, .95) 40%); transform: translateX(-50%); transition: transform .25s, opacity .25s; }
+.sticky-cta.is-hidden { transform: translate(-50%, 130%); opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
@@ -414,12 +414,15 @@ document.addEventListener('DOMContentLoaded', function () {
     inp.addEventListener('input', function () { inp.value = inp.value.replace(/[^0-9]/g, ''); });
   });
 
-  // 하단 버튼 : 신청 폼이 화면에 보이면 숨김
+  // 하단 버튼 : 신청 폼 · 권리(같은 버튼 있음) · 푸터가 보이면 숨김
   var sticky = document.querySelector('.sticky-cta');
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      sticky.classList.toggle('is-hidden', entries[0].isIntersecting);
-    }, { threshold: 0.05 }).observe(document.getElementById('apply'));
+    var seen = new Set();
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) seen.add(en.target); else seen.delete(en.target); });
+      sticky.classList.toggle('is-hidden', seen.size > 0);
+    }, { threshold: 0.05 });
+    ['#apply', '.rights', '.footer'].forEach(function (sel) { io.observe(document.querySelector(sel)); });
   }
 
   // 스크롤 등장 (AOS) : 못 불러오면 data-aos 를 지워서 내용이 숨은 채로 남지 않게

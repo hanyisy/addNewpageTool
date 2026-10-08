@@ -131,7 +131,7 @@ body { font-size: 30px; line-height: 1.5; }
 - **연도 자동** : `.js-year`.
 - **스크롤 등장** : AOS `https://unpkg.com/aos@2.3.4/dist/aos.css` / `aos.js` (`once: true`). AOS를 못 불러오면 `data-aos` 속성을 지워 내용이 숨은 채로 남지 않게 합니다.
 - **숫자 카운트업** : `data-count`, `data-suffix` + IntersectionObserver.
-- **하단 고정 버튼** : 신청 폼이 화면에 보이면 숨깁니다(IntersectionObserver).
+- **하단 고정 버튼** : `position: fixed`(800px 폭 안, 가운데)로 띄웁니다. `sticky`로 두면 페이지 끝에서 푸터 아래 원래 자리에 붙어 버립니다. 신청 폼 · 같은 버튼이 있는 마지막 CTA · 푸터가 보이면 숨깁니다(IntersectionObserver).
 
 ## 테스트
 
